@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title>Phaser RPG Example</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            background-color: black;
+        }
+
+        @font-face {
+            font-family: 'Kells';
+            src: url('assets/fonts/kells_uncial.ttf');
+        }
+
+        .fontPreload{
+            font-family: 'Kells';
+            position: absolute;
+            left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fontPreload">.</div>
+    
+    <script src="js/phaser.js"></script>
+    <script src="js/priority-queue.min.js"></script>
+    
+    <script src="js/states/BootState.js"></script>
+    <script src="js/states/LoadingState.js"></script>
+    
+    <script src="js/states/JSONLevelState.js"></script>
+    <script src="js/states/TitleState.js"></script>
+    <script src="js/states/WorldState.js"></script>
+    <script src="js/states/BattleState.js"></script>
+    
+    <script src="js/prefabs/Prefab.js"></script>
+    <script src="js/prefabs/TextPrefab.js"></script>
+    
+    <script src="js/plugins/UserInput.js"></script>
+    
+    <script src="js/prefabs/world/Player.js"></script>
+    <script src="js/prefabs/world/Door.js"></script>
+    <script src="js/prefabs/world/NPC.js"></script>
+    <script src="js/prefabs/world/EnemySpawner.js"></script>
+    
+    <script src="js/prefabs/battle/Unit.js"></script>
+    <script src="js/prefabs/battle/EnemyUnit.js"></script>
+    <script src="js/prefabs/battle/PlayerUnit.js"></script>
+    <script src="js/prefabs/battle/PhysicalAttack.js"></script>
+    <script src="js/prefabs/battle/MagicalAttack.js"></script>
+    
+    <script src="js/prefabs/hud/MessageBox.js"></script>
+    <script src="js/prefabs/hud/Menu.js"></script>
+    <script src="js/prefabs/hud/MenuItem.js"></script>
+    <script src="js/prefabs/hud/PhysicalAttackMenuItem.js"></script>
+    <script src="js/prefabs/hud/MagicalAttackMenuItem.js"></script>
+    <script src="js/prefabs/hud/EnemyMenuItem.js"></script>
+    <script src="js/prefabs/hud/RunMenuItem.js"></script>
+    <script src="js/prefabs/hud/ShowPlayerStatus.js"></script>
+    <script src="js/prefabs/hud/ShowStatWithBar.js"></script>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

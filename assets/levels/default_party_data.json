@@ -1,0 +1,28 @@
+{
+    "party_data": {
+        "warrior": {
+            "stats": {
+                "health": 100,
+                "mana": 100,
+                "attack": 20,
+                "magic_attack": 5,
+                "defense": 10,
+                "speed": 18
+            },
+            "experience": 0,
+            "current_level": 0
+        },
+        "mage": {
+            "stats": {
+                "health": 80,
+                "mana": 150,
+                "attack": 8,
+                "magic_attack": 20,
+                "defense": 5,
+                "speed": 15
+            },
+            "experience": 0,
+            "current_level": 0
+        }
+    }
+}

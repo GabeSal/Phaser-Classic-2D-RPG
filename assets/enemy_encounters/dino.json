@@ -1,0 +1,83 @@
+{
+    "enemy_data": {
+        "dino1": {
+            "type": "enemy_unit",
+            "position": {"x": 145, "y": 180},
+            "properties": {
+                "texture": "dragon_spritesheet",
+                "group": "enemy_units",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {"x": 0.8, "y": 0.8},
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 10},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 12, 13], "fps": 14},
+                    "attack2": {"frames": [14, 15, 16, 17, 17], "fps": 12},
+                    "hit": {"frames": [18, 18, 19, 19], "fps": 10}
+                },
+                "stats": {
+                    "health": 80,
+                    "attack": 12,
+                    "defense": 18,
+                    "speed": 12
+                },
+                "target_units": "player_units"
+            }
+        },
+        "dino2": {
+            "type": "enemy_unit",
+            "position": {"x": 115, "y": 220},
+            "properties": {
+                "texture": "dragon_spritesheet",
+                "group": "enemy_units",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "tint": "0x00FFAA",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 10},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 12, 13], "fps": 14},
+                    "attack2": {"frames": [14, 15, 16, 17, 17], "fps": 12},
+                    "hit": {"frames": [18, 18, 19, 19], "fps": 10}
+                },
+                "stats": {
+                    "health": 65,
+                    "attack": 18,
+                    "defense": 10,
+                    "speed": 15
+                },
+                "target_units": "player_units"
+            }
+        },
+        "enemy_units_menu": {
+            "type": "menu",
+            "position": {"x": 10, "y": 350},
+            "properties": {
+                "group": "hud",
+                "menu_items": {
+                    "dino1_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 10, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "dino_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "enemy_name": "dino1"
+                        }
+                    },
+                    "dino2_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 60, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "dino_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0x00FFAA",
+                            "enemy_name": "dino2"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "reward": {
+        "experience": 70
+    }
+}

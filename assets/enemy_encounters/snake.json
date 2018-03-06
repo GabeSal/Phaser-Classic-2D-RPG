@@ -1,0 +1,84 @@
+{
+    "enemy_data": {
+        "snake1": {
+            "type": "enemy_unit",
+            "position": {"x": 115, "y": 200},
+            "properties": {
+                "texture": "snake_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.6, "y": 0.6},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 6},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 0], "fps": 14},
+                    "attack2": {"frames": [11, 12, 13, 14, 15, 16], "fps": 12},
+                    "hit": {"frames": [17, 17, 18, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 30,
+                    "attack": 10,
+                    "defense": 3,
+                    "speed": 8
+                },
+                "target_units": "player_units"
+            }
+        },
+        "snake2": {
+            "type": "enemy_unit",
+            "position": {"x": 145, "y": 240},
+            "properties": {
+                "texture": "snake_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.8, "y": 0.8},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "tint": "0x55FFFF",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 6},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 0], "fps": 14},
+                    "attack2": {"frames": [11, 12, 13, 14, 15, 16], "fps": 12},
+                    "hit": {"frames": [17, 17, 18, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 25,
+                    "attack": 8,
+                    "defense": 1,
+                    "speed": 15
+                },
+                "target_units": "player_units"
+            }
+        },
+        "enemy_units_menu": {
+            "type": "menu",
+            "position": {"x": 10, "y": 350},
+            "properties": {
+                "group": "hud",
+                "menu_items": {
+                    "snake1_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 10, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "snake_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "enemy_name": "snake1"
+                        }
+                    },
+                    "snake2_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 60, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "snake_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0x55FFFF",
+                            "enemy_name": "snake2"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "reward": {
+        "experience": 16
+    }
+}

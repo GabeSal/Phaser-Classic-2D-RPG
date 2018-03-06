@@ -1,0 +1,38 @@
+{
+    "keydown": {
+        "UP": {
+            "callback": "player.change_movement",
+            "args": ["up", true]
+        },
+        "DOWN": {
+            "callback": "player.change_movement",
+            "args": ["down", true]
+        },
+        "LEFT": {
+            "callback": "player.change_movement",
+            "args": ["left", true]
+        },
+        "RIGHT": {
+            "callback": "player.change_movement",
+            "args": ["right", true]
+        }
+    },
+    "keyup": {
+        "UP": {
+            "callback": "player.change_movement",
+            "args": ["up", false]
+        },
+        "DOWN": {
+            "callback": "player.change_movement",
+            "args": ["down", false]
+        },
+        "LEFT": {
+            "callback": "player.change_movement",
+            "args": ["left", false]
+        },
+        "RIGHT": {
+            "callback": "player.change_movement",
+            "args": ["right", false]
+        }
+    }
+}

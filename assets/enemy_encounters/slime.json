@@ -1,0 +1,119 @@
+{
+    "enemy_data": {
+        "slime1": {
+            "type": "enemy_unit",
+            "position": {"x": 115, "y": 200},
+            "properties": {
+                "texture": "slime_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.7, "y": 0.7},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 10},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10], "fps": 10},
+                    "attack2": {"frames": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], "fps": 14},
+                    "hit": {"frames": [22, 22, 23, 23], "fps": 12}
+                },
+                "stats": {
+                    "health": 45,
+                    "attack": 8,
+                    "defense": 5,
+                    "speed": 12
+                },
+                "target_units": "player_units"
+            }
+        },
+        "slime2": {
+            "type": "enemy_unit",
+            "position": {"x": 145, "y": 240},
+            "properties": {
+                "texture": "slime_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.8, "y": 0.8},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "tint": "0xFF0000",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 10},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10], "fps": 10},
+                    "attack2": {"frames": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], "fps": 14},
+                    "hit": {"frames": [22, 22, 23, 23], "fps": 12}
+                },
+                "stats": {
+                    "health": 15,
+                    "attack": 10,
+                    "defense": 1,
+                    "speed": 20
+                },
+                "target_units": "player_units"
+            }
+        },
+        "slime3": {
+            "type": "enemy_unit",
+            "position": {"x": 125, "y": 280},
+            "properties": {
+                "texture": "slime_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.9, "y": 0.9},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "tint": "0x00FF00",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 10},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10], "fps": 10},
+                    "attack2": {"frames": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], "fps": 14},
+                    "hit": {"frames": [22, 22, 23, 23], "fps": 12}
+                },
+                "stats": {
+                    "health": 25,
+                    "attack": 5,
+                    "defense": 3,
+                    "speed": 10
+                },
+                "target_units": "player_units"
+            }
+        },
+        "enemy_units_menu": {
+            "type": "menu",
+            "position": {"x": 10, "y": 350},
+            "properties": {
+                "group": "hud",
+                "menu_items": {
+                    "slime1_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 10, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "slime_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "enemy_name": "slime1"
+                        }
+                    },
+                    "slime2_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 60, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "slime_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0xFF0000",
+                            "enemy_name": "slime2"
+                        }
+                    },
+                    "slime3_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 110, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "slime_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0x00FF00",
+                            "enemy_name": "slime3"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "reward": {
+        "experience": 18
+    }
+}

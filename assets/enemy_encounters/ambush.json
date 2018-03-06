@@ -1,0 +1,150 @@
+{
+    "enemy_data": {
+        "bat": {
+            "type": "enemy_unit",
+            "position": {"x": 120, "y": 140},
+            "properties": {
+                "texture": "bat_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.6, "y": 0.6},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 14},
+                    "attack1": {"frames": [6, 7, 7, 8, 9, 9], "fps": 10},
+                    "attack2": {"frames": [10, 11, 11, 12, 13, 14, 15, 16], "fps": 12},
+                    "hit": {"frames": [17, 17, 18, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 20,
+                    "attack": 5,
+                    "defense": 3,
+                    "speed": 20
+                },
+                "target_units": "player_units"
+            }
+        },
+        "snake": {
+            "type": "enemy_unit",
+            "position": {"x": 180, "y": 190},
+            "properties": {
+                "texture": "snake_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.7, "y": 0.7},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 6},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 0], "fps": 14},
+                    "attack2": {"frames": [11, 12, 13, 14, 15, 16], "fps": 12},
+                    "hit": {"frames": [17, 17, 18, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 40,
+                    "attack": 12,
+                    "defense": 3,
+                    "speed": 16
+                },
+                "target_units": "player_units"
+            }
+        },
+        "reptile": {
+            "type": "enemy_unit",
+            "position": {"x": 240, "y": 220},
+            "properties": {
+                "texture": "reptile_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.8, "y": 0.8},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "tint": "0xFF0066",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 10},
+                    "attack1": {"frames": [6, 7, 8, 9, 10, 10, 10, 5], "fps": 14},
+                    "attack2": {"frames": [11, 12, 8, 9, 10, 5], "fps": 12},
+                    "hit": {"frames": [13, 13, 14, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 80,
+                    "attack": 15,
+                    "defense": 15,
+                    "speed": 5
+                },
+                "target_units": "player_units"
+            }
+        },
+        "slime": {
+            "type": "enemy_unit",
+            "position": {"x": 160, "y": 280},
+            "properties": {
+                "texture": "slime_spritesheet",
+                "group": "enemy_units",
+                "scale": {"x": 0.7, "y": 0.7},
+                "anchor": {"x": 0.5, "y": 0.5},
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 10},
+                    "attack1": {"frames": [5, 6, 7, 8, 9, 10], "fps": 10},
+                    "attack2": {"frames": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], "fps": 14},
+                    "hit": {"frames": [22, 22, 23, 23], "fps": 12}
+                },
+                "stats": {
+                    "health": 25,
+                    "attack": 8,
+                    "defense": 5,
+                    "speed": 12
+                },
+                "target_units": "player_units"
+            }
+        },
+        "enemy_units_menu": {
+            "type": "menu",
+            "position": {"x": 10, "y": 350},
+            "properties": {
+                "group": "hud",
+                "menu_items": {
+                    "snake_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 10, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "snake_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "enemy_name": "snake"
+                        }
+                    },
+                    "bat_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 60, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "bat_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "enemy_name": "bat"
+                        }
+                    },
+                    "reptile_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 120, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "reptile_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0xFF0066",
+                            "enemy_name": "reptile"
+                        }
+                    },
+                    "slime_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 180, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "slime_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "enemy_name": "slime"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "reward": {
+        "experience": 80
+    }
+}

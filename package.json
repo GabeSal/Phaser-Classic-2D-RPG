@@ -1,0 +1,7 @@
+{
+  "name": "",
+  "version": "",
+  "devDependencies": {
+    "phaser-ce": "^2.10.1"
+  }
+}
