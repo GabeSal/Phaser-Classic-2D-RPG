@@ -22,6 +22,7 @@ RPG.TitleState.prototype.create = function () {
     "use strict";
     RPG.JSONLevelState.prototype.create.call(this);
     
+    // resets party data
     this.game.party_data = JSON.parse(this.game.cache.getText("default_data")).party_data;
 };
 

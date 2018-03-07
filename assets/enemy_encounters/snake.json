@@ -79,6 +79,7 @@
         }
     },
     "reward": {
-        "experience": 16
+        "experience": 16,
+        "items": [{"type": "health_potion", "properties": {"group": "items", "item_texture": "health_potion_image", "health_gain": 25}}]
     }
 }

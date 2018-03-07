@@ -1,0 +1,2 @@
+The door is locked from the other side.
+[Press 'Enter' to continue]

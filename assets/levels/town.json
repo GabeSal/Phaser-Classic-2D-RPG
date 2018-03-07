@@ -7,6 +7,7 @@
         "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
         "guard_image": {"type": "image", "source": "assets/images/world/knight.png"},
         "villager_image": {"type": "image", "source": "assets/images/world/villager.png"},
+        "villager2_image": {"type": "image", "source": "assets/images/world/villager2.png"},
         "snake_image": {"type": "image", "source": "assets/images/world/snake.png"},
         "bat_image": {"type": "image", "source": "assets/images/world/bat.png"},
         "slime_image": {"type": "image", "source": "assets/images/world/slime.png"},
@@ -31,8 +32,12 @@
     "initial_user_input": "world_map_user_input",
     "npc_messages": {
         "villager_message": "assets/npc_messages/villager.txt",
+        "villager2_message": "assets/npc_messages/villager2.txt",
         "guard_message": "assets/npc_messages/guard.txt",
-        "guard2_message": "assets/npc_messages/guard2.txt"
+        "guard2_message": "assets/npc_messages/guard2.txt",
+        "locked_message": "assets/npc_messages/locked1.txt",
+        "locked_message2": "assets/npc_messages/locked2.txt",
+        "locked_message3": "assets/npc_messages/locked3.txt"
     },
     "level_file": "assets/levels/town.json",
     "enemy_encounters": {

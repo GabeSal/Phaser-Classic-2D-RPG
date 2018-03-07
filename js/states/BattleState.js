@@ -14,6 +14,7 @@ RPG.BattleState = function () {
         magical_attack_menu_item: RPG.MagicalAttackMenuItem.prototype.constructor,
         enemy_menu_item: RPG.EnemyMenuItem.prototype.constructor,
         run_menu_item: RPG.RunMenuItem.prototype.constructor,
+        inventory_menu_item: RPG.InventoryMenuItem.prototype.constructor,
         show_player_status: RPG.ShowPlayerStatus.prototype.constructor
     }
 };
@@ -37,6 +38,10 @@ RPG.BattleState.prototype.preload = function () {
 RPG.BattleState.prototype.create = function () {
     "use strict";
     RPG.JSONLevelState.prototype.create.call(this);
+    
+    this.game.inventory.collect_item(this, {"type": "health_potion", "properties": {"group": "items", "item_texture": "health_potion_image", "health_gain": 25}});
+    
+    this.game.inventory.create_menu(this, this.prefabs.items_menu);
     
     this.experience_table = JSON.parse(this.game.cache.getText("experience_table"));
     
@@ -115,6 +120,11 @@ RPG.BattleState.prototype.end_battle = function () {
         this.game.party_data[player_unit.name].stats = player_unit.stats;
         this.game.party_data[player_unit.name].experience = player_unit.experience;
         this.game.party_data[player_unit.name].current_level = player_unit.current_level;
+    }, this);
+    
+    // receive item rewards
+    this.encounter.reward.items.forEach(function (item_object) {
+        this.game.inventory.collect_item(this, item_object);
     }, this);
     
     this.back_to_world();

@@ -91,7 +91,7 @@
                 {
                  "height":24,
                  "id":2,
-                 "name":"door",
+                 "name":"cave_door",
                  "properties":
                     {
                      "group":"doors",
@@ -119,12 +119,14 @@
                     {
                      "group":"npcs",
                      "message":"guard_message",
+                     "one_shot":false,
                      "texture":"guard_image"
                     },
                  "propertytypes":
                     {
                      "group":"string",
                      "message":"string",
+                     "one_shot":"bool",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -142,12 +144,14 @@
                     {
                      "group":"npcs",
                      "message":"guard2_message",
+                     "one_shot":false,
                      "texture":"guard_image"
                     },
                  "propertytypes":
                     {
                      "group":"string",
                      "message":"string",
+                     "one_shot":"bool",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -165,12 +169,14 @@
                     {
                      "group":"npcs",
                      "message":"villager_message",
+                     "one_shot":false,
                      "texture":"villager_image"
                     },
                  "propertytypes":
                     {
                      "group":"string",
                      "message":"string",
+                     "one_shot":"bool",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -271,6 +277,294 @@
                  "width":32,
                  "x":224,
                  "y":192
+                }, 
+                {
+                 "height":24,
+                 "id":13,
+                 "name":"mill_tower_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/mill_tower.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":24,
+                 "x":99.3333333333333,
+                 "y":295.333333333333
+                }, 
+                {
+                 "height":24,
+                 "id":14,
+                 "name":"barracks_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/barracks.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":24,
+                 "x":35.3333333333333,
+                 "y":105.333333333333
+                }, 
+                {
+                 "height":24,
+                 "id":15,
+                 "name":"armory_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/armory.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":24,
+                 "x":468.666666666667,
+                 "y":201.333333333333
+                }, 
+                {
+                 "height":24,
+                 "id":16,
+                 "name":"guard_tower1_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/guard_tower1.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":24,
+                 "x":35.3333333333333,
+                 "y":422
+                }, 
+                {
+                 "height":24,
+                 "id":17,
+                 "name":"guard_tower2_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/guard_tower2.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":24,
+                 "x":580,
+                 "y":360.666666666667
+                }, 
+                {
+                 "height":24,
+                 "id":18,
+                 "name":"villager2",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"villager2_message",
+                     "one_shot":false,
+                     "texture":"villager2_image"
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":24,
+                 "x":386.666666666667,
+                 "y":294.666666666667
+                }, 
+                {
+                 "height":24,
+                 "id":19,
+                 "name":"locked_door",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"locked_message",
+                     "one_shot":false,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":24,
+                 "x":36,
+                 "y":264
+                }, 
+                {
+                 "height":24,
+                 "id":20,
+                 "name":"locked_door",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"locked_message2",
+                     "one_shot":false,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":24,
+                 "x":260.666666666667,
+                 "y":388.666666666667
+                }, 
+                {
+                 "height":24,
+                 "id":21,
+                 "name":"locked_door",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"locked_message2",
+                     "one_shot":false,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":24,
+                 "x":483.333333333333,
+                 "y":423.333333333333
+                }, 
+                {
+                 "height":24,
+                 "id":22,
+                 "name":"locked_door",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"locked_message3",
+                     "one_shot":false,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":24,
+                 "x":516.666666666667,
+                 "y":422
+                }, 
+                {
+                 "height":24,
+                 "id":23,
+                 "name":"house_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/house.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":24,
+                 "x":548,
+                 "y":422
+                }, 
+                {
+                 "height":24,
+                 "id":25,
+                 "name":"locked_door",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"locked_message3",
+                     "one_shot":false,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":24,
+                 "x":355.333333333333,
+                 "y":422
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -278,7 +572,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":13,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

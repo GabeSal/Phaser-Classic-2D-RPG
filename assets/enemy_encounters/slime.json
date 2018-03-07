@@ -114,6 +114,8 @@
         }
     },
     "reward": {
-        "experience": 18
+        "experience": 18,
+        "items": [{"type": "health_potion", "properties": {"group": "items", "item_texture": "health_potion_image", "health_gain": 25}},
+                 {"type": "mana_potion", "properties": {"group": "items", "item_texture": "mana_potion_image", "mana_gain": 25}}]
     }
 }

@@ -44,6 +44,7 @@
         }
     },
     "reward": {
-        "experience": 30
+        "experience": 30,
+        "items": [{"type": "powerful_health", "properties": {"group": "items", "item_texture": "powerful_health_potion_image", "health_gain": 75}}]
     }
 }
