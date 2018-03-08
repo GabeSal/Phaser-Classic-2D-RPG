@@ -5,6 +5,7 @@
         "player_spritesheet": {"type": "spritesheet", "source": "assets/images/world/player.png", "frame_width": 16, "frame_height": 16},
         
         "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
+        
         "guard_image": {"type": "image", "source": "assets/images/world/knight.png"},
         "villager_image": {"type": "image", "source": "assets/images/world/villager.png"},
         "villager2_image": {"type": "image", "source": "assets/images/world/villager2.png"},
@@ -12,14 +13,17 @@
         "bat_image": {"type": "image", "source": "assets/images/world/bat.png"},
         "slime_image": {"type": "image", "source": "assets/images/world/slime.png"},
         
+        "warrior_helmet_image": {"type": "image", "source": "assets/images/world/warrior_helmet.png"},
+        
         "level_tilemap": {"type": "tilemap", "source": "assets/maps/town.json"}
     },
     "groups": [
         "players",
         "doors",
         "npcs",
-        "enemy_spawners",
-        "hud"
+        "hud",
+        "equipments",
+        "enemy_spawners"
     ],
     "map": {
         "key": "level_tilemap",

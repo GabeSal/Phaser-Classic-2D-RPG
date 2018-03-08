@@ -212,7 +212,7 @@
                 {
                  "height":32,
                  "id":8,
-                 "name":"enemy_spawner5",
+                 "name":"enemy_spawner2",
                  "properties":
                     {
                      "encounter":"ambush",
@@ -565,6 +565,35 @@
                  "width":24,
                  "x":355.333333333333,
                  "y":422
+                }, 
+                {
+                 "height":32,
+                 "id":26,
+                 "name":"warrior_helmet",
+                 "properties":
+                    {
+                     "body_part":"head",
+                     "bonus":10,
+                     "group":"equipments",
+                     "stat":"defense",
+                     "texture":"warrior_helmet_image",
+                     "unit_name":"warrior"
+                    },
+                 "propertytypes":
+                    {
+                     "body_part":"string",
+                     "bonus":"int",
+                     "group":"string",
+                     "stat":"string",
+                     "texture":"string",
+                     "unit_name":"string"
+                    },
+                 "rotation":0,
+                 "type":"equipment",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":160
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -572,7 +601,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":26,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

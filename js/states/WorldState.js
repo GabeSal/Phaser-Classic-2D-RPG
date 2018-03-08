@@ -5,13 +5,14 @@ RPG.WorldState = function () {
     RPG.JSONLevelState.call(this);
         
     this.prefab_classes = {
-        "player": RPG.Player.prototype.constructor,
-        "door": RPG.Door.prototype.constructor,
-        "npc": RPG.NPC.prototype.constructor,
-        "enemy_spawner": RPG.EnemySpawner.prototype.constructor
+        player: RPG.Player.prototype.constructor,
+        door: RPG.Door.prototype.constructor,
+        npc: RPG.NPC.prototype.constructor,
+        enemy_spawner: RPG.EnemySpawner.prototype.constructor,
+        equipment: RPG.Equipment.prototype.constructor
     };
     
-    this.TEXT_STYLE = {font: "16px Georgia", fill: "#FFFFFF"};
+    this.TEXT_STYLE = {font: "14px Georgia", fill: "#FFFFFF"};
 };
 
 RPG.WorldState.prototype = Object.create(RPG.JSONLevelState.prototype);
@@ -27,9 +28,11 @@ RPG.WorldState.prototype.init = function (level_data) {
 
 RPG.WorldState.prototype.preload = function() {
     "use strict";
+    // loads NPC dialogue
     for (var npc_message_name in this.level_data.npc_messages) {
         this.load.text(npc_message_name, this.level_data.npc_messages[npc_message_name]);
-    } 
+    }
+    // loads all enemy encounters from level object
     for (var enemy_encounter_name in this.level_data.enemy_encounters) {
         this.load.text(enemy_encounter_name, this.level_data.enemy_encounters[enemy_encounter_name]);
     }
@@ -47,6 +50,9 @@ RPG.WorldState.prototype.create = function () {
         tileset_index += 1;
     }, this);
     
+    console.log("Map object");
+    console.log(this.map);
+    
     // create map layers before groups
     this.layers = {};
     this.map.layers.forEach(function (layer) {
@@ -55,6 +61,9 @@ RPG.WorldState.prototype.create = function () {
             this.map.setCollisionByExclusion([-1], true, layer.name);
         }
     }, this);
+    
+    console.log("Layers");
+    console.log(this.layers);
     
     // resize the world to be the size of the current layer
     this.layers[this.map.layer.name].resizeWorld();
@@ -88,4 +97,9 @@ RPG.WorldState.prototype.end_talk = function () {
     "use strict";
     this.current_message_box.kill();
     this.user_input.set_input(this.user_inputs.world_map_user_input);
+};
+
+RPG.WorldState.prototype.pause_game = function () {
+    "use strict";
+    this.game.state.start("BootState", true, false, "assets/levels/pause_screen.json", "PauseState", {previous_level: this.level_data.level_file});
 };

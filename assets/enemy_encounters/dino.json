@@ -4,7 +4,7 @@
             "type": "enemy_unit",
             "position": {"x": 145, "y": 180},
             "properties": {
-                "texture": "dragon_spritesheet",
+                "texture": "dino_spritesheet",
                 "group": "enemy_units",
                 "anchor": {"x": 0.5, "y": 0.5},
                 "scale": {"x": 0.8, "y": 0.8},
@@ -27,7 +27,7 @@
             "type": "enemy_unit",
             "position": {"x": 115, "y": 220},
             "properties": {
-                "texture": "dragon_spritesheet",
+                "texture": "dino_spritesheet",
                 "group": "enemy_units",
                 "anchor": {"x": 0.5, "y": 0.5},
                 "tint": "0x00FFAA",

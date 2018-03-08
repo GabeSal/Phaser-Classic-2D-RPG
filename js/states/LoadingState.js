@@ -11,6 +11,7 @@ RPG.LoadingState.prototype.constructor = RPG.LoadingState;
 RPG.LoadingState.prototype.init = function (level_data, next_state, extra_parameters) {
     "use strict";
     this.level_data = level_data;
+    // console.log(this.level_data);
     this.next_state = next_state;
     this.extra_parameters = extra_parameters;
     

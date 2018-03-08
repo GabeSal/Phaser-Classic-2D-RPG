@@ -24,6 +24,7 @@ RPG.TitleState.prototype.create = function () {
     
     // resets party data
     this.game.party_data = JSON.parse(this.game.cache.getText("default_data")).party_data;
+    //console.log(this.game.party_data);
 };
 
 RPG.TitleState.prototype.start_game = function () {

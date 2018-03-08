@@ -15,6 +15,9 @@
         "RIGHT": {
             "callback": "player.change_movement",
             "args": ["right", true]
+        },
+        "ESC": {
+            "callback": "game_state.pause_game"
         }
     },
     "keyup": {

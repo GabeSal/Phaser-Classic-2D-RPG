@@ -9,6 +9,7 @@ game.state.add("LoadingState", new RPG.LoadingState());
 game.state.add("TitleState", new RPG.TitleState());
 game.state.add("WorldState", new RPG.WorldState());
 game.state.add("BattleState", new RPG.BattleState());
+game.state.add("PauseState", new RPG.PauseState());
 
 game.state.start("BootState", true, false, "assets/levels/title_screen.json", "TitleState");
 

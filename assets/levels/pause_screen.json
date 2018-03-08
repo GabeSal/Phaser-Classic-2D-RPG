@@ -1,0 +1,67 @@
+{
+    "assets": {
+        "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
+        
+        "warrior_face_image": {"type": "image", "source": "assets/images/battle/warrior_face.png"},
+        "mage_face_image": {"type": "image", "source": "assets/images/battle/mage_face.png"},
+        
+        "healthbar_image": {"type": "image", "source": "assets/images/battle/healthbar.png"},
+        "manabar_image": {"type": "image", "source": "assets/images/battle/manabar.png"}
+    },
+    "groups": [
+        "unit_stats",
+        "background",
+        "hud"
+    ],
+    "prefabs": {
+        "background": {
+            "type": "background",
+            "position": {"x": 0, "y": 0},
+            "properties": {
+                "texture": "message_box_image",
+                "group": "background",
+                "scale": {"x": 1, "y": 4}
+            }
+        },
+        "warrior": {
+            "type": "unit_stats",
+            "position": {"x": 0, "y": 0},
+            "properties": {
+                "group": "unit_stats",
+                "face_texture": "warrior_face_image",
+                "stats": {
+                    "max_health": 100,
+                    "health": 100,
+                    "max_mana": 50,
+                    "mana": 50,
+                    "attack": 20,
+                    "magic_attack": 5,
+                    "defense": 10,
+                    "speed": 18
+                }
+            }
+        },
+        "mage": {
+            "type": "unit_stats",
+            "position": {"x": 0, "y": 0},
+            "properties": {
+                "group": "unit_stats",
+                "face_texture": "mage_face_image",
+                "stats": {
+                    "max_health": 80,
+                    "health": 80,
+                    "max_mana": 150,
+                    "mana": 150,
+                    "attack": 8,
+                    "magic_attack": 20,
+                    "defense": 5,
+                    "speed": 15
+                }
+            }
+        }
+    },
+    "user_input": {
+        "pause_user_input": "assets/user_inputs/pause_user_input.json"
+    },
+    "initial_user_input": "pause_user_input"
+}
