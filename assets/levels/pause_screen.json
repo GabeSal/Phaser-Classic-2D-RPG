@@ -58,6 +58,26 @@
                     "speed": 15
                 }
             }
+        },
+        "show_warrior_unit": {
+            "type": "show_player_status",
+            "position": {"x": 50, "y": 100},
+            "properties": {
+                "group": "hud",
+                "text_style": {"font": "14px Kells", "fill": "#FFFFFF"},
+                "prefab": "warrior",
+                "face_texture": "warrior_face_image"
+            }
+        },
+        "show_mage_unit": {
+            "type": "show_player_status",
+            "position": {"x": 50, "y": 250},
+            "properties": {
+                "group": "hud",
+                "text_style": {"font": "14px Kells", "fill": "#FFFFFF"},
+                "prefab": "mage",
+                "face_texture": "mage_face_image"
+            }
         }
     },
     "user_input": {

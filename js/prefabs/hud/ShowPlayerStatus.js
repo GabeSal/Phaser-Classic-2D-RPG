@@ -12,8 +12,6 @@ RPG.ShowPlayerStatus = function (game_state, name, position, properties) {
     this.player_unit_mana = new RPG.ShowStatWithBar(this.game_state, this.name + "_mana", {x: this.x, y: this.y + 30}, {group: "hud", text: "MP", style: properties.text_style, prefab: properties.prefab, stat: "mana", bar_texture: "manabar_image"});
     
     this.face_sprite = this.game_state.add.sprite(this.x + 130, this.y, properties.face_texture);
-    
-    this.show(false);
 };
 
 RPG.ShowPlayerStatus.prototype = Object.create(RPG.Prefab.prototype);

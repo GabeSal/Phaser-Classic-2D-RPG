@@ -78,6 +78,8 @@ RPG.BattleState.prototype.create = function () {
         this.units.queue(unit);
     }, this);
     
+    this.prefabs.show_player_status.show(false);
+    
     this.next_turn();
 };
 

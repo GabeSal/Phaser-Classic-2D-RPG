@@ -26,6 +26,7 @@ RPG.WorldState.prototype.init = function (level_data) {
     this.game.physics.arcade.gravity.y = 0;
 };
 
+//  **  level data loads here  **
 RPG.WorldState.prototype.preload = function() {
     "use strict";
     // loads NPC dialogue

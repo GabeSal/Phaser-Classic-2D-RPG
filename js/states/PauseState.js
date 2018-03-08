@@ -6,7 +6,8 @@ RPG.PauseState = function () {
         
     this.prefab_classes = {
         background: RPG.Prefab.prototype.constructor,
-        unit_stats: RPG.UnitStats.prototype.constructor
+        unit_stats: RPG.UnitStats.prototype.constructor,
+        show_player_status: RPG.ShowPartyDataInPauseScreen.prototype.constructor
     }
 };
 
@@ -35,7 +36,6 @@ RPG.PauseState.prototype.create = function () {
         
         this.prefabs[player_unit_name].experience = unit_data.experience;
         this.prefabs[player_unit_name].current_level = unit_data.current_level;
-        
     }
 };
 
