@@ -12,12 +12,12 @@ RPG.PhysicalAttack.prototype.constructor = RPG.PhysicalAttack;
 
 RPG.PhysicalAttack.prototype.hit = function (target) {
     "use strict";
-    var damage, physical_attack_multiplier, defense_multiplier, action_message_position, action_message_text, physical_attack_message;
+    var damage, physical_attack_multiplier, physical_defense_multiplier, action_message_position, action_message_text, physical_attack_message;
     
-    physical_attack_multiplier = this.game_state.rnd.realInRange(1.0, 1.8);
-    defense_multiplier = this.game_state.rnd.realInRange(0.8, 1.2);
+    physical_attack_multiplier = this.game_state.rnd.realInRange(0.9, 1.8);
+    physical_defense_multiplier = this.game_state.rnd.realInRange(0.8, 1.5);
     
-    damage = Math.max(0, Math.ceil((physical_attack_multiplier * this.owner.stats.attack) - (defense_multiplier * target.stats.defense)));
+    damage = Math.max(0, Math.ceil((physical_attack_multiplier * this.owner.stats.attack) - (physical_defense_multiplier * target.stats.phys_defense)));
     
     if(damage === 0) {
         damage = "miss";

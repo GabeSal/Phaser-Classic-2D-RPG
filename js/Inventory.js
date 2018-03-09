@@ -4,10 +4,10 @@ RPG.Inventory = function () {
     "use strict";
     
     this.item_classes = {
-        "health_potion": RPG.HealthPotion.prototype.constructor,
-        "mana_potion": RPG.ManaPotion.prototype.constructor,
-        "powerful_health_potion": RPG.PowerfulHealthPotion.prototype.constructor,
-        "powerful_mana_potion": RPG.PowerfulManaPotion.prototype.constructor
+        health_potion: RPG.HealthPotion.prototype.constructor,
+        mana_potion: RPG.ManaPotion.prototype.constructor,
+        powerful_health_potion: RPG.PowerfulHealthPotion.prototype.constructor,
+        powerful_mana_potion: RPG.PowerfulManaPotion.prototype.constructor
     };
     
     this.items = {};
@@ -31,7 +31,8 @@ RPG.Inventory.prototype.create_menu = function (game_state, items_menu) {
         var item_amount = this.items[item_type].amount;
         var menu_item = new RPG.ItemMenuItem(game_state, item_type + "_menu_item", {x: item_position.x, y: item_position.y}, {group: "hud", texture: item_prefab.item_texture, item_name: item_type, amount: item_amount});
         items_menu.menu_items.push(menu_item);
-        if (item_position.x < 375) {
+        // positions items horizontally every 50px
+        if (item_position.x < 325) {
             item_position.x += 50;
         } else {
             item_position.x = 175;

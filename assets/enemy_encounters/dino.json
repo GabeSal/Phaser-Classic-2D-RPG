@@ -1,7 +1,7 @@
 {
     "enemy_data": {
         "dino1": {
-            "type": "enemy_unit",
+            "type": "tough_enemy_unit",
             "position": {"x": 145, "y": 180},
             "properties": {
                 "texture": "dino_spritesheet",
@@ -17,7 +17,9 @@
                 "stats": {
                     "health": 80,
                     "attack": 12,
-                    "defense": 18,
+                    "special_attack": 10,
+                    "phys_defense": 10,
+                    "magic_defense": 8,
                     "speed": 12
                 },
                 "target_units": "player_units"
@@ -38,9 +40,10 @@
                     "hit": {"frames": [18, 18, 19, 19], "fps": 10}
                 },
                 "stats": {
-                    "health": 65,
+                    "health": 50,
                     "attack": 18,
-                    "defense": 10,
+                    "phys_defense": 6,
+                    "magic_defense": 12,
                     "speed": 15
                 },
                 "target_units": "player_units"

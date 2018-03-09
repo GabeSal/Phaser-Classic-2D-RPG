@@ -12,12 +12,12 @@ RPG.SpecialAttack.prototype.constructor = RPG.SpecialAttack;
 
 RPG.SpecialAttack.prototype.hit = function (target) {
     "use strict";
-    var damage, special_attack_multiplier, defense_multiplier, action_message_position, action_message_text, special_attack_message;
+    var damage, special_attack_multiplier, special_defense_multiplier, action_message_position, action_message_text, special_attack_message;
     
     special_attack_multiplier = this.game_state.rnd.realInRange(1.4, 1.9);
-    defense_multiplier = this.game_state.rnd.realInRange(0.8, 1.2);
+    special_defense_multiplier = this.game_state.rnd.realInRange(0.5, 1.2);
     
-    damage = Math.max(0, Math.ceil((special_attack_multiplier * this.owner.stats.special_attack) - (defense_multiplier * target.stats.defense)));
+    damage = Math.max(0, Math.ceil((special_attack_multiplier * this.owner.stats.special_attack) - (special_defense_multiplier * target.stats.phys_defense)));
     
     if(damage === 0) {
         damage = "miss";

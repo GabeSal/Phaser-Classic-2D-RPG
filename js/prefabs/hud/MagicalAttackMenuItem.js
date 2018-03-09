@@ -4,7 +4,7 @@ RPG.MagicalAttackMenuItem = function (game_state, name, position, properties) {
     "use strict";
     RPG.MenuItem.call(this, game_state, name, position, properties);
     
-    this.MANA_COST = 10;
+    this.MANA_COST = 5;
 };
 
 RPG.MagicalAttackMenuItem.prototype = Object.create(RPG.MenuItem.prototype);

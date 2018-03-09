@@ -25,7 +25,6 @@ RPG.PlayerUnit.prototype.receive_experience = function (experience) {
     "use strict";
     this.experience += experience;
     console.log("Total EXP received: " + experience);
-    console.log(this.stats.health);
     
     var next_level_data = this.game_state.experience_table[this.current_level];
     if (this.experience >= next_level_data.required_exp) {

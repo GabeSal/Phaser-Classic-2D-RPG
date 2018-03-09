@@ -13,12 +13,12 @@ RPG.MagicalAttack.prototype.constructor = RPG.MagicalAttack;
 
 RPG.MagicalAttack.prototype.hit = function (target) {
     "use strict";
-    var damage, magic_attack_multiplier, defense_multiplier, action_message_position, action_message_text, magic_attack_message;
+    var damage, magic_attack_multiplier, magic_defense_multiplier, action_message_position, action_message_text, magic_attack_message;
     
     magic_attack_multiplier = this.game_state.rnd.realInRange(0.9, 2.0);
-    defense_multiplier = this.game_state.rnd.realInRange(1.0, 1.5);
+    magic_defense_multiplier = this.game_state.rnd.realInRange(0.5, 1.0);
     
-    damage = Math.max(0, Math.ceil((magic_attack_multiplier * this.owner.stats.magic_attack) - (defense_multiplier * target.stats.defense)));
+    damage = Math.max(0, Math.ceil((magic_attack_multiplier * this.owner.stats.magic_attack) - (magic_defense_multiplier * target.stats.magic_defense)));
     
     if(damage === 0) {
         damage = "miss";

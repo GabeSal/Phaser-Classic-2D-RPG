@@ -8,6 +8,7 @@ RPG.BattleState = function () {
         background: RPG.Prefab.prototype.constructor,
         player_unit: RPG.PlayerUnit.prototype.constructor,
         enemy_unit: RPG.EnemyUnit.prototype.constructor,
+        magical_enemy_unit: RPG.MagicalEnemyUnit.prototype.constructor,
         tough_enemy_unit: RPG.ToughEnemyUnit.prototype.constructor,
         boss_unit: RPG.BossUnit.prototype.constructor,
         menu: RPG.Menu.prototype.constructor,

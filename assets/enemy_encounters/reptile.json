@@ -18,7 +18,8 @@
                     "health": 70,
                     "attack": 10,
                     "special_attack": 15,
-                    "defense": 8,
+                    "phys_defense": 8,
+                    "magic_defense": 6,
                     "speed": 15
                 },
                 "target_units": "player_units"

@@ -2,8 +2,10 @@ var RPG = RPG || {};
 
 RPG.BossUnit = function (game_state, name, position, properties) {
     "use strict";
+    // Calls the physical attack method for the 'default' state
     RPG.EnemyUnit.call(this, game_state, name, position, properties);
     
+    // Special attack ratio
     this.SPECIAL_ATTACK_THRESHOLD = 0.6;
     this.special_attack = new RPG.MagicalAttack(this.game_state, this.name + "_special_attack", {x: 0, y: 0}, {group: "attacks", owner: this});
     

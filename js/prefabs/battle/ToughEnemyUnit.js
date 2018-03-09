@@ -2,8 +2,10 @@ var RPG = RPG || {};
 
 RPG.ToughEnemyUnit = function (game_state, name, position, properties) {
     "use strict";
+    // Calls the physical attack for 'default' state
     RPG.EnemyUnit.call(this, game_state, name, position, properties);
     
+    // Special attack ratio
     this.SPECIAL_ATTACK_THRESHOLD = 0.75;
     this.special_attack = new RPG.SpecialAttack(this.game_state, this.name + "_special_attack", {x: 0, y: 0}, {group: "attacks", owner: this});
     

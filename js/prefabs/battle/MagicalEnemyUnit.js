@@ -1,24 +1,24 @@
 var RPG = RPG || {};
 
-RPG.EnemyUnit = function (game_state, name, position, properties) {
+RPG.MagicalEnemyUnit = function (game_state, name, position, properties) {
     "use strict";    
     RPG.Unit.call(this, game_state, name, position, properties);
     
     // declares the type of attack
-    this.attack = new RPG.PhysicalAttack(this.game_state, this.name + "_attack", {x: 0, y: 0}, {group: "attacks", owner: this});
+    this.magic_attack = new RPG.MagicalAttack(this.game_state, this.name + "_attack", {x: 0, y: 0}, {group: "attacks", owner: this});
 };
 
-RPG.EnemyUnit.prototype = Object.create(RPG.Unit.prototype);
-RPG.EnemyUnit.prototype.constructor = RPG.EnemyUnit;
+RPG.MagicalEnemyUnit.prototype = Object.create(RPG.Unit.prototype);
+RPG.MagicalEnemyUnit.prototype.constructor = RPG.MagicalEnemyUnit;
 
-RPG.EnemyUnit.prototype.kill = function () {
+RPG.MagicalEnemyUnit.prototype.kill = function () {
     "use strict";
     Phaser.Sprite.prototype.kill.call(this);
     var menu_item = this.game_state.prefabs[this.name + "_item"];
     menu_item.kill();
 };
 
-RPG.EnemyUnit.prototype.act = function () {
+RPG.MagicalEnemyUnit.prototype.act = function () {
     "use strict";
     var target;
     
@@ -28,7 +28,7 @@ RPG.EnemyUnit.prototype.act = function () {
     this.attack.hit(target);
 };
 
-RPG.EnemyUnit.prototype.choose_target = function () {
+RPG.MagicalEnemyUnit.prototype.choose_target = function () {
     "use strict";
     var target_index, target, player_unit_index, alive_player_unit_index;
     

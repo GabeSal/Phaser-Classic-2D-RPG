@@ -17,7 +17,8 @@
                 "stats": {
                     "health": 30,
                     "attack": 10,
-                    "defense": 3,
+                    "phys_defense": 3,
+                    "magic_defense": 3,
                     "speed": 8
                 },
                 "target_units": "player_units"
@@ -41,7 +42,8 @@
                 "stats": {
                     "health": 25,
                     "attack": 8,
-                    "defense": 1,
+                    "phys_defense": 1,
+                    "magic_defense": 6,
                     "speed": 15
                 },
                 "target_units": "player_units"

@@ -17,7 +17,8 @@
                 "stats": {
                     "health": 20,
                     "attack": 5,
-                    "defense": 3,
+                    "phys_defense": 3,
+                    "magic_defense": 5,
                     "speed": 20
                 },
                 "target_units": "player_units"
@@ -38,9 +39,10 @@
                     "hit": {"frames": [17, 17, 18, 0], "fps": 10}
                 },
                 "stats": {
-                    "health": 40,
-                    "attack": 12,
-                    "defense": 3,
+                    "health": 35,
+                    "attack": 8,
+                    "phys_defense": 3,
+                    "magic_defense": 2,
                     "speed": 16
                 },
                 "target_units": "player_units"
@@ -63,8 +65,10 @@
                 },
                 "stats": {
                     "health": 80,
-                    "attack": 15,
-                    "defense": 15,
+                    "attack": 12,
+                    "special_attack": 18,
+                    "phys_defense": 11,
+                    "magic_defense": 8,
                     "speed": 5
                 },
                 "target_units": "player_units"
@@ -86,8 +90,9 @@
                 },
                 "stats": {
                     "health": 25,
-                    "attack": 8,
-                    "defense": 5,
+                    "attack": 6,
+                    "phys_defense": 5,
+                    "magic_defense": 5,
                     "speed": 12
                 },
                 "target_units": "player_units"

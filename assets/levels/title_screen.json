@@ -29,7 +29,7 @@
             "position": {"x": 50, "y": 190},
             "properties": {
                 "style": {"font": "bold 20px Georgia", "fill": "#000000"},
-                "text": "Controls: \n Use arrow keys to move \n Use ESC to pause game and check stats \n Press ENTER to close dialogue",
+                "text": "Controls: \n Use arrow keys to move \n Use ESC to pause game and check stats \n Press ESC again to return to game \n Press ENTER to close dialogue",
                 "group": "texts"
             }
         },

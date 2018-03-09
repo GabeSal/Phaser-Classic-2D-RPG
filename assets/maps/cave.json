@@ -54,7 +54,7 @@
                     {
                      "group":"players",
                      "texture":"player_spritesheet",
-                     "walking_speed": 90
+                     "walking_speed":75
                     },
                  "propertytypes":
                     {
@@ -93,7 +93,7 @@
                  "y":463
                 }, 
                 {
-                 "height":39.3333333333333,
+                 "height":32,
                  "id":5,
                  "name":"unknown",
                  "properties":
@@ -113,9 +113,9 @@
                  "rotation":0,
                  "type":"npc",
                  "visible":true,
-                 "width":127.333333333333,
-                 "x":256,
-                 "y":6.00000000000006
+                 "width":382,
+                 "x":128,
+                 "y":32
                 }, 
                 {
                  "height":32,
@@ -166,7 +166,7 @@
                 {
                  "height":32,
                  "id":10,
-                 "name":"enemy_spawner2",
+                 "name":"enemy_spawner5",
                  "properties":
                     {
                      "encounter":"bat",
@@ -189,7 +189,7 @@
                 {
                  "height":32,
                  "id":12,
-                 "name":"enemy_spawner4",
+                 "name":"enemy_spawner7",
                  "properties":
                     {
                      "encounter":"slime",
@@ -234,31 +234,8 @@
                 }, 
                 {
                  "height":32,
-                 "id":14,
-                 "name":"enemy_spawner6",
-                 "properties":
-                    {
-                     "encounter":"dino",
-                     "group":"enemy_spawners",
-                     "texture":"snake_image"
-                    },
-                 "propertytypes":
-                    {
-                     "encounter":"string",
-                     "group":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"enemy_spawner",
-                 "visible":true,
-                 "width":32,
-                 "x":288,
-                 "y":96
-                }, 
-                {
-                 "height":32,
                  "id":15,
-                 "name":"enemy_spawner6",
+                 "name":"enemy_spawner1",
                  "properties":
                     {
                      "encounter":"dino",
@@ -304,7 +281,7 @@
                 {
                  "height":32,
                  "id":17,
-                 "name":"enemy_spawner2",
+                 "name":"enemy_spawner9",
                  "properties":
                     {
                      "encounter":"bat",
@@ -346,6 +323,29 @@
                  "width":32,
                  "x":303.333333333333,
                  "y":-10
+                }, 
+                {
+                 "height":32,
+                 "id":19,
+                 "name":"boss_spawner",
+                 "properties":
+                    {
+                     "encounter":"dragon",
+                     "group":"enemy_spawners",
+                     "texture":"dragon_image"
+                    },
+                 "propertytypes":
+                    {
+                     "encounter":"string",
+                     "group":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"enemy_spawner",
+                 "visible":true,
+                 "width":63.3333333333334,
+                 "x":288,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -353,7 +353,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":19,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

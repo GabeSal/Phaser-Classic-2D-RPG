@@ -8,7 +8,8 @@
                 "mana": 50,
                 "attack": 15,
                 "magic_attack": 5,
-                "defense": 10,
+                "phys_defense": 10,
+                "magic_defense": 7,
                 "speed": 18
             },
             "equipment": {
@@ -24,7 +25,8 @@
                 "mana": 0,
                 "attack": 0,
                 "magic_attack": 0,
-                "defense": 0,
+                "phys_defense": 0,
+                "magic_defense": 0,
                 "speed": 0
             },
             "experience": 0,
@@ -32,13 +34,14 @@
         },
         "mage": {
             "stats": {
-                "max_health": 80,
-                "health": 80,
-                "max_mana": 150,
-                "mana": 150,
+                "max_health": 90,
+                "health": 90,
+                "max_mana": 100,
+                "mana": 100,
                 "attack": 8,
                 "magic_attack": 15,
-                "defense": 5,
+                "phys_defense": 5,
+                "magic_defense": 12,
                 "speed": 15
             },
             "stats_bonus": {
@@ -48,7 +51,8 @@
                 "mana": 0,
                 "attack": 0,
                 "magic_attack": 0,
-                "defense": 0,
+                "phys_defense": 0,
+                "magic_defense": 0,
                 "speed": 0
             },
             "equipment": {

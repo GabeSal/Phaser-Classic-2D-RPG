@@ -594,29 +594,6 @@
                  "width":32,
                  "x":64,
                  "y":160
-                }, 
-                {
-                 "height":32,
-                 "id":28,
-                 "name":"boss_spawner",
-                 "properties":
-                    {
-                     "encounter":"dragon",
-                     "group":"enemy_spawners",
-                     "texture":"dragon_image"
-                    },
-                 "propertytypes":
-                    {
-                     "encounter":"string",
-                     "group":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"enemy_spawner",
-                 "visible":true,
-                 "width":32,
-                 "x":256,
-                 "y":288
                 }],
          "opacity":1,
          "type":"objectgroup",
