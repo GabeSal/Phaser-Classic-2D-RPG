@@ -52,7 +52,7 @@
         },
         "warrior": {
             "type": "player_unit",
-            "position": {"x": 500, "y": 180},
+            "position": {"x": 500, "y": 200},
             "properties": {
                 "texture": "warrior_spritesheet",
                 "group": "player_units",
@@ -70,7 +70,7 @@
         },
         "mage": {
             "type": "player_unit",
-            "position": {"x": 475, "y": 245},
+            "position": {"x": 475, "y": 255},
             "properties": {
                 "texture": "mage_spritesheet",
                 "group": "player_units",
@@ -82,7 +82,7 @@
                     "idle": {"frames": [0, 1, 2, 3, 4], "fps": 8},
                     "attack1": {"frames": [8, 7, 5, 6, 6, 6, 0], "fps": 9},
                     "attack2": {"frames": [7, 8, 9, 10, 11, 12, 12, 13, 13, 13, 0], "fps": 12},
-                    "hit": {"frames": [14, 15, 15, 2, 3], "fps": 10}
+                    "hit": {"frames": [14, 15, 15, 2, 3], "fps": 4}
                 }
             }
         },

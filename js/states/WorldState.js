@@ -12,7 +12,7 @@ RPG.WorldState = function () {
         equipment: RPG.Equipment.prototype.constructor
     };
     
-    this.TEXT_STYLE = {font: "14px Georgia", fill: "#FFFFFF"};
+    this.TEXT_STYLE = {font: "16px Georgia", fill: "#FFFFFF"};
 };
 
 RPG.WorldState.prototype = Object.create(RPG.JSONLevelState.prototype);

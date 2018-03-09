@@ -6,7 +6,7 @@
                 "health": 100,
                 "max_mana": 50,
                 "mana": 50,
-                "attack": 20,
+                "attack": 15,
                 "magic_attack": 5,
                 "defense": 10,
                 "speed": 18
@@ -37,7 +37,7 @@
                 "max_mana": 150,
                 "mana": 150,
                 "attack": 8,
-                "magic_attack": 20,
+                "magic_attack": 15,
                 "defense": 5,
                 "speed": 15
             },

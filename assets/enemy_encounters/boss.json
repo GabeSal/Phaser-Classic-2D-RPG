@@ -1,7 +1,7 @@
 {
     "enemy_data": {
         "dragon": {
-            "type": "enemy_unit",
+            "type": "boss_unit",
             "position": {"x": 180, "y": 200},
             "properties": {
                 "texture": "dragon_spritesheet",
@@ -17,14 +17,15 @@
                 "stats": {
                     "health": 150,
                     "attack": 20,
-                    "defense": 20,
+                    "magic_attack": 15,
+                    "defense": 15,
                     "speed": 8
                 },
                 "target_units": "player_units"
             }
         },
         "reptile1": {
-            "type": "enemy_unit",
+            "type": "tough_enemy_unit",
             "position": {"x": 150, "y": 240},
             "properties": {
                 "texture": "reptile_spritesheet",
@@ -47,7 +48,7 @@
             }
         },
         "reptile2": {
-            "type": "enemy_unit",
+            "type": "tough_enemy_unit",
             "position": {"x": 115, "y": 280},
             "properties": {
                 "texture": "reptile_spritesheet",
@@ -113,7 +114,7 @@
         }
     },
     "reward": {
-        "experience": 200,
+        "experience": 350,
         "items": [{
             "type": "powerful_health_potion", "properties": {"group": "items", "item_texture": "powerful_health_potion_image", "health_gain": 75},
             "type": "powerful_health_potion", "properties": {"group": "items", "item_texture": "powerful_health_potion_image", "health_gain": 75},

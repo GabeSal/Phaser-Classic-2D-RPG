@@ -20,6 +20,10 @@ RPG.MagicalAttack.prototype.hit = function (target) {
     
     damage = Math.max(0, Math.ceil((magic_attack_multiplier * this.owner.stats.magic_attack) - (defense_multiplier * target.stats.defense)));
     
+    if(damage === 0) {
+        damage = "miss";
+    }
+    
     target.receive_damage(damage);
     
     this.owner.stats.mana -= this.mana_cost;

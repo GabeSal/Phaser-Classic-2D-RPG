@@ -54,7 +54,7 @@
                     {
                      "group":"players",
                      "texture":"player_spritesheet",
-                     "walking_speed":75
+                     "walking_speed": 90
                     },
                  "propertytypes":
                     {

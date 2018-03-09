@@ -36,8 +36,11 @@ RPG.Unit.prototype.back_to_idle = function () {
 RPG.Unit.prototype.receive_damage = function (damage) {
     "use strict";
     var damage_text, kill_timer;
+    if (damage !== "miss") {
+        // decrease health
+        this.stats.health -= damage;
+    }
     
-    this.stats.health -= damage;
     this.animations.play("hit");
     if (this.stats.health <= 0) {
         this.stats.health = 0;

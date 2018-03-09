@@ -1,8 +1,8 @@
 {
     "enemy_data": {
         "reptile": {
-            "type": "enemy_unit",
-            "position": {"x": 145, "y": 240},
+            "type": "tough_enemy_unit",
+            "position": {"x": 180, "y": 215},
             "properties": {
                 "texture": "reptile_spritesheet",
                 "group": "enemy_units",
@@ -16,8 +16,9 @@
                 },
                 "stats": {
                     "health": 70,
-                    "attack": 15,
-                    "defense": 10,
+                    "attack": 10,
+                    "special_attack": 15,
+                    "defense": 8,
                     "speed": 15
                 },
                 "target_units": "player_units"
@@ -44,7 +45,7 @@
         }
     },
     "reward": {
-        "experience": 30,
+        "experience": 50,
         "items": [{"type": "powerful_health_potion", "properties": {"group": "items", "item_texture": "powerful_health_potion_image", "health_gain": 75}}]
     }
 }

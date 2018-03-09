@@ -12,6 +12,7 @@
         "snake_image": {"type": "image", "source": "assets/images/world/snake.png"},
         "bat_image": {"type": "image", "source": "assets/images/world/bat.png"},
         "slime_image": {"type": "image", "source": "assets/images/world/slime.png"},
+        "dragon_image": {"type": "image", "source": "assets/images/world/dragon.png"},
         
         "warrior_helmet_image": {"type": "image", "source": "assets/images/world/warrior_helmet.png"},
         

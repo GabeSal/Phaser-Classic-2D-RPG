@@ -19,6 +19,10 @@ RPG.PhysicalAttack.prototype.hit = function (target) {
     
     damage = Math.max(0, Math.ceil((physical_attack_multiplier * this.owner.stats.attack) - (defense_multiplier * target.stats.defense)));
     
+    if(damage === 0) {
+        damage = "miss";
+    }
+    
     target.receive_damage(damage);
     
     this.owner.animations.play("attack1");

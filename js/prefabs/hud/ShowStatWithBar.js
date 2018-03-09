@@ -15,7 +15,11 @@ RPG.ShowStatWithBar.prototype.constructor = RPG.ShowStatWithBar;
 RPG.ShowStatWithBar.prototype.update = function () {
     "use strict";
     this.current_stat = this.units_data.stats[this.stat];
-    this.bar_sprite.scale.setTo(this.current_stat / 100, 1.0);
+    if(this.current_stat >= 125 || this.current_stat === 100) {
+        this.bar_sprite.scale.setTo(1.0, 1.0);
+    } else {
+        this.bar_sprite.scale.setTo(this.current_stat / 100, 1.0);
+    }
 };
 
 RPG.ShowStatWithBar.prototype.show = function (show) {

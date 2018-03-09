@@ -17,10 +17,19 @@
         },
         "title_message": {
             "type": "text",
-            "position": {"x": 20, "y": 200},
+            "position": {"x": 35, "y": 50},
             "properties": {
                 "style": {"font": "65px Kells", "fill": "#000000"},
                 "text": "Phaser RPG",
+                "group": "texts"
+            }
+        },
+        "control_message": {
+            "type": "text",
+            "position": {"x": 50, "y": 190},
+            "properties": {
+                "style": {"font": "bold 20px Georgia", "fill": "#000000"},
+                "text": "Controls: \n Use arrow keys to move \n Use ESC to pause game and check stats \n Press ENTER to close dialogue",
                 "group": "texts"
             }
         },
@@ -29,7 +38,7 @@
             "position": {"x": 100, "y": 400},
             "properties": {
                 "style": {"font": "20px Kells", "fill": "#000000"},
-                "text": "Press 'Enter' to start playing",
+                "text": "Press Enter to start playing",
                 "group": "texts"
             }
         }
