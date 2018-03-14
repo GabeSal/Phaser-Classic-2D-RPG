@@ -33,5 +33,7 @@ RPG.Equipment.prototype.collect = function () {
         unit_data.equipment[this.body_part] = {name: this.name};
         unit_data.stats_bonus[this.stat] = this.bonus;
         this.kill();
+        
+        firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game_state.game.party_data);
     }
 };

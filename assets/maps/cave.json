@@ -88,7 +88,7 @@
                  "rotation":0,
                  "type":"door",
                  "visible":true,
-                 "width":64,
+                 "width":32,
                  "x":288,
                  "y":463
                 }, 
@@ -113,8 +113,8 @@
                  "rotation":0,
                  "type":"npc",
                  "visible":true,
-                 "width":382,
-                 "x":128,
+                 "width":30.6666666666667,
+                 "x":288,
                  "y":32
                 }, 
                 {
@@ -321,8 +321,8 @@
                  "type":"door",
                  "visible":true,
                  "width":32,
-                 "x":303.333333333333,
-                 "y":-10
+                 "x":319.333333333333,
+                 "y":-14.6666666666667
                 }, 
                 {
                  "height":32,
@@ -343,9 +343,130 @@
                  "rotation":0,
                  "type":"enemy_spawner",
                  "visible":true,
-                 "width":63.3333333333334,
-                 "x":288,
-                 "y":96
+                 "width":30.6666666666667,
+                 "x":320,
+                 "y":128
+                }, 
+                {
+                 "height":32,
+                 "id":20,
+                 "name":"unknown",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"unknown_message",
+                     "one_shot":true,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":30.6667,
+                 "x":320,
+                 "y":32
+                }, 
+                {
+                 "height":32,
+                 "id":21,
+                 "name":"unknown",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"unknown_message",
+                     "one_shot":true,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":30.6667,
+                 "x":256,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":22,
+                 "name":"unknown",
+                 "properties":
+                    {
+                     "group":"npcs",
+                     "message":"unknown_message",
+                     "one_shot":true,
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "message":"string",
+                     "one_shot":"bool",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":30.6667,
+                 "x":352,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":23,
+                 "name":"dragon_door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/dragon_lair.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":32,
+                 "x":287.333333333333,
+                 "y":-14.6666666666667
+                }, 
+                {
+                 "height":32,
+                 "id":24,
+                 "name":"door",
+                 "properties":
+                    {
+                     "group":"doors",
+                     "next_level":"assets\/levels\/town.json",
+                     "texture":""
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "next_level":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"door",
+                 "visible":true,
+                 "width":32,
+                 "x":320.666666666667,
+                 "y":463.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -353,25 +474,24 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":20,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
  "tileheight":32,
  "tilesets":[
-    {
+        {
          "columns":20,
          "firstgid":1,
-         "image":"..\/images\/tileset.png",
+         "image":"\/assets\/images\/tileset.png",
          "imageheight":384,
          "imagewidth":640,
          "margin":0,
          "name":"tileset",
          "spacing":0,
          "tilecount":240,
-         "tileheight":32,
-         "tilewidth":32
-    }],
+         "tileheight":32
+        }],
  "tilewidth":32,
  "type":"map",
  "version":1,

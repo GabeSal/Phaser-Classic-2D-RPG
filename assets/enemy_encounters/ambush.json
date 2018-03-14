@@ -75,7 +75,7 @@
             }
         },
         "slime": {
-            "type": "enemy_unit",
+            "type": "magical_enemy_unit",
             "position": {"x": 160, "y": 280},
             "properties": {
                 "texture": "slime_spritesheet",
@@ -91,6 +91,7 @@
                 "stats": {
                     "health": 25,
                     "attack": 6,
+                    "magic_attack": 9,
                     "phys_defense": 5,
                     "magic_defense": 5,
                     "speed": 12

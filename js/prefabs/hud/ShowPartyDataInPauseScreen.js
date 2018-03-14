@@ -13,16 +13,19 @@ RPG.ShowPartyDataInPauseScreen = function (game_state, name, position, propertie
     this.show_unit_mana = this.game_state.game.add.text(this.x, this.y + 100, "Mana: " + mana, properties.text_style);
     
     var attack = prefab_data.stats.attack;
-    this.show_unit_attack = this.game_state.game.add.text(this.x + 250, this.y, "Attack: \n" + attack, properties.text_style);
-    
-    var defense = prefab_data.stats.defense;
-    this.show_unit_defense = this.game_state.game.add.text(this.x + 250, this.y + 50, "Defense: \n" + defense, properties.text_style);
+    this.show_unit_attack = this.game_state.game.add.text(this.x + 250, this.y - 15, "Attack: " + attack, properties.text_style);
     
     var magic_attack = prefab_data.stats.magic_attack;
-    this.show_unit_magic_attack = this.game_state.game.add.text(this.x + 400, this.y, "Magic: \n" + magic_attack, properties.text_style);
+    this.show_unit_magic_attack = this.game_state.game.add.text(this.x + 250, this.y + 10, "Magic: " + magic_attack, properties.text_style);
+    
+    var defense = prefab_data.stats.phys_defense;
+    this.show_unit_phys_defense = this.game_state.game.add.text(this.x + 250, this.y + 35, "Phys Def: " + defense, properties.text_style);
+    
+    var magic_defense = prefab_data.stats.magic_defense;
+    this.show_unit_magic_defense = this.game_state.game.add.text(this.x + 250, this.y + 65, "Magic Def: " + magic_defense, properties.text_style);
     
     var speed = prefab_data.stats.speed;
-    this.show_unit_speed = this.game_state.game.add.text(this.x + 400, this.y + 50, "Speed: \n" + speed, properties.text_style);
+    this.show_unit_speed = this.game_state.game.add.text(this.x + 250, this.y + 90, "Speed: " + speed, properties.text_style);
     
     var level = prefab_data.current_level + 1;
     this.level_text = this.game_state.game.add.text(this.x + 130, this.y + 100, "Level: " + level, properties.text_style);

@@ -26,7 +26,7 @@
             }
         },
         "dino2": {
-            "type": "enemy_unit",
+            "type": "magical_enemy_unit",
             "position": {"x": 115, "y": 220},
             "properties": {
                 "texture": "dino_spritesheet",
@@ -41,7 +41,8 @@
                 },
                 "stats": {
                     "health": 50,
-                    "attack": 18,
+                    "attack": 10,
+                    "magic_attack": 18,
                     "phys_defense": 6,
                     "magic_defense": 12,
                     "speed": 15

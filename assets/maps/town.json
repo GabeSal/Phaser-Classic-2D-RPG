@@ -108,8 +108,8 @@
                  "type":"door",
                  "visible":true,
                  "width":24,
-                 "x":420,
-                 "y":296
+                 "x":420.666666666667,
+                 "y":297.333333333333
                 }, 
                 {
                  "height":28,
@@ -368,7 +368,7 @@
                  "visible":true,
                  "width":24,
                  "x":35.3333333333333,
-                 "y":422
+                 "y":424.666666666667
                 }, 
                 {
                  "height":24,
@@ -465,8 +465,8 @@
                  "type":"npc",
                  "visible":true,
                  "width":24,
-                 "x":260.666666666667,
-                 "y":388.666666666667
+                 "x":260,
+                 "y":395.333333333333
                 }, 
                 {
                  "height":24,
@@ -490,8 +490,8 @@
                  "type":"npc",
                  "visible":true,
                  "width":24,
-                 "x":483.333333333333,
-                 "y":423.333333333333
+                 "x":484,
+                 "y":424.666666666667
                 }, 
                 {
                  "height":24,
@@ -515,8 +515,8 @@
                  "type":"npc",
                  "visible":true,
                  "width":24,
-                 "x":516.666666666667,
-                 "y":422
+                 "x":515.333333333333,
+                 "y":426
                 }, 
                 {
                  "height":24,
@@ -538,8 +538,8 @@
                  "type":"door",
                  "visible":true,
                  "width":24,
-                 "x":548,
-                 "y":422
+                 "x":548.666666666667,
+                 "y":425.333333333333
                 }, 
                 {
                  "height":24,
@@ -564,7 +564,7 @@
                  "visible":true,
                  "width":24,
                  "x":355.333333333333,
-                 "y":422
+                 "y":427.333333333333
                 }, 
                 {
                  "height":32,
@@ -575,7 +575,7 @@
                      "body_part":"head",
                      "bonus":10,
                      "group":"equipments",
-                     "stat":"defense",
+                     "stat":"phys_defense",
                      "texture":"warrior_helmet_image",
                      "unit_name":"warrior"
                     },
@@ -607,19 +607,18 @@
  "tiledversion":"1.1.2",
  "tileheight":32,
  "tilesets":[
-    {
+        {
          "columns":20,
          "firstgid":1,
-         "image":"..\/images\/tileset.png",
+         "image":"\/assets\/images\/tileset.png",
          "imageheight":384,
          "imagewidth":640,
          "margin":0,
          "name":"tileset",
          "spacing":0,
          "tilecount":240,
-         "tileheight":32,
-         "tilewidth":32
-    }],
+         "tileheight":32
+        }],
  "tilewidth":32,
  "type":"map",
  "version":1,

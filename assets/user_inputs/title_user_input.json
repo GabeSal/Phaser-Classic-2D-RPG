@@ -1,7 +1,7 @@
 {
     "keydown": {
         "ENTER": {
-            "callback": "game_state.start_game"
+            "callback": "game_state.login"
         }
     }
 }

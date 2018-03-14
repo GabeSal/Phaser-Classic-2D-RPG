@@ -1,5 +1,17 @@
 var RPG = RPG || {};
 
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBiEHfOZ9lQD1-5JAKEE7mxptivYd-ShhM",
+    authDomain: "phaser-rpg-c195f.firebaseapp.com",
+    databaseURL: "https://phaser-rpg-c195f.firebaseio.com",
+    projectId: "phaser-rpg-c195f",
+    storageBucket: "",
+    messagingSenderId: "22043470671"
+};
+
+firebase.initializeApp(config);
+
 var game = new Phaser.Game(640, 480, Phaser.CANVAS);
 
 game.inventory = new RPG.Inventory();

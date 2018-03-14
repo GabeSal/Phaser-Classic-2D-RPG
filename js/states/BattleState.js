@@ -135,5 +135,5 @@ RPG.BattleState.prototype.end_battle = function () {
         this.game.inventory.collect_item(this, item_object);
     }, this);
     
-    this.back_to_world();
+    firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data).then(this.back_to_world.bind(this));
 };

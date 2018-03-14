@@ -1,7 +1,7 @@
 {
     "enemy_data": {
         "slime1": {
-            "type": "enemy_unit",
+            "type": "magical_enemy_unit",
             "position": {"x": 115, "y": 200},
             "properties": {
                 "texture": "slime_spritesheet",
@@ -17,6 +17,7 @@
                 "stats": {
                     "health": 45,
                     "attack": 8,
+                    "magic_attack": 10,
                     "phys_defense": 5,
                     "magic_defense": 8,
                     "speed": 12

@@ -23,11 +23,48 @@ RPG.TitleState.prototype.create = function () {
     RPG.JSONLevelState.prototype.create.call(this);
     
     // resets party data
-    this.game.party_data = JSON.parse(this.game.cache.getText("default_data")).party_data;
-    //console.log(this.game.party_data);
+    this.default_data = JSON.parse(this.game.cache.getText("default_data"));
+};
+
+RPG.TitleState.prototype.login = function () {
+  "use strict";
+    if (!firebase.auth().currentUser) {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/userinfo.email');
+        
+        firebase.auth().signInWithPopup(provider).then(this.on_login.bind(this)).catch(this.handle_error.bind(this));
+    } else {
+        firebase.database().ref("/users/" + firebase.auth().currentUser.uid).once("value").then(this.retrieve_data.bind(this));
+    }
+};
+
+RPG.TitleState.prototype.on_login = function () {
+    "use strict";
+    firebase.database().ref("/users/" + firebase.auth().currentUser.uid).once("value").then(this.retrieve_data.bind(this));
+};
+
+RPG.TitleState.prototype.retrieve_data = function (snapshot) {
+    "use strict";
+    var user_data = snapshot.val();
+    if (!user_data) {
+        this.game.party_data = this.default_data.party_data;
+        firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data).then(this.start_game.bind(this));
+    } else {
+        this.game.party_data = user_data.party_data || this.default_data.party_data;
+        var items = user_data.items || this.default_data.items;
+        for (var item_key in items) {
+            this.game.inventory.collect_item(this, items[item_key], item_key);
+        }
+        this.start_game();
+    }
 };
 
 RPG.TitleState.prototype.start_game = function () {
     "use strict";
-    this.game.state.start("BootState", true, false, "../assets/levels/town.json", "WorldState");
+    this.game.state.start("BootState", true, false, "assets/levels/town.json", "WorldState");
+};
+
+RPG.TitleState.prototype.handle_error = function (error) {
+    "use strict";
+    console.log(error);
 };
