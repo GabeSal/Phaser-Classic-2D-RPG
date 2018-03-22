@@ -83,5 +83,8 @@
     "user_input": {
         "pause_user_input": "assets/user_inputs/pause_user_input.json"
     },
-    "initial_user_input": "pause_user_input"
+    "initial_user_input": "pause_user_input",
+    "state": {
+        "name": "pause"
+    }
 }

@@ -1,12 +1,12 @@
 [
-    {"required_exp": 75, "stats_increase": {"attack": 1, "magic_attack": 0, "defense": 1, "speed": 1, "max_health": 10}},
-    {"required_exp": 150, "stats_increase": {"attack": 1, "magic_attack": 1, "defense": 0, "speed": 0, "max_health": 10}},
-    {"required_exp": 225, "stats_increase": {"attack": 0, "magic_attack": 0, "defense": 1, "speed": 1, "max_health": 10}},
-    {"required_exp": 300, "stats_increase": {"attack": 1, "magic_attack": 1, "defense": 2, "speed": 0, "max_health": 15}},
-    {"required_exp": 375, "stats_increase": {"attack": 0, "magic_attack": 1, "defense": 1, "speed": 0, "max_health": 15}},
-    {"required_exp": 450, "stats_increase": {"attack": 1, "magic_attack": 0, "defense": 2, "speed": 1, "max_health": 15}},
-    {"required_exp": 525, "stats_increase": {"attack": 0, "magic_attack": 1, "defense": 1, "speed": 0, "max_health": 15}},
-    {"required_exp": 600, "stats_increase": {"attack": 1, "magic_attack": 0, "defense": 0, "speed": 1, "max_health": 15}},
-    {"required_exp": 675, "stats_increase": {"attack": 0, "magic_attack": 1, "defense": 2, "speed": 1, "max_health": 15}},
-    {"required_exp": 850, "stats_increase": {"attack": 5, "magic_attack": 5, "defense": 5, "speed": 5, "max_health": 80}}
+    {"required_exp": 75, "stats_increase": {"attack": 1, "magic_attack": 0, "phys_defense": 1, "speed": 1, "max_health": 10}},
+    {"required_exp": 150, "stats_increase": {"attack": 1, "magic_attack": 1, "phys_defense": 0, "speed": 0, "max_health": 10}},
+    {"required_exp": 225, "stats_increase": {"attack": 0, "magic_attack": 0, "phys_defense": 1, "speed": 1, "max_health": 10}},
+    {"required_exp": 300, "stats_increase": {"attack": 1, "magic_attack": 1, "phys_defense": 2, "speed": 0, "max_health": 15}},
+    {"required_exp": 375, "stats_increase": {"attack": 0, "magic_attack": 1, "phys_defense": 1, "speed": 0, "max_health": 15}},
+    {"required_exp": 450, "stats_increase": {"attack": 1, "magic_attack": 0, "phys_defense": 2, "speed": 1, "max_health": 15}},
+    {"required_exp": 525, "stats_increase": {"attack": 0, "magic_attack": 1, "phys_defense": 1, "speed": 0, "max_health": 15}},
+    {"required_exp": 600, "stats_increase": {"attack": 1, "magic_attack": 0, "phys_defense": 0, "speed": 1, "max_health": 15}},
+    {"required_exp": 675, "stats_increase": {"attack": 0, "magic_attack": 1, "phys_defense": 2, "speed": 1, "max_health": 15}},
+    {"required_exp": 850, "stats_increase": {"attack": 5, "magic_attack": 5, "phys_defense": 5, "speed": 5, "max_health": 80}}
 ]

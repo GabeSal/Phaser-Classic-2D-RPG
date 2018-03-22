@@ -31,6 +31,9 @@ RPG.BattleState.prototype.init = function (level_data, extra_parameters) {
     
     this.previous_level = extra_parameters.previous_level;
     this.encounter = extra_parameters.encounter;
+    //TODO  Grab enemy name
+    this.enemy_name = extra_parameters.enemy_name;
+    this.returning_state = extra_parameters.returning_state;
 };
 
 RPG.BattleState.prototype.preload = function () {
@@ -89,6 +92,10 @@ RPG.BattleState.prototype.create = function () {
 RPG.BattleState.prototype.next_turn = function () {
     "use strict";
     if(this.groups.enemy_units.countLiving() === 0) {
+        this.clear_enemy_encounter();
+        
+        RPG.JSONLevelState.prototype.swap_cache_data.call(this, this.returning_state);
+        
         this.end_battle();
         return;
     }
@@ -110,6 +117,7 @@ RPG.BattleState.prototype.next_turn = function () {
 
 RPG.BattleState.prototype.back_to_world = function () {
     "use strict";
+    //this.game.state.start("BootState", true, false, this.previous_level, "WorldState");
     this.game.state.start("BootState", true, false, this.previous_level, "WorldState");
 };
 
@@ -137,3 +145,19 @@ RPG.BattleState.prototype.end_battle = function () {
     
     firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data).then(this.back_to_world.bind(this));
 };
+
+RPG.BattleState.prototype.clear_enemy_encounter = function () {
+    //TODO update map world by removing enemy item and swapping json data in cache with modified data
+    var enemyName = this.enemy_name;
+    var mapName = this.returning_state + "Map";
+    console.log(enemyName);
+    var mapData = this.game.cache.getJSON(mapName);
+
+    for(var i = 0; i < mapData.layers[4].objects.length; i++) {
+        if(mapData.layers[4].objects[i].name == enemyName) {
+            mapData.layers[4].objects.splice(i, 1);
+            //swap cache data with modified data
+            break;
+        }
+    }
+}

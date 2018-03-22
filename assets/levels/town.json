@@ -54,5 +54,8 @@
         "dino": "assets/enemy_encounters/dino.json",
         "dragon": "assets/enemy_encounters/dragon.json",
         "boss": "assets/enemy_encounters/boss.json"
+    },
+    "state": {
+        "name": "town"
     }
 }

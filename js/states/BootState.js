@@ -30,5 +30,7 @@ RPG.BootState.prototype.create = function () {
     "use strict";
     var level_data = JSON.parse(this.game.cache.getText("level_file"));
     //console.log(level_data);
+    
+     //console.log(this.game.cache._cache.json);
     this.game.state.start("LoadingState", true, false, level_data, this.next_state, this.extra_parameters);
 };

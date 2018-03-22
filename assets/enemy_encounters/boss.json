@@ -18,7 +18,7 @@
                     "health": 150,
                     "attack": 20,
                     "magic_attack": 15,
-                    "phys_defense": 15,
+                    "phys_defense": 12,
                     "magic_defense": 10,
                     "speed": 8
                 },

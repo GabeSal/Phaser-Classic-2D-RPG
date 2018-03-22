@@ -25,7 +25,7 @@ RPG.MagicalEnemyUnit.prototype.act = function () {
     this.game_state.prefabs.show_player_status.show(false);
     
     target = this.choose_target();
-    this.attack.hit(target);
+    this.magic_attack.hit(target);
 };
 
 RPG.MagicalEnemyUnit.prototype.choose_target = function () {

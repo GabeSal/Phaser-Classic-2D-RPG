@@ -47,5 +47,8 @@
     "user_input": {
         "title_user_input": "assets/user_inputs/title_user_input.json"
     },
-    "initial_user_input": "title_user_input"
+    "initial_user_input": "title_user_input",
+    "state": {
+        "name": "title"
+    }
 }

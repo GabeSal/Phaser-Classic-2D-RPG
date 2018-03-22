@@ -22,5 +22,6 @@ RPG.EnemySpawner.prototype.update = function () {
 
 RPG.EnemySpawner.prototype.spawn = function () {
     "use strict";
-    this.game_state.game.state.start("BootState", true, false, "assets/levels/battle.json", "BattleState", {previous_level: this.game_state.level_data.level_file, encounter: this.encounter});
+    //TODO add enemy name to extra params
+    this.game_state.game.state.start("BootState", true, false, "assets/levels/battle.json", "BattleState", {previous_level: this.game_state.level_data.level_file, returning_state: this.game_state.level_data.state.name, encounter: this.encounter, enemy_name: this.name});
 };

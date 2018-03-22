@@ -15,6 +15,8 @@ RPG.TitleState.prototype.constructor = RPG.TitleState;
 
 RPG.TitleState.prototype.preload = function () {
     "use strict";
+    this.game.load.text("townMapFilePath", "assets/maps/town.json");
+    this.game.load.text("townAssetsFilePath", "assets/levels/town.json");
     this.game.load.text("default_data", "assets/levels/default_party_data.json");
 };
 
@@ -61,6 +63,20 @@ RPG.TitleState.prototype.retrieve_data = function (snapshot) {
 
 RPG.TitleState.prototype.start_game = function () {
     "use strict";
+    //grab map town JSON data and store in cache
+    
+    var townAssetsData = JSON.parse(this.game.cache.getText("townAssetsFilePath"));
+    this.game.cache.addJSON("townAssets", null, townAssetsData);
+    console.log("townAssetsData");
+    console.log(this.game.cache._cache.json.townAssets.data);
+    
+    var townMapData = JSON.parse(this.game.cache.getText("townMapFilePath"));
+    this.game.cache.addJSON("townMap", null, townMapData);
+    console.log("townMapData");
+    console.log(this.game.cache._cache.json.townMap.data);
+    
+    //grab map cave JSON data and store in cache
+    
     this.game.state.start("BootState", true, false, "assets/levels/town.json", "WorldState");
 };
 

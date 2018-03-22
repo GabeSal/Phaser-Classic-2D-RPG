@@ -36,6 +36,7 @@ RPG.WorldState.prototype.preload = function() {
     // loads all enemy encounters from level object
     for (var enemy_encounter_name in this.level_data.enemy_encounters) {
         this.load.text(enemy_encounter_name, this.level_data.enemy_encounters[enemy_encounter_name]);
+        
     }
 };
 
@@ -44,6 +45,7 @@ RPG.WorldState.prototype.create = function () {
     var tileset_index, group_name, object_layer, collision_tiles, user_input_name;
     
     // create map and set tileset
+    //  TODO:  Refactor with data from game.cache
     this.map = this.game.add.tilemap(this.level_data.map.key);
     tileset_index = 0;
     this.map.tilesets.forEach(function (tileset) {
@@ -51,8 +53,8 @@ RPG.WorldState.prototype.create = function () {
         tileset_index += 1;
     }, this);
     
-    console.log("Map object");
-    console.log(this.map);
+//    console.log("Map object");
+//    console.log(this.map);
     
     // create map layers before groups
     this.layers = {};
@@ -63,8 +65,8 @@ RPG.WorldState.prototype.create = function () {
         }
     }, this);
     
-    console.log("Layers");
-    console.log(this.layers);
+//    console.log("Layers");
+//    console.log(this.layers);
     
     // resize the world to be the size of the current layer
     this.layers[this.map.layer.name].resizeWorld();

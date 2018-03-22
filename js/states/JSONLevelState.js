@@ -47,3 +47,13 @@ RPG.JSONLevelState.prototype.create_prefab = function (prefab_name, prefab_data)
     }
     return prefab;
 };
+
+RPG.JSONLevelState.prototype.swap_cache_data = function (state) {
+    "use strict";
+    var mapKey = state + "Map";
+    console.log(mapKey);
+    var mapData = this.game.cache.getJSON(mapKey);
+        
+    this.game.cache.removeJSON(mapKey);
+    this.game.cache.addJSON(mapKey, null, mapData);
+}

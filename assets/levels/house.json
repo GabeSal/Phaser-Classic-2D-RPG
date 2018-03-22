@@ -23,5 +23,8 @@
         "talking_user_input": "assets/user_inputs/talking_user_input.json"
     },
     "initial_user_input": "world_map_user_input",
-    "level_file": "assets/levels/house.json"
+    "level_file": "assets/levels/house.json",
+    "state": {
+        "name": "house"
+    }
 }
