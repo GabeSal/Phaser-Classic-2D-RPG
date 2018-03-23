@@ -96,6 +96,14 @@ RPG.WorldState.prototype.create_object = function (object) {
     this.prefabs[object.name] = prefab;
 };
 
+RPG.WorldState.prototype.get_player_object = function (position) {
+    "use strict";
+    var player_object = this.map.objects.objects[0];
+    var new_position = position;
+    
+    RPG.JSONLevelState.prototype.change_player_position.call(this, player_object, new_position);
+};
+
 RPG.WorldState.prototype.end_talk = function () {
     "use strict";
     this.current_message_box.kill();
@@ -104,5 +112,9 @@ RPG.WorldState.prototype.end_talk = function () {
 
 RPG.WorldState.prototype.pause_game = function () {
     "use strict";
+    var player_position = {x: this.prefabs.player.position.x, y: this.prefabs.player.position.y};
+    
+    this.get_player_object(player_position);
+    
     this.game.state.start("BootState", true, false, "assets/levels/pause_screen.json", "PauseState", {previous_level: this.level_data.level_file});
 };

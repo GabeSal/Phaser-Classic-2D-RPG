@@ -35,36 +35,32 @@ RPG.LoadingState.prototype.preload = function () {
             this.load.spritesheet(asset_key, asset.source, asset.frame_width, asset.frame_height, asset.frames, asset.margin, asset.spacing);
             break;
         case "tilemap":
-            //TODO: Check if there is town assets data in JSON
-            // then use extra data instead of the url
-            
-            console.log("Loading State: level_data of", this.level_data.state.name, "assets");
-            console.log(this.level_data);
-                
+            // TODO: Check if there is asset data in JSON file
+            // then use data object instead of the url
+            var name = this.level_data.state.name;
             if (this.game.cache.checkJSONKey("townMap")){
                 var townMapData = this.game.cache.getJSON("townMap");
-                console.log("Found town map data in cache.");
+                console.log("Found", name, "map data in cache.");
                 console.log(townMapData);
-                //test remove snake enemy
-//                var name = "enemy_spawner1"
-//                for(var i = 0; i < townMapData.layers[4].objects.length; i++) {
-//                    if(townMapData.layers[4].objects[i].name == name) {
-//                        townMapData.layers[4].objects.splice(i, 1);
-//                        //swap cache data with modified data
-//                        break;
-//                    }
-//                }
                 
                 this.load.tilemap("level_tilemap", null, townMapData, Phaser.Tilemap.TILED_JSON);
-                console.log("created tilemap from cache");
-            }else {
+                console.log("Created", name, "tilemap from cache");
+                
+            } else if (this.game.cache.checkJSONKey("caveMap")) {
+                var caveMapData = this.game.cache.getJSON("caveMap");
+                console.log("Found", name, "map data in cache.");
+                console.log(caveMapData);
+                
+                this.load.tilemap("level_tilemap", null, caveMapData, Phaser.Tilemap.TILED_JSON);
+                console.log("Created", name, "tilemap from cache");
+                
+            } else {
                 this.load.tilemap(asset_key, asset.source, null, Phaser.Tilemap.TILED_JSON);
-                console.log("created tilmap from json file");
+                console.log("Created tilmap from json file");
             }
             
-            
-            console.log("Tilemap of", asset.source, "created in game cache.");
-            console.log(this.game.cache._cache.tilemap);
+            console.log("Tilemap of", name, "created in game cache.");
+            // console.log(this.game.cache._cache.tilemap);
             
             break;
         }

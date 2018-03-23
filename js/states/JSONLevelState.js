@@ -48,12 +48,41 @@ RPG.JSONLevelState.prototype.create_prefab = function (prefab_name, prefab_data)
     return prefab;
 };
 
-RPG.JSONLevelState.prototype.swap_cache_data = function (state) {
+RPG.JSONLevelState.prototype.change_player_position = function (player_object, new_position) {
+    "use strict";
+    // grab player object, not prefab
+    var player_object = player_object;
+    var new_position = new_position;
+    var current_state = this.level_data.state.name
+    
+    // grab cache data in order to change the JSON cache later
+    var cache_data = this.game.cache.getJSON(current_state + "Map");
+    
+    // change player objects position
+    if(cache_data.layers[4].objects[0].x == player_object.x) {
+        cache_data.layers[4].objects[0].x = new_position.x;
+    }
+    
+    if(cache_data.layers[4].objects[0].y == player_object.y) {
+        cache_data.layers[4].objects[0].y = new_position.y;
+    }
+    
+    // swap the current JSON cache with the new cache data
+    this.swap_cache_data(current_state, cache_data);
+}
+
+RPG.JSONLevelState.prototype.swap_cache_data = function (state, new_data) {
     "use strict";
     var mapKey = state + "Map";
-    console.log(mapKey);
+    console.log(new_data);
     var mapData = this.game.cache.getJSON(mapKey);
         
     this.game.cache.removeJSON(mapKey);
-    this.game.cache.addJSON(mapKey, null, mapData);
+    if (!new_data) {
+        this.game.cache.addJSON(mapKey, null, mapData);
+    } else {
+        this.game.cache.addJSON(mapKey, null, new_data);
+    }
+    
+    console.log(this.game.cache._cache.json);
 }

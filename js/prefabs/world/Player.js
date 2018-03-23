@@ -19,7 +19,6 @@ RPG.Player = function (game_state, name, position, properties) {
     this.stopped_frames = [0, 2, 3, 1];
     
     this.moving = {left: false, right: false, up: false, down: false};
-    
 };
 
 RPG.Player.prototype = Object.create(RPG.Prefab.prototype);

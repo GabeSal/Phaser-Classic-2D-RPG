@@ -7,6 +7,7 @@ RPG.EnemySpawner = function (game_state, name, position, properties) {
     this.anchor.setTo(0.5, 0.5);
     
     this.encounter = JSON.parse(this.game_state.game.cache.getText(properties.encounter));
+    this.enemy_spawn_position = this.position;
     
     this.game_state.game.physics.arcade.enable(this);
     this.body.immovable = true;
@@ -22,6 +23,8 @@ RPG.EnemySpawner.prototype.update = function () {
 
 RPG.EnemySpawner.prototype.spawn = function () {
     "use strict";
-    //TODO add enemy name to extra params
-    this.game_state.game.state.start("BootState", true, false, "assets/levels/battle.json", "BattleState", {previous_level: this.game_state.level_data.level_file, returning_state: this.game_state.level_data.state.name, encounter: this.encounter, enemy_name: this.name});
+    // call Worldstate method to grab player object
+    RPG.WorldState.prototype.get_player_object.call(this.game_state, this.enemy_spawn_position);
+    
+    this.game_state.game.state.start("BootState", true, false, "assets/levels/battle.json", "BattleState", {previous_level: this.game_state.level_data.level_file, returning_state: this.game_state.level_data.state.name, encounter: this.encounter, enemy_name: this.name, new_position: this.enemy_spawn_position});
 };

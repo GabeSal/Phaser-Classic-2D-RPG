@@ -4,7 +4,6 @@ RPG.Equipment = function (game_state, name, position, properties) {
     "use strict";
     RPG.Prefab.call(this, game_state, name, position, properties);
     
-    
     this.scale.setTo(0.3, 0.3);
     this.anchor.setTo(0.5, 0.5);
     
@@ -27,6 +26,8 @@ RPG.Equipment.prototype.update = function () {
 
 RPG.Equipment.prototype.collect = function () {
     "use strict";
+    console.log(this);
+    
     var unit_data = this.game_state.game.party_data[this.unit_name];
     
     if (unit_data.equipment[this.body_part].name !== this.name) {
