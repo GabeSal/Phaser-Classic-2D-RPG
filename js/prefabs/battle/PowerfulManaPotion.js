@@ -1,3 +1,7 @@
+// PowerfulManaPotion.js
+
+// Powerful mana potion defines the properties of  
+// the item and increases the mana of the target
 var RPG = RPG || {};
 
 RPG.PowerfulManaPotion = function (game_state, name, position, properties) {
@@ -13,5 +17,8 @@ RPG.PowerfulManaPotion.prototype.constructor = RPG.PowerfulManaPotion;
 
 RPG.PowerfulManaPotion.prototype.use = function (target) {
     "use strict";
+    // increases mana with a max range of the targets max_mana stat
     target.stats.mana = Math.min(target.stats.max_mana, target.stats.mana + this.mana_gain);
+    // play the recovered mana event
+     target.mana_gained(this.mana_gain);
 };
