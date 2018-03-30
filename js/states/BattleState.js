@@ -139,7 +139,16 @@ RPG.BattleState.prototype.next_turn = function () {
     // the current unit in play will dequeue their turn
     this.current_unit = this.units.dequeue();
     if (this.current_unit.alive) {
-        this.current_unit.act();
+        
+        // temp variable to randomize how long a unit waits for their turn
+        var act_length = this.rnd.realInRange(0.35, 0.7);
+        // creates a timer so as to not allow for instantaneous acts
+        var act_timer = this.time.create();
+        // defines the timer length and calls the current unit to act
+        act_timer.add(act_length * Phaser.Timer.SECOND, this.current_unit.act, this.current_unit);
+        // start the act_timer
+        act_timer.start();
+        
         this.current_unit.calculate_act_turn(this.current_unit.act_turn);
         this.units.queue(this.current_unit);
     } else {

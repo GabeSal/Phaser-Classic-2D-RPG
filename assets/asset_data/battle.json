@@ -126,7 +126,7 @@
                             "group": "hud",
                             "texture": "icons_spritesheet",
                             "frame": 11,
-                            "run_chance": 1.0
+                            "run_chance": 0.25
                         }
                     }
                 }
@@ -153,6 +153,10 @@
             }
         }
     },
+    "user_input": {
+        "battle_user_input": "assets/user_inputs/battle_user_input.json"
+    },
+    "initial_user_input": "battle_user_input",
     "state": {
         "name": "battle"
     }

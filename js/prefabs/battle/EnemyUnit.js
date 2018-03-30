@@ -36,6 +36,7 @@ RPG.EnemyUnit.prototype.act = function () {
     
     // chooses a target
     target = this.choose_target();
+    
     // target takes damage from the hit method
     this.attack.hit(target);
 };
