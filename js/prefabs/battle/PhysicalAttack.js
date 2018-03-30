@@ -17,7 +17,11 @@ RPG.PhysicalAttack.prototype.hit = function (target) {
     physical_attack_multiplier = this.game_state.rnd.realInRange(0.9, 1.8);
     physical_defense_multiplier = this.game_state.rnd.realInRange(0.8, 1.5);
     
-    damage = Math.max(0, Math.ceil((physical_attack_multiplier * this.owner.stats.attack) - (physical_defense_multiplier * target.stats.phys_defense)));
+    if (target.stats_bonus) {
+        damage = Math.max(0, Math.ceil((physical_attack_multiplier * this.owner.stats.attack) - (physical_defense_multiplier * target.stats.phys_defense + target.stats_bonus.phys_defense)));
+    } else {
+        damage = Math.max(0, Math.ceil((physical_attack_multiplier * this.owner.stats.attack) - (physical_defense_multiplier * target.stats.phys_defense)));
+    }
     
     if(damage === 0) {
         damage = "miss";

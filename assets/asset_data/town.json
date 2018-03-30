@@ -27,7 +27,7 @@
         "enemy_spawners"
     ],
     "map": {
-        "key": "level_tilemap",
+        "key": "town_level_tilemap",
         "tilesets": ["map_tileset"]
     },
     "user_input": {
@@ -44,7 +44,7 @@
         "locked_message2": "assets/npc_messages/locked2.txt",
         "locked_message3": "assets/npc_messages/locked3.txt"
     },
-    "level_file": "assets/levels/town.json",
+    "assets_path": "assets/asset_data/town.json",
     "enemy_encounters": {
         "snake": "assets/enemy_encounters/snake.json",
         "bat": "assets/enemy_encounters/bat.json",

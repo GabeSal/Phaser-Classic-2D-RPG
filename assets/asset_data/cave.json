@@ -19,7 +19,7 @@
         "hud"
     ],
     "map": {
-        "key": "level_tilemap",
+        "key": "cave_level_tilemap",
         "tilesets": ["map_tileset"]
     },
     "user_input": {
@@ -30,7 +30,7 @@
     "npc_messages": {
         "unknown_message": "assets/npc_messages/unknown.txt"
     },
-    "level_file": "assets/levels/cave.json",
+    "assets_path": "assets/asset_data/cave.json",
     "enemy_encounters": {
         "snake": "assets/enemy_encounters/snake.json",
         "bat": "assets/enemy_encounters/bat.json",

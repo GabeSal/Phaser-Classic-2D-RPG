@@ -95,7 +95,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/cave.json",
+                     "next_level":"assets\/asset_data\/cave.json",
+                     "next_stage": "cave",
                      "texture":""
                     },
                  "propertytypes":
@@ -285,7 +286,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/mill_tower.json",
+                     "next_level":"assets\/lasset_data\/mill_tower.json",
+                     "next_stage": "mill_tower",
                      "texture":""
                     },
                  "propertytypes":
@@ -308,7 +310,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/barracks.json",
+                     "next_level":"assets\/asset_data\/barracks.json",
+                     "next_stage": "barracks",
                      "texture":""
                     },
                  "propertytypes":
@@ -331,7 +334,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/armory.json",
+                     "next_level":"assets\/asset_data\/armory.json",
+                     "next_stage": "armory",
                      "texture":""
                     },
                  "propertytypes":
@@ -354,7 +358,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/guard_tower1.json",
+                     "next_level":"assets\/asset_data\/guard_tower1.json",
+                     "next_stage": "guard_tower1",
                      "texture":""
                     },
                  "propertytypes":
@@ -377,7 +382,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/guard_tower2.json",
+                     "next_level":"assets\/asset_data\/guard_tower2.json",
+                     "next_stage": "guard_tower2",
                      "texture":""
                     },
                  "propertytypes":
@@ -525,7 +531,8 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/house.json",
+                     "next_level":"assets\/asset_data\/house.json",
+                     "next_stage": "house",
                      "texture":""
                     },
                  "propertytypes":
@@ -576,6 +583,7 @@
                      "bonus":10,
                      "group":"equipments",
                      "stat":"phys_defense",
+                     "location": "town",
                      "texture":"warrior_helmet_image",
                      "unit_name":"warrior"
                     },

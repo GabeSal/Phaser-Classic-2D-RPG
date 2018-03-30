@@ -76,7 +76,7 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/town.json",
+                     "next_level":"assets\/asset_data\/town.json",
                      "texture":""
                     },
                  "propertytypes":
@@ -308,7 +308,7 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/dragon_lair.json",
+                     "next_level":"assets\/asset_data\/dragon_lair.json",
                      "texture":""
                     },
                  "propertytypes":
@@ -429,7 +429,7 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/dragon_lair.json",
+                     "next_level":"assets\/asset_data\/dragon_lair.json",
                      "texture":""
                     },
                  "propertytypes":
@@ -452,7 +452,7 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/levels\/town.json",
+                     "next_level":"assets\/asset_data\/town.json",
                      "texture":""
                     },
                  "propertytypes":

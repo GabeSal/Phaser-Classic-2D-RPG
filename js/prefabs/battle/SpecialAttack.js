@@ -17,7 +17,11 @@ RPG.SpecialAttack.prototype.hit = function (target) {
     special_attack_multiplier = this.game_state.rnd.realInRange(1.4, 1.9);
     special_defense_multiplier = this.game_state.rnd.realInRange(0.5, 1.2);
     
-    damage = Math.max(0, Math.ceil((special_attack_multiplier * this.owner.stats.special_attack) - (special_defense_multiplier * target.stats.phys_defense)));
+    if (target.stats_bonus) {
+        damage = Math.max(0, Math.ceil((special_attack_multiplier * this.owner.stats.special_attack) - (special_defense_multiplier * target.stats.phys_defense + target.stats_bonus.phys_defense)));
+    } else {
+        damage = Math.max(0, Math.ceil((special_attack_multiplier * this.owner.stats.special_attack) - (special_defense_multiplier * target.stats.phys_defense)));
+    }
     
     if(damage === 0) {
         damage = "miss";

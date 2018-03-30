@@ -15,7 +15,7 @@
         "hud"
     ],
     "map": {
-        "key": "level_tilemap",
+        "key": "house_level_tilemap",
         "tilesets": ["map_tileset"]
     },
     "user_input": {
@@ -23,7 +23,7 @@
         "talking_user_input": "assets/user_inputs/talking_user_input.json"
     },
     "initial_user_input": "world_map_user_input",
-    "level_file": "assets/levels/house.json",
+    "assets_path": "assets/asset_data/house.json",
     "state": {
         "name": "house"
     }

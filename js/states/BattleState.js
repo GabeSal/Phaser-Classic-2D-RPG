@@ -1,9 +1,15 @@
+// BattleState.js
+
+// Battle state is responsible for the handling of the 
+// player_units and AI controlled enemy_units as well as
+// showing the player action menu and items
 var RPG = RPG || {};
 
 RPG.BattleState = function () {
     "use strict";
     RPG.JSONLevelState.call(this);
-        
+    
+    // list of all the prefab classes used in this state
     this.prefab_classes = {
         background: RPG.Prefab.prototype.constructor,
         player_unit: RPG.PlayerUnit.prototype.constructor,
@@ -25,86 +31,112 @@ RPG.BattleState = function () {
 RPG.BattleState.prototype = Object.create(RPG.JSONLevelState.prototype);
 RPG.BattleState.prototype.constructor = RPG.BattleState;
 
-RPG.BattleState.prototype.init = function (level_data, extra_parameters) {
+RPG.BattleState.prototype.init = function (level_asset_data, extra_parameters) {
     "use strict";
-    RPG.JSONLevelState.prototype.init.call(this, level_data);
+    RPG.JSONLevelState.prototype.init.call(this, level_asset_data);
     
     this.previous_level = extra_parameters.previous_level;
+    // this.encounter is the data that defines the type and 
+    // stats of the enemy_units that will be shown
     this.encounter = extra_parameters.encounter;
-    //TODO  Grab enemy name
+    // this.enemy_name is passed from the enemy_spawner and is used to 
+    // kill the spawner object after the player succeeds the encounter
     this.enemy_name = extra_parameters.enemy_name;
     this.returning_state = extra_parameters.returning_state;
 };
 
 RPG.BattleState.prototype.preload = function () {
     "use strict";
-    // loads the experience table for leveling up
-    this.load.text("experience_table", "assets/levels/experience_table.json");
+    // loads the experience table defining the XP needed for leveling up
+    this.load.text("experience_table", "assets/asset_data/experience_table.json");
 };
 
 RPG.BattleState.prototype.create = function () {
     "use strict";
     RPG.JSONLevelState.prototype.create.call(this);
     
-    this.game.inventory.collect_item(this, {"type": "health_potion", "properties": {"group": "items", "item_texture": "health_potion_image", "health_gain": 25}});
-    
+    // creates the item menu from the inventory object
     this.game.inventory.create_menu(this, this.prefabs.items_menu);
     
+    // creates a JSON object from the experience table text loaded from the preload method
     this.experience_table = JSON.parse(this.game.cache.getText("experience_table"));
     
     // instantiates party stats in battle
     for (var player_unit_name in this.game.party_data) {
         var unit_data = this.game.party_data[player_unit_name];
-        var stats_bonus = this.game.party_data[player_unit_name].stats_bonus;
+        // var stats_bonus = this.game.party_data[player_unit_name].stats_bonus;
         this.prefabs[player_unit_name].stats = {};
+        // TODO: prevent the stats_bonus from continually adding to 
+        // the player_units' stats everytime a battle is entered
         for (var stat_name in unit_data.stats) {
-            this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name] + stats_bonus[stat_name];
+            // this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name] + stats_bonus[stat_name];
+            this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name];
         }
-        
+        // updates and stores the players' experience and level
         this.prefabs[player_unit_name].experience = unit_data.experience;
         this.prefabs[player_unit_name].current_level = unit_data.current_level;
         
     }
     
+    // creates a prefab of the enemy found in the encounter object
     for (var prefab_name in this.encounter.enemy_data) {
         this.create_prefab(prefab_name, this.encounter.enemy_data[prefab_name]);
     }
     
+    // PriorityQueue is used from a github example that calculates 
+    // the turns of each unit in battle depending on their speed stat
     this.units = new PriorityQueue({comparator: function (unit_a, unit_b) {
+        // comparator function that returns the value of 
+        // unit_a's act_turn and unit_b's act_turn
         return unit_a.act_turn - unit_b.act_turn;
     }});
     
+    // forEach function that iterates through all of the 
+    // player units displayed in the battle state
     this.groups.player_units.forEach(function (unit) {
+        // calculates the act_turn for the current unit in control
         unit.calculate_act_turn(0);
+        // queues the unit
         this.units.queue(unit);
     }, this);
     
+    // forEach function that iterates through all of the 
+    // enemy units displayed in the battle state
     this.groups.enemy_units.forEach(function (unit) {
+        // calculates the act_turn for the current unit in control
         unit.calculate_act_turn(0);
+        // queues the unit
         this.units.queue(unit);
     }, this);
     
+    // hides the show_player_status menu from the Battlestate to show the players' turn has ended.
     this.prefabs.show_player_status.show(false);
-    
+    // calls this.next_turn
     this.next_turn();
 };
 
+// the this.next_turn method counts all living units and decides 
+// which unit will act according to their act_turn value
 RPG.BattleState.prototype.next_turn = function () {
     "use strict";
+    // checks all enemy_units to see if they have been cleared
     if(this.groups.enemy_units.countLiving() === 0) {
+        // calls the clear_enemy_encounter method
         this.clear_enemy_encounter();
-        
+        // then calls swap_cache_data from JSONLevelState to update the maps enemy_spawner count
         RPG.JSONLevelState.prototype.swap_cache_data.call(this, this.returning_state);
-        
+        // then the battle ends and boots up WorldState
         this.end_battle();
         return;
     }
-    
+    // checks to see if all player_units have died
     if(this.groups.player_units.countLiving() === 0) {
+        // if so, player is sent back to the TitleState
         this.game_over();
         return;
     }
-    
+    // after the turn has finished and none of the requirements above have been met,
+    // the current unit in play will dequeue their turn
     this.current_unit = this.units.dequeue();
     if (this.current_unit.alive) {
         this.current_unit.act();
@@ -115,21 +147,32 @@ RPG.BattleState.prototype.next_turn = function () {
     }
 };
 
+// back_to_world continues the players' session and brings 
+// them back to the world stage they last occupied
 RPG.BattleState.prototype.back_to_world = function () {
     "use strict";
-    //this.game.state.start("BootState", true, false, this.previous_level, "WorldState");
+    // boots up the world state
     this.game.state.start("BootState", true, false, this.previous_level, "WorldState");
 };
 
+// game_over deletes player progress up to this point 
+// to show the players' session has ended
 RPG.BattleState.prototype.game_over = function () {
     "use strict";
-    this.game.state.start("BootState", true, false, "assets/levels/title_screen.json", "TitleState");
+    // TODO: delete all of the JSON files in the cache to restart player progress
+    // boots up Title state
+    this.game.state.start("BootState", true, false, "assets/asset_data/title_screen.json", "TitleState");
 };
 
+// end_battle is responsible for calculating the XP the player 
+// receives as well as handling the rewards defined in the encounter data
 RPG.BattleState.prototype.end_battle = function () {
     "use strict";
+    // temp variable that references the experience points in the encounter data
     var received_experience = this.encounter.reward.experience;
+    // forEach function that iterates through each player unit and divides the XP among them
     this.groups.player_units.forEach(function (player_unit) {
+        // divides the XP among the two units (mage and warrior)
         player_unit.receive_experience(received_experience / this.groups.player_units.children.length);
         
         // update party data after battle
@@ -143,20 +186,31 @@ RPG.BattleState.prototype.end_battle = function () {
         this.game.inventory.collect_item(this, item_object);
     }, this);
     
+    // update the firebase party data
     firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data).then(this.back_to_world.bind(this));
 };
 
+// clear_enemy_encounter is responsible from removing the enemy 
+// spawner from the world stage in the cache
 RPG.BattleState.prototype.clear_enemy_encounter = function () {
-    //TODO update map world by removing enemy item and swapping json data in cache with modified data
+    // enemy name includes the instance of the 
+    // enemy spawn the player had collided with
     var enemyName = this.enemy_name;
+    // mapName is a concatenation of the returning_state passed 
+    // by the enemy_spawner object to get the current map state 
+    // (town or cave etc)
     var mapName = this.returning_state + "Map";
-    console.log(enemyName);
+    // mapData that points to the map data in the cache
     var mapData = this.game.cache.getJSON(mapName);
-
-    for(var i = 0; i < mapData.layers[4].objects.length; i++) {
-        if(mapData.layers[4].objects[i].name == enemyName) {
-            mapData.layers[4].objects.splice(i, 1);
-            //swap cache data with modified data
+    
+    // stores the layers length of the layers array
+    var layers_length = mapData.layers.length - 1;
+    
+    // for loop that iterates through all of the enemy_spawn objects and
+    // tries to match their name/key with the enemyName string
+    for(var i = 0; i < mapData.layers[layers_length].objects.length; i++) {
+        if(mapData.layers[layers_length].objects[i].name == enemyName) {
+            mapData.layers[layers_length].objects.splice(i, 1);
             break;
         }
     }
