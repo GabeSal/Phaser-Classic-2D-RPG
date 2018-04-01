@@ -20,9 +20,6 @@ RPG.Equipment = function (game_state, name, position, properties) {
     this.stat = properties.stat;
     this.bonus = +properties.bonus;
     
-    this.state_name = properties.location;
-    // console.log(this.state_name);
-    
     this.game_state.game.physics.arcade.enable(this);
     this.body.immovable = true;
 };
@@ -48,26 +45,25 @@ RPG.Equipment.prototype.collect = function () {
         unit_data.stats_bonus[this.stat] = this.bonus;
         // kills the equipment object
         this.kill();
-        this.despawn_equipment();
+        // removes the equipment prefab from the JSON map in the cache
+        this.remove_equipment_from_map(this.name);
         
         // updates the firebase
         firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game_state.game.party_data);
     }
 };
 
-// TODO: make the despawn_equipment method work. The context is somehow being lost when called, 
-// place the cache part elsewhere and rename this current function as way to pass the equipment 
-// name to the despawn function 
-RPG.Equipment.prototype.despawn_equipment = function (equipment_name) {
+// remove_equipment_from_map destroys the equipment from the map cache data
+RPG.Equipment.prototype.remove_equipment_from_map = function (equipment_name) {
     "use strict";
     // checks if a name has been passed into the function
-    this.equipment_name = equipment_name;
-    console.log(this.equipment_name);
+    var equipment_name = equipment_name;
     
-    /*// creates a string as a key for the mapData below
-    var mapName = this.state_name + "Map";
+    // creates a string as a key using the game_states level_asset_data 
+    // for the mapData below
+    var mapName = this.game_state.level_asset_data.state.name + "Map";
     
-    // mapData that points to the map data in the cache
+    // mapData that points to the json map data in the cache
     var mapData = this.game.cache.getJSON(mapName);
     
     // for loop that iterates through all of the objects and
@@ -77,7 +73,5 @@ RPG.Equipment.prototype.despawn_equipment = function (equipment_name) {
             mapData.layers[4].objects.splice(i, 1);
             break;
         }
-    }*/
-    // kills the prefab on the map
-    
+    }
 };

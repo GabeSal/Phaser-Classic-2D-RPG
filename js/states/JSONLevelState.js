@@ -75,6 +75,7 @@ RPG.JSONLevelState.prototype.create_prefab = function (prefab_name, prefab_data)
     if (this.prefab_classes.hasOwnProperty(prefab_data.type)) {
         var prefab = new this.prefab_classes[prefab_data.type](this, prefab_name, prefab_data.position, prefab_data.properties);
     }
+    
     return prefab;
 };
 
@@ -90,11 +91,9 @@ RPG.JSONLevelState.prototype.change_player_position = function (player_object, n
     
     // grabs the name of the current state from this.level_asset_data
     var current_state = this.level_asset_data.state.name
-    console.log(current_state);
     
     // grab cache data in order to change the JSON cache later
     var cache_data = this.game.cache.getJSON(current_state + "Map");
-    console.log(cache_data.layers.length);
     
     // stores the layers length from this.map into a temp variable
     var layers_length = cache_data.layers.length - 1;
@@ -116,6 +115,7 @@ RPG.JSONLevelState.prototype.change_player_position = function (player_object, n
 // Phaser.Game object to ensure the JSON map data is consistent throughout the game session
 RPG.JSONLevelState.prototype.swap_cache_data = function (state, new_data) {
     "use strict";
+    
     // mapKey is a string that is modifiable so as to avoid 
     // hardcoding the keys used for the mapData object below
     var mapKey = state + "Map";

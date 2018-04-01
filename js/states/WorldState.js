@@ -97,6 +97,12 @@ RPG.WorldState.prototype.create_object = function (object) {
     "use strict";
     var object_y, position, prefab;
     
+    // checks to see if the object being created is part of the equipment class
+    if(object.type == "equipment") {
+        // calls the check_inventory method and passes the name of the equipment
+        this.check_inventory(object.name);
+    }
+    
     // tiled coordinates starts in the bottom left corner and is repositioned to the center of the tile
     object_y = (object.gid) ? object.y - (this.map.tileHeight / 2) : object.y + (object.height / 2);
     position = {"x": object.x + (this.map.tileHeight / 2), "y": object_y};
@@ -108,18 +114,14 @@ RPG.WorldState.prototype.create_object = function (object) {
     
     // adds the prefab into the prefabs group using the object.name for the index
     this.prefabs[object.name] = prefab;
-    
-    // checks to see if the object being created is part of the equipment class
-    if(object.type == "equipment") {
-        // calls the check_inventory method
-        this.check_inventory();
-    }
 };
 
-// check inventory
-RPG.WorldState.prototype.check_inventory = function () {
+// check inventory will remove the equipment prefab from the map if 
+// the prefab is found in the player inventory
+RPG.WorldState.prototype.check_inventory = function (equipment_name) {
     "use strict";
-    var warrior_unit_data, mage_unit_data, body_part, part;
+    var body_part, mage_unit_data, mapData, mapLength, mapName, part, warrior_unit_data;
+    
     // gets the unit_data from the party data in both firebase and 
     // default_party, depending if the player is returning or starting a new game.
     warrior_unit_data = this.game.party_data["warrior"];
@@ -128,25 +130,63 @@ RPG.WorldState.prototype.check_inventory = function () {
     // list of possible armor placements
     body_part = ["head", "body", "legs", "feet"];
     
+    // creates a string as a key using the game_states level_asset_data 
+    // for the mapData below
+    mapName = this.level_asset_data.state.name + "Map";
+    
+    // mapData that points to the json map data in the cache
+    mapData = this.game.cache.getJSON(mapName);
+    
+    // get the layers length in the current map
+    mapLength = mapData.layers.length;
+    
     // iterates through all of the body parts in warrior_unit_data
     for (var i in body_part) {
+        
         // stores the body_part string in a temp variable
         part = body_part[i];
+        
         // calls the despawn_equipment method if any of the equipment isn't on default
-        if (warrior_unit_data.equipment[part].name !== "default_equipment") {
-            RPG.Equipment.prototype.despawn_equipment(warrior_unit_data.equipment[part].name);
+        if (warrior_unit_data.equipment[part].name == equipment_name) {
+            
+            // for loop that iterates through all of the objects and
+            // tries to match their name/key with the equipment_name
+            for(var i = 0; i < mapData.layers[mapLength - 1].objects.length; i++) {
+                if(mapData.layers[mapLength - 1].objects[i].name == equipment_name) {
+                    // remove the object from the mapData in the cache object
+                    mapData.layers[mapLength - 1].objects.splice(i, 1);
+                    break;
+                }
+            }
             console.log("Despawning", warrior_unit_data.equipment[part].name + "...");
+            RPG.JSONLevelState.prototype.swap_cache_data.call(this, this.level_asset_data.state.name, mapData);
+            // reboot world state to show new mapData
+            this.game.state.start("BootState", true, false, "assets/asset_data/" + this.level_asset_data.state.name + ".json", "WorldState");
         } 
     }
     
     // iterates through all of the body parts in mage_unit_data
     for (var i in body_part) {
+        
         // stores the body_part string in a temp variable
         part = body_part[i];
+        
         // calls the despawn_equipment method if any of the equipment isn't on default
-        if (mage_unit_data.equipment[part].name !== "default_equipment") {
-            RPG.Equipment.prototype.despawn_equipment(mage_unit_data.equipment[part].name);
+        if (mage_unit_data.equipment[part].name == equipment_name) {
+            
+            // for loop that iterates through all of the objects and
+            // tries to match their name/key with the equipment_name
+            for(var i = 0; i < mapData.layers[mapLength - 1].objects.length; i++) {
+                if(mapData.layers[mapLength - 1].objects[i].name == equipment_name) {
+                    // remove the object from the mapData in the cache object
+                    mapData.layers[mapLength - 1].objects.splice(i, 1);
+                    break;
+                }
+            }
             console.log("Despawning", mage_unit_data.equipment[part].name + "...");
+            RPG.JSONLevelState.prototype.swap_cache_data.call(this, this.level_asset_data.state.name, mapData);
+            // reboot world state to show new mapData
+            this.game.state.start("BootState", true, false, "assets/asset_data/" + this.level_asset_data.state.name + ".json", "WorldState");
         }
     }
 };
