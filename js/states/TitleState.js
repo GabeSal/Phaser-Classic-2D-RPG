@@ -26,7 +26,22 @@ RPG.TitleState.prototype.preload = function () {
     "use strict";
     // loads in text files with a string key for the map data created using the Tiled program
     this.game.load.text("townMapFilePath", "assets/maps/town.json");
+    this.game.load.text("westTownMapFilePath", "assets/maps/town_west.json");
+    this.game.load.text("eastTownMapFilePath", "assets/maps/town_east.json");
+    this.game.load.text("southTownMapFilePath", "assets/maps/town_south.json");
+    this.game.load.text("houseMapFilePath", "assets/maps/house.json");
+    this.game.load.text("barracksMapFilePath", "assets/maps/barracks.json");
+    this.game.load.text("guardTower1MapFilePath", "assets/maps/guard_tower1.json");
+    this.game.load.text("guardTower2MapFilePath", "assets/maps/guard_tower2.json");
+    this.game.load.text("armoryMapFilePath", "assets/maps/armory.json");
+    this.game.load.text("millTowerMapFilePath", "assets/maps/mill_tower.json");
+    
     this.game.load.text("caveMapFilePath", "assets/maps/cave.json");
+    
+    this.game.load.text("castleMapFilePath", "assets/maps/castle.json");
+    
+    this.game.load.text("ancientTreeMapFilePath", "assets/maps/ancient_tree.json");
+    this.game.load.text("dragonsLairMapFilePath", "assets/maps/dragons_lair.json");
     
     // json data that includes the default party stats and equipment
     this.game.load.text("default_data", "assets/asset_data/default_party_data.json");
@@ -96,9 +111,57 @@ RPG.TitleState.prototype.start_game = function () {
     var townMapData = JSON.parse(this.game.cache.getText("townMapFilePath"));
     this.game.cache.addJSON("townMap", null, townMapData);
     
+    // grab west town map JSON data and store in cache
+    var westTownMapData = JSON.parse(this.game.cache.getText("westTownMapFilePath"));
+    this.game.cache.addJSON("west_townMap", null, westTownMapData);
+    
+    // grab east town map JSON data and store in cache
+    var eastTownMapData = JSON.parse(this.game.cache.getText("eastTownMapFilePath"));
+    this.game.cache.addJSON("east_townMap", null, eastTownMapData);
+    
+    // grab south town map JSON data and store in cache
+    var southTownMapData = JSON.parse(this.game.cache.getText("southTownMapFilePath"));
+    this.game.cache.addJSON("south_townMap", null, southTownMapData);
+    
+    // grab house map JSON data and store in cache
+    var houseMapData = JSON.parse(this.game.cache.getText("houseMapFilePath"));
+    this.game.cache.addJSON("houseMap", null, houseMapData);
+    
+    // grab barracks map data and store in cache
+    var barracksMapData = JSON.parse(this.game.cache.getText("barracksMapFilePath"));
+    this.game.cache.addJSON("barracksMap", null, barracksMapData);
+    
+    // grab guard tower 1 map data and store in cache
+    var guardTower1MapData = JSON.parse(this.game.cache.getText("guardTower1MapFilePath"));
+    this.game.cache.addJSON("guard_tower1Map", null, guardTower1MapData);
+    
+    // grab guard tower 2 map data and store in cache
+    var guardTower2MapData = JSON.parse(this.game.cache.getText("guardTower2MapFilePath"));
+    this.game.cache.addJSON("guard_tower2Map", null, guardTower2MapData);
+    
+    // grab armory map data and store in cache
+    var armoryMapData = JSON.parse(this.game.cache.getText("armoryMapFilePath"));
+    this.game.cache.addJSON("armoryMap", null, armoryMapData);
+    
+    // grab mill tower map data and store in cache
+    var millTowerMapData = JSON.parse(this.game.cache.getText("millTowerMapFilePath"));
+    this.game.cache.addJSON("mill_towerMap", null, millTowerMapData);
+    
     // grab cave map JSON data and store in cache
     var caveMapData = JSON.parse(this.game.cache.getText("caveMapFilePath"));
     this.game.cache.addJSON("caveMap", null, caveMapData);
+    
+    // grab castle map JSON data and store in cache
+    var castleMapData = JSON.parse(this.game.cache.getText("castleMapFilePath"));
+    this.game.cache.addJSON("castleMap", null, castleMapData);
+    
+    // grab castle map JSON data and store in cache
+    var dragonsLairMapData = JSON.parse(this.game.cache.getText("dragonsLairMapFilePath"));
+    this.game.cache.addJSON("dragons_lairMap", null, dragonsLairMapData);
+    
+    // grab castle map JSON data and store in cache
+    var ancientTreeMapData = JSON.parse(this.game.cache.getText("ancientTreeMapFilePath"));
+    this.game.cache.addJSON("ancient_treeMap", null, ancientTreeMapData);
     
     this.game.state.start("BootState", true, false, "assets/asset_data/town.json", "WorldState");
 };

@@ -69,7 +69,7 @@ RPG.WorldState.prototype.create = function () {
         this.layers[layer.name] = this.map.createLayer(layer.name);
         // checks for the collision property and if it's set to 'true'
         if(layer.properties.collision){ 
-            // setCollisionByExclusion([indexes], collides, layer (string, number, or Phaser.TilemapLayer) , recalculate)
+            // setCollisionByExclusion([indexes], collides, layer (string, number, or Phaser.TilemapLayer), recalculate)
             // Sets collision on all tiles in the given layer, except for the IDs of those in the given array. 
             // The collides parameter controls if collision will be enabled (true) or disabled (false).
             this.map.setCollisionByExclusion([-1], true, layer.name);

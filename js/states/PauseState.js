@@ -35,14 +35,12 @@ RPG.PauseState.prototype.create = function () {
     for (var player_unit_name in this.game.party_data) {
         // temporarily stores the unit_data
         var unit_data = this.game.party_data[player_unit_name];
-        // grabs the stats_bonus from this.game.party_data gained from the equipment the player had received
-        var stats_bonus = this.game.party_data[player_unit_name].stats_bonus;
         // instantiates the stats in the this.prefabs group for Pause state
         this.prefabs[player_unit_name].stats = {};
         // for loop that adds the stats_bonus to the original stats in the player_unit object
         // as well as storing this info into the this.prefabs.stats group
         for (var stat_name in unit_data.stats) {
-            this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name] + stats_bonus[stat_name];
+            this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name];
         }
         
         // stores the experience and level into the this.prefabs 

@@ -13,7 +13,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 12, 12, 0, 0, 0, 0, 12, 12, 12, 12, 52, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52],
+         "data":[0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 12, 12, 0, 0, 0, 0, 12, 12, 12, 12, 52, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 12, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52],
          "height":15,
          "name":"rocks1",
          "opacity":1,
@@ -71,29 +71,6 @@
                 }, 
                 {
                  "height":32,
-                 "id":2,
-                 "name":"door",
-                 "properties":
-                    {
-                     "group":"doors",
-                     "next_level":"assets\/asset_data\/town.json",
-                     "texture":""
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "next_level":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"door",
-                 "visible":true,
-                 "width":32,
-                 "x":288,
-                 "y":463
-                }, 
-                {
-                 "height":32,
                  "id":5,
                  "name":"unknown",
                  "properties":
@@ -113,9 +90,9 @@
                  "rotation":0,
                  "type":"npc",
                  "visible":true,
-                 "width":30.6666666666667,
+                 "width":32,
                  "x":288,
-                 "y":32
+                 "y":396
                 }, 
                 {
                  "height":32,
@@ -138,7 +115,7 @@
                  "visible":true,
                  "width":32,
                  "x":416,
-                 "y":320
+                 "y":0
                 }, 
                 {
                  "height":32,
@@ -160,8 +137,8 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":96,
-                 "y":224
+                 "x":160,
+                 "y":320
                 }, 
                 {
                  "height":32,
@@ -183,7 +160,7 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":544,
+                 "x":416,
                  "y":384
                 }, 
                 {
@@ -206,8 +183,8 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":128,
-                 "y":128
+                 "x":96,
+                 "y":384
                 }, 
                 {
                  "height":32,
@@ -229,8 +206,8 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":512,
-                 "y":192
+                 "x":352,
+                 "y":160
                 }, 
                 {
                  "height":32,
@@ -252,8 +229,8 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":64,
-                 "y":384
+                 "x":192,
+                 "y":0
                 }, 
                 {
                  "height":32,
@@ -275,13 +252,13 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":512,
-                 "y":64
+                 "x":288,
+                 "y":192
                 }, 
                 {
                  "height":32,
                  "id":17,
-                 "name":"enemy_spawner9",
+                 "name":"enemy_spawner8",
                  "properties":
                     {
                      "encounter":"bat",
@@ -298,41 +275,43 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":32,
-                 "y":96
+                 "x":128,
+                 "y":224
                 }, 
                 {
                  "height":32,
-                 "id":18,
+                 "id":23,
                  "name":"dragon_door",
                  "properties":
                     {
                      "group":"doors",
                      "next_level":"assets\/asset_data\/dragon_lair.json",
+                     "player_direction":"up",
                      "texture":""
                     },
                  "propertytypes":
                     {
                      "group":"string",
                      "next_level":"string",
+                     "player_direction":"string",
                      "texture":"string"
                     },
                  "rotation":0,
                  "type":"door",
                  "visible":true,
-                 "width":32,
-                 "x":319.333333333333,
-                 "y":-14.6666666666667
+                 "width":64,
+                 "x":287.333,
+                 "y":-14.6667
                 }, 
                 {
                  "height":32,
-                 "id":19,
-                 "name":"boss_spawner",
+                 "id":25,
+                 "name":"enemy_spawner9",
                  "properties":
                     {
-                     "encounter":"dragon",
+                     "encounter":"dino",
                      "group":"enemy_spawners",
-                     "texture":"dragon_image"
+                     "texture":"snake_image"
                     },
                  "propertytypes":
                     {
@@ -343,130 +322,57 @@
                  "rotation":0,
                  "type":"enemy_spawner",
                  "visible":true,
-                 "width":30.6666666666667,
-                 "x":320,
-                 "y":128
-                }, 
-                {
-                 "height":32,
-                 "id":20,
-                 "name":"unknown",
-                 "properties":
-                    {
-                     "group":"npcs",
-                     "message":"unknown_message",
-                     "one_shot":true,
-                     "texture":""
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "message":"string",
-                     "one_shot":"bool",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"npc",
-                 "visible":true,
-                 "width":30.6667,
-                 "x":320,
+                 "width":32,
+                 "x":256,
                  "y":32
                 }, 
                 {
                  "height":32,
-                 "id":21,
-                 "name":"unknown",
+                 "id":26,
+                 "name":"enemy_spawner10",
                  "properties":
                     {
-                     "group":"npcs",
-                     "message":"unknown_message",
-                     "one_shot":true,
-                     "texture":""
+                     "encounter":"dino",
+                     "group":"enemy_spawners",
+                     "texture":"snake_image"
                     },
                  "propertytypes":
                     {
+                     "encounter":"string",
                      "group":"string",
-                     "message":"string",
-                     "one_shot":"bool",
                      "texture":"string"
                     },
                  "rotation":0,
-                 "type":"npc",
-                 "visible":true,
-                 "width":30.6667,
-                 "x":256,
-                 "y":0
-                }, 
-                {
-                 "height":32,
-                 "id":22,
-                 "name":"unknown",
-                 "properties":
-                    {
-                     "group":"npcs",
-                     "message":"unknown_message",
-                     "one_shot":true,
-                     "texture":""
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "message":"string",
-                     "one_shot":"bool",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"npc",
-                 "visible":true,
-                 "width":30.6667,
-                 "x":352,
-                 "y":0
-                }, 
-                {
-                 "height":32,
-                 "id":23,
-                 "name":"dragon_door",
-                 "properties":
-                    {
-                     "group":"doors",
-                     "next_level":"assets\/asset_data\/dragon_lair.json",
-                     "texture":""
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "next_level":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"door",
+                 "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":287.333333333333,
-                 "y":-14.6666666666667
+                 "x":352,
+                 "y":32
                 }, 
                 {
                  "height":32,
-                 "id":24,
-                 "name":"door",
+                 "id":27,
+                 "name":"town_door",
                  "properties":
                     {
                      "group":"doors",
                      "next_level":"assets\/asset_data\/town.json",
+                     "player_direction":"down",
                      "texture":""
                     },
                  "propertytypes":
                     {
                      "group":"string",
                      "next_level":"string",
+                     "player_direction":"string",
                      "texture":"string"
                     },
                  "rotation":0,
                  "type":"door",
                  "visible":true,
-                 "width":32,
-                 "x":320.666666666667,
-                 "y":463.333333333333
+                 "width":64,
+                 "x":288,
+                 "y":460
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -474,7 +380,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":25,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

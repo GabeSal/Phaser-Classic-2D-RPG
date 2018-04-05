@@ -12,37 +12,37 @@ RPG.ShowPartyDataInPauseScreen = function (game_state, name, position, propertie
     var prefab_data = this.game_state.game.party_data[properties.prefab];
     
     // creates an instance of the units' current health
-    var health = prefab_data.stats.health;
+    var health = prefab_data.stats.health + prefab_data.stats_bonus.health;
     // store the health as a text object
     this.show_unit_health = this.game_state.game.add.text(this.x, this.y + 75, "Health: " + health, properties.text_style);
     
     // creates an instance of the units' current mana
-    var mana = prefab_data.stats.mana;
+    var mana = prefab_data.stats.mana + prefab_data.stats_bonus.mana;
     // store the mana as a text object
     this.show_unit_mana = this.game_state.game.add.text(this.x, this.y + 100, "Mana: " + mana, properties.text_style);
     
     // stores the attack power of the unit
-    var attack = prefab_data.stats.attack;
+    var attack = prefab_data.stats.attack + prefab_data.stats_bonus.attack;
     // creates a text object for the attack power
     this.show_unit_attack = this.game_state.game.add.text(this.x + 250, this.y - 15, "Attack: " + attack, properties.text_style);
     
     // stores the magic power of the unit
-    var magic_attack = prefab_data.stats.magic_attack;
+    var magic_attack = prefab_data.stats.magic_attack + prefab_data.stats_bonus.magic_attack;
     // creates a text object for the magic power
     this.show_unit_magic_attack = this.game_state.game.add.text(this.x + 250, this.y + 10, "Magic: " + magic_attack, properties.text_style);
     
     // stores the physical defense of the unit
-    var phys_defense = prefab_data.stats.phys_defense;
+    var phys_defense = prefab_data.stats.phys_defense + prefab_data.stats_bonus.phys_defense;
     // creates a text object for the physical defense
     this.show_unit_phys_defense = this.game_state.game.add.text(this.x + 250, this.y + 35, "Phys Def: " + phys_defense, properties.text_style);
     
     // stores the magical defense of the unit
-    var magic_defense = prefab_data.stats.magic_defense;
+    var magic_defense = prefab_data.stats.magic_defense + prefab_data.stats_bonus.magic_defense;
     // creates a text object for the magical defense
     this.show_unit_magic_defense = this.game_state.game.add.text(this.x + 250, this.y + 65, "Magic Def: " + magic_defense, properties.text_style);
     
     // stores the speed of the unit
-    var speed = prefab_data.stats.speed;
+    var speed = prefab_data.stats.speed + prefab_data.stats_bonus.speed;
     // creates a text object for the speed
     this.show_unit_speed = this.game_state.game.add.text(this.x + 250, this.y + 90, "Speed: " + speed, properties.text_style);
     
