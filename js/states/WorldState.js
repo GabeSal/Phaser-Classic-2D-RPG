@@ -58,7 +58,7 @@ RPG.WorldState.prototype.create = function () {
     // forEach function that iterates through all of the tileset images included for this map
     this.map.tilesets.forEach(function (tileset) {
         this.map.addTilesetImage(tileset.name, this.level_asset_data.map.tilesets[tileset_index]);
-        tileset_index += 1;
+        tileset_index++;
     }, this);
     
     // this.layers will hold all of the layers defined in the map levels data in an object
@@ -197,6 +197,8 @@ RPG.WorldState.prototype.get_player_object = function (position) {
     "use strict";
     // temporarily stores the player object from this.map into player_object
     var player_object = this.map.objects.objects[0];
+    
+    //var objects_length = this.map.objects.objects.length;
     // position is passed from either the player prefab or an instance of enemy_spawner
     var new_position = position;
     

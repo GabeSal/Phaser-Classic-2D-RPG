@@ -1,0 +1,131 @@
+{
+    "enemy_data": {
+        "soldier1": {
+            "type": "tough_enemy_unit",
+            "position": {"x": 160, "y": 160},
+            "properties": {
+                "texture": "warrior_spritesheet",
+                "group": "enemy_units",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {"x": -1, "y": 1.1},
+                "tint": "0xFFEA00",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 8},
+                    "attack1": {"frames": [6, 7, 8, 9, 10, 10, 10, 8, 7, 6, 11], "fps": 14},
+                    "attack2": {"frames": [6, 8, 9, 10, 12, 14, 14, 14, 11], "fps": 12},
+                    "hit": {"frames": [16, 16, 17, 17, 17, 11, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 85,
+                    "attack": 10,
+                    "special_attack": 3,
+                    "phys_defense": 9,
+                    "magic_defense": 1,
+                    "speed": 9
+                },
+                "target_units": "player_units"
+            }
+        },
+        "captain": {
+            "type": "tough_enemy_unit",
+            "position": {"x": 220, "y": 210},
+            "properties": {
+                "texture": "warrior_spritesheet",
+                "group": "enemy_units",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {"x": -1, "y": 1.4},
+                "tint": "0xFFFF00",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 8},
+                    "attack1": {"frames": [6, 7, 8, 9, 10, 10, 10, 8, 7, 6, 11], "fps": 14},
+                    "attack2": {"frames": [6, 8, 9, 10, 12, 14, 14, 14, 11], "fps": 12},
+                    "hit": {"frames": [16, 16, 17, 17, 17, 11, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 200,
+                    "attack": 22,
+                    "special_attack": 15,
+                    "phys_defense": 20,
+                    "magic_defense": 10,
+                    "speed": 15
+                },
+                "target_units": "player_units"
+            }
+        },
+        "soldier2": {
+            "type": "tough_enemy_unit",
+            "position": {"x": 170, "y": 260},
+            "properties": {
+                "texture": "warrior_spritesheet",
+                "group": "enemy_units",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {"x": -1, "y": 1.2},
+                "tint": "0x99FFFF",
+                "animations": {
+                    "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 8},
+                    "attack1": {"frames": [6, 7, 8, 9, 10, 10, 10, 8, 7, 6, 11], "fps": 14},
+                    "attack2": {"frames": [6, 8, 9, 10, 12, 14, 14, 14, 11], "fps": 12},
+                    "hit": {"frames": [16, 16, 17, 17, 17, 11, 0], "fps": 10}
+                },
+                "stats": {
+                    "health": 125,
+                    "attack": 16,
+                    "special_attack": 9,
+                    "phys_defense": 12,
+                    "magic_defense": 5,
+                    "speed": 13
+                },
+                "target_units": "player_units"
+            }
+        },
+        "enemy_units_menu": {
+            "type": "menu",
+            "position": {"x": 10, "y": 350},
+            "properties": {
+                "group": "hud",
+                "menu_items": {
+                    "soldier1_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 10, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "warrior_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0xFF0000",
+                            "enemy_name": "soldier1"
+                        }
+                    },
+                    "captain_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 60, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "warrior_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0xFFFF00",
+                            "enemy_name": "captain"
+                        }
+                    },
+                    "soldier2_item": {
+                        "type": "enemy_menu_item",
+                        "position": {"x": 110, "y": 360},
+                        "properties": {
+                            "group": "hud",
+                            "texture": "warrior_face_image",
+                            "scale": {"x": 0.5, "y": 0.5},
+                            "tint": "0x99FFFF",
+                            "enemy_name": "soldier2"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "reward": {
+        "experience": 400,
+        "items": [
+            {"type": "powerful_health_potion", "properties": {"group": "items", "item_texture": "powerful_health_potion_image", "health_gain": 75}},
+            {"type": "powerful_health_potion", "properties": {"group": "items", "item_texture": "powerful_health_potion_image", "health_gain": 75}}
+        ]
+    }
+}

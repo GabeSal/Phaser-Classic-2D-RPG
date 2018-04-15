@@ -113,15 +113,15 @@ RPG.TitleState.prototype.start_game = function () {
     
     // grab west town map JSON data and store in cache
     var westTownMapData = JSON.parse(this.game.cache.getText("westTownMapFilePath"));
-    this.game.cache.addJSON("west_townMap", null, westTownMapData);
+    this.game.cache.addJSON("town_westMap", null, westTownMapData);
     
     // grab east town map JSON data and store in cache
     var eastTownMapData = JSON.parse(this.game.cache.getText("eastTownMapFilePath"));
-    this.game.cache.addJSON("east_townMap", null, eastTownMapData);
+    this.game.cache.addJSON("town_eastMap", null, eastTownMapData);
     
     // grab south town map JSON data and store in cache
     var southTownMapData = JSON.parse(this.game.cache.getText("southTownMapFilePath"));
-    this.game.cache.addJSON("south_townMap", null, southTownMapData);
+    this.game.cache.addJSON("town_southMap", null, southTownMapData);
     
     // grab house map JSON data and store in cache
     var houseMapData = JSON.parse(this.game.cache.getText("houseMapFilePath"));

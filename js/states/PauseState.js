@@ -26,6 +26,12 @@ RPG.PauseState.prototype.init = function (level_asset_data, extra_parameters) {
     this.previous_level = extra_parameters.previous_level;
 };
 
+RPG.PauseState.prototype.preload = function () {
+    "use strict";
+    // loads in the experience table for the experience text
+    this.load.text("experience_table", "assets/asset_data/experience_table.json");
+};
+
 // the create method will iterate through the party data to position the text and sprites
 RPG.PauseState.prototype.create = function () {
     "use strict";

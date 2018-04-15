@@ -1,0 +1,43 @@
+{
+    "assets": {
+        "map_tileset": {"type": "image", "source": "assets/images/tileset.png"},
+        "chests_tileset": {"type": "image", "source": "assets/images/chests_32x32.png"},
+
+        "player_spritesheet": {"type": "spritesheet", "source": "assets/images/world/player.png", "frame_width": 16, "frame_height": 16},
+        
+        "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
+        
+        "guard_image": {"type": "image", "source": "assets/images/world/knight.png"},
+        
+        "level_tilemap": {"type": "tilemap", "source": "assets/maps/guard_tower1.json"}
+    },
+    "groups": [
+        "players",
+        "doors",
+        "npcs",
+        "hud",
+        "enemy_spawners"
+    ],
+    "map": {
+        "key": "guard_tower1_level_tilemap",
+        "tilesets": ["map_tileset"]
+    },
+    "user_input": {
+        "world_map_user_input": "assets/user_inputs/world_map_user_input.json",
+        "talking_user_input": "assets/user_inputs/talking_user_input.json"
+    },
+    "initial_user_input": "world_map_user_input",
+    "npc_messages": {
+        "intruder_message1": "assets/npc_messages/intruder_message1.txt",
+        "intruder_message2": "assets/npc_messages/intruder_message2.txt",
+        "intruder_message3": "assets/npc_messages/intruder_message3.txt"
+    },
+    "assets_path": "assets/asset_data/guard_tower1.json",
+    "enemy_encounters": {
+        "guard_captain": "assets/enemy_encounters/guard_captain.json",
+        "soldiers": "assets/enemy_encounters/soldiers.json"
+    },
+    "state": {
+        "name": "guard_tower1"
+    }
+}

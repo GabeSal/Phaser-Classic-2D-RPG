@@ -51,14 +51,13 @@ RPG.Door.prototype.enter = function () {
             break;
         case "left": 
             // repositions the player to the right of the door prefab
-            player_position = {x: this.game_state.prefabs.player.position.x + 10, y: this.game_state.prefabs.player.position.y};
+            player_position = {x: this.game_state.prefabs.player.position.x + 25, y: this.game_state.prefabs.player.position.y};
             break;
         case "right": 
             // repositions the player to the left of the door prefab
-            player_position = {x: this.game_state.prefabs.player.position.x - 10, y: this.game_state.prefabs.player.position.y};
+            player_position = {x: this.game_state.prefabs.player.position.x - 25, y: this.game_state.prefabs.player.position.y};
             break;
     }
-    
     // calls the WorldState get_player_object method, passing in the player_position object
     this.game_state.get_player_object(player_position);
     // starts the Bootstate to show the next map

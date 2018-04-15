@@ -53,13 +53,14 @@ RPG.LoadingState.prototype.preload = function () {
             // the following JSON key is stored depending on the state name
             var name = this.level_asset_data.state.name;
             if (this.game.cache.checkJSONKey(name + "Map")){
-                // temporary object that will load as a tilemap object into the level 
+                // temporary object that will load as a tilemap object into the level
                 var mapData = this.game.cache.getJSON(name + "Map");
                 // loads a tilemap with a key using the 'name' variable
                 this.load.tilemap(name + "_level_tilemap", null, mapData, Phaser.Tilemap.TILED_JSON);
             } else {
                 // if no JSON objects are found in the cache, Loadingstate will create a 
                 // tilemap based from the source given in the json file
+                // TODO "chests_tileset": {"type": "image", "source": "assets/images/chests_32x32.png"}
                 this.load.tilemap(asset_key, asset.source, null, Phaser.Tilemap.TILED_JSON);
             }
             break;

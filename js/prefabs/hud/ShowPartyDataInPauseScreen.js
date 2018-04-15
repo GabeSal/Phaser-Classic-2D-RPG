@@ -50,6 +50,14 @@ RPG.ShowPartyDataInPauseScreen = function (game_state, name, position, propertie
     var level = prefab_data.current_level + 1;
     // creates a text object for the level of the unit
     this.level_text = this.game_state.game.add.text(this.x + 130, this.y + 100, "Level: " + level, properties.text_style);
+    
+    // variable that stores the current XP of the player units
+    var experience = prefab_data.experience;
+    // creates a JSON object from the experience table text loaded from the PauseState preload method
+    this.experience_table = JSON.parse(this.game.cache.getText("experience_table"));
+    // stores the amount of XP required for the party to level up
+    var experience_required = this.experience_table[prefab_data.current_level];
+    this.experience_text = this.game_state.game.add.text(this.x + 130, this.y + 117, "XP: " + experience + "/" + experience_required.required_exp, properties.text_style);
 };
 
 RPG.ShowPartyDataInPauseScreen.prototype = Object.create(RPG.ShowPlayerStatus.prototype);
@@ -64,8 +72,10 @@ RPG.ShowPartyDataInPauseScreen.prototype.show = function (show) {
     this.show_unit_health.visible = show;
     this.show_unit_mana.visible = show;
     this.show_unit_attack.visible = show;
-    this.show_unit_defense.visible = show;
     this.show_unit_magic_attack.visible = show;
+    this.show_unit_phys_defense.visible = show;
+    this.show_unit_magic_defense.visible = show;
     this.show_unit_speed.visible = show;
     this.level_text.visible = show;
+    this.experience_text.visible = show;
 };

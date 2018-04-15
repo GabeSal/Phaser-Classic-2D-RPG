@@ -1,0 +1,37 @@
+{
+    "assets": {
+        "map_tileset": {"type": "image", "source": "assets/images/tileset.png"},
+
+        "player_spritesheet": {"type": "spritesheet", "source": "assets/images/world/player.png", "frame_width": 16, "frame_height": 16},
+        
+        "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
+        
+        "guard_image": {"type": "image", "source": "assets/images/world/knight.png"},
+        
+        "level_tilemap": {"type": "tilemap", "source": "assets/maps/town_west.json"}
+    },
+    "groups": [
+        "players",
+        "doors",
+        "npcs",
+        "hud"
+    ],
+    "map": {
+        "key": "town_west_level_tilemap",
+        "tilesets": ["map_tileset"]
+    },
+    "user_input": {
+        "world_map_user_input": "assets/user_inputs/world_map_user_input.json",
+        "talking_user_input": "assets/user_inputs/talking_user_input.json"
+    },
+    "initial_user_input": "world_map_user_input",
+    "npc_messages": {
+        "west_guard_message1": "assets/npc_messages/west_guard1.txt",
+        "west_guard_message2": "assets/npc_messages/west_guard2.txt",
+        "west_guard_message3": "assets/npc_messages/west_guard3.txt"
+    },
+    "assets_path": "assets/asset_data/town_west.json",
+    "state": {
+        "name": "town_west"
+    }
+}

@@ -42,7 +42,10 @@
         "guard2_message": "assets/npc_messages/guard2.txt",
         "locked_message": "assets/npc_messages/locked1.txt",
         "locked_message2": "assets/npc_messages/locked2.txt",
-        "locked_message3": "assets/npc_messages/locked3.txt"
+        "locked_message3": "assets/npc_messages/locked3.txt",
+        "beware_message": "assets/npc_messages/beware_message.txt",
+        "hint_message": "assets/npc_messages/hint_town1.txt",
+        "hint_message2": "assets/npc_messages/hint_town2.txt"
     },
     "assets_path": "assets/asset_data/town.json",
     "enemy_encounters": {

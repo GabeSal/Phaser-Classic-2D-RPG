@@ -31,6 +31,9 @@ RPG.Player = function (game_state, name, position, properties) {
     // conditional that defaults to false so that the player animations 
     // don't continue to play after inputs have stopped
     this.moving = {left: false, right: false, up: false, down: false};
+    
+    // focuses the game camera on the player
+    this.game_state.game.camera.focusOn(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT);
 };
 
 RPG.Player.prototype = Object.create(RPG.Prefab.prototype);
@@ -39,8 +42,12 @@ RPG.Player.prototype.constructor = RPG.Player;
 // update is a built-in Phaser function that is called constantly throughout the game session
 RPG.Player.prototype.update = function () {
     "use strict";
+    // below are the collision methods that keep track of what layers the player will collide with
     // checks collision with 'buildings' layer
     this.game_state.game.physics.arcade.collide(this, this.game_state.layers.buildings);
+    
+    // checks collision with 'borders' layer
+    this.game_state.game.physics.arcade.collide(this, this.game_state.layers.borders);
     
     // checks collision with 'props' layer
     this.game_state.game.physics.arcade.collide(this, this.game_state.layers.props); 
