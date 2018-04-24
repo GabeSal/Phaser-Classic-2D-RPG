@@ -66,8 +66,7 @@ RPG.BattleState.prototype.create = function () {
         var unit_data = this.game.party_data[player_unit_name];
         // var stats_bonus = this.game.party_data[player_unit_name].stats_bonus;
         this.prefabs[player_unit_name].stats = {};
-        // TODO: prevent the stats_bonus from continually adding to 
-        // the player_units' stats everytime a battle is entered
+        // calculates player stats using the base and bonus stats
         for (var stat_name in unit_data.stats) {
             // this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name] + stats_bonus[stat_name];
             this.prefabs[player_unit_name].stats[stat_name] = unit_data.stats[stat_name];
@@ -168,7 +167,20 @@ RPG.BattleState.prototype.back_to_world = function () {
 // to show the players' session has ended
 RPG.BattleState.prototype.game_over = function () {
     "use strict";
-    // TODO: delete all of the JSON files in the cache to restart player progress
+    
+    // deletes all of the map data from cache
+    for (var JSONKey in this.game.cache._cache.json) {
+        this.game.cache.removeJSON(JSONKey);
+        console.log(JSONKey);
+    }
+    
+    // forEach function that iterates through each player unit and resets the XP and level
+    this.groups.player_units.forEach(function (player_unit) {
+        // resets the experience and level of the unit to the default value
+        this.game.party_data[player_unit.name].experience = 0;
+        this.game.party_data[player_unit.name].current_level = 0;
+    }, this);
+    
     // boots up Title state
     this.game.state.start("BootState", true, false, "assets/asset_data/title_screen.json", "TitleState");
 };

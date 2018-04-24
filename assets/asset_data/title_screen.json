@@ -36,7 +36,7 @@
         },
         "start_message": {
             "type": "text",
-            "position": {"x": 100, "y": 400},
+            "position": {"x": 85, "y": 400},
             "properties": {
                 "style": {"font": "20px Kells", "fill": "#000000"},
                 "text": "Press Enter to start playing",

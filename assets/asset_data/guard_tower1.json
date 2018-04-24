@@ -1,8 +1,8 @@
 {
     "assets": {
         "map_tileset": {"type": "image", "source": "assets/images/tileset.png"},
-        "chests_tileset": {"type": "image", "source": "assets/images/chests_32x32.png"},
-
+        
+        "treasure_chests": {"type": "spritesheet", "source": "assets/images/chests_32x32.png", "frame_width": 32, "frame_height": 32},
         "player_spritesheet": {"type": "spritesheet", "source": "assets/images/world/player.png", "frame_width": 16, "frame_height": 16},
         
         "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
@@ -15,6 +15,7 @@
         "players",
         "doors",
         "npcs",
+        "treasures",
         "hud",
         "enemy_spawners"
     ],
@@ -30,7 +31,8 @@
     "npc_messages": {
         "intruder_message1": "assets/npc_messages/intruder_message1.txt",
         "intruder_message2": "assets/npc_messages/intruder_message2.txt",
-        "intruder_message3": "assets/npc_messages/intruder_message3.txt"
+        "intruder_message3": "assets/npc_messages/intruder_message3.txt",
+        "found_mage_hood": "assets/npc_messages/found_mage_hood.txt"
     },
     "assets_path": "assets/asset_data/guard_tower1.json",
     "enemy_encounters": {

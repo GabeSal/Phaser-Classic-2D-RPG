@@ -270,6 +270,39 @@
                  "width":42,
                  "x":426,
                  "y":283
+                }, 
+                {
+                 "height":32,
+                 "id":12,
+                 "name":"treasure_chest",
+                 "properties":
+                    {
+                     "body_part":"head",
+                     "bonus":"10",
+                     "contents":"mage_hood",
+                     "group":"treasures",
+                     "message":"found_mage_hood",
+                     "stat":"magic_defense",
+                     "texture":"treasure_chests",
+                     "unit_name":"mage"
+                    },
+                 "propertytypes":
+                    {
+                     "body_part":"string",
+                     "bonus":"int",
+                     "contents":"string",
+                     "group":"string",
+                     "message":"string",
+                     "stat":"string",
+                     "texture":"string",
+                     "unit_name":"string"
+                    },
+                 "rotation":0,
+                 "type":"treasure",
+                 "visible":true,
+                 "width":32,
+                 "x":288,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -277,7 +310,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -293,6 +326,18 @@
          "name":"tileset",
          "spacing":0,
          "tilecount":240,
+         "tileheight":32
+        },
+        {
+         "columns":3,
+         "firstgid":241,
+         "image":"\/assets\/images\/chests_32x32.png",
+         "imageheight":160,
+         "imagewidth":96,
+         "margin":0,
+         "name":"treasure_chests",
+         "spacing":0,
+         "tilecount":15,
          "tileheight":32
         }],
  "tilewidth":32,

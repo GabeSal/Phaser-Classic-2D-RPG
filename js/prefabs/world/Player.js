@@ -107,7 +107,7 @@ RPG.Player.prototype.update = function () {
 };
 
 // callback method that's called in the world_map_user_inputs data passing 
-// in the direction and setting move to true
+// in the direction value and setting move to true or false
 RPG.Player.prototype.change_movement = function (direction, move) {
     "use strict";
     this.moving[direction] = move;

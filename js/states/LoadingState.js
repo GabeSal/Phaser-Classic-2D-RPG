@@ -60,7 +60,6 @@ RPG.LoadingState.prototype.preload = function () {
             } else {
                 // if no JSON objects are found in the cache, Loadingstate will create a 
                 // tilemap based from the source given in the json file
-                // TODO "chests_tileset": {"type": "image", "source": "assets/images/chests_32x32.png"}
                 this.load.tilemap(asset_key, asset.source, null, Phaser.Tilemap.TILED_JSON);
             }
             break;

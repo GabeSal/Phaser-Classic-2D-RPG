@@ -1,7 +1,7 @@
 {
     "keydown": {
         "ENTER": {
-            "callback": "game_state.end_talk"
+            "callback": "game_state.close_message_box"
         }
     }
 }

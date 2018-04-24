@@ -7,11 +7,12 @@ RPG.WorldState = function () {
     "use strict";
     RPG.JSONLevelState.call(this);
     
-    // list of prefab_classes used in this state
+    // list of prefab_classes (object type) used in this state
     this.prefab_classes = {
         player: RPG.Player.prototype.constructor,
         door: RPG.Door.prototype.constructor,
         npc: RPG.NPC.prototype.constructor,
+        treasure: RPG.Treasure.prototype.constructor,
         enemy_spawner: RPG.EnemySpawner.prototype.constructor,
         equipment: RPG.Equipment.prototype.constructor
     };
@@ -42,7 +43,6 @@ RPG.WorldState.prototype.preload = function() {
     // loads all enemy encounters from the level assets object
     for (var enemy_encounter_name in this.level_asset_data.enemy_encounters) {
         this.load.text(enemy_encounter_name, this.level_asset_data.enemy_encounters[enemy_encounter_name]);
-        
     }
 };
 
@@ -207,8 +207,8 @@ RPG.WorldState.prototype.get_player_object = function (position) {
     RPG.JSONLevelState.prototype.change_player_position.call(this, player_object, new_position);
 };
 
-// the end_talk method removes the message box sprite from display
-RPG.WorldState.prototype.end_talk = function () {
+// the close_message_box method removes the message box sprite from display
+RPG.WorldState.prototype.close_message_box = function () {
     "use strict";
     // kills the message box object
     this.current_message_box.kill();
