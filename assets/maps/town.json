@@ -560,8 +560,9 @@
                      "body_part":"head",
                      "bonus":10,
                      "group":"equipments",
+                     "message":"found_warrior_helmet",
                      "stat":"phys_defense",
-                     "texture":"warrior_helmet_image",
+                     "texture":"",
                      "unit_name":"warrior"
                     },
                  "propertytypes":
@@ -569,6 +570,7 @@
                      "body_part":"string",
                      "bonus":"int",
                      "group":"string",
+                     "message":"string",
                      "stat":"string",
                      "texture":"string",
                      "unit_name":"string"

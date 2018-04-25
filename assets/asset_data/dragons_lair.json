@@ -1,0 +1,45 @@
+{
+    "assets": {
+        "map_tileset": {"type": "image", "source": "assets/images/tileset.png"},
+        
+        "treasure_chests": {"type": "spritesheet", "source": "assets/images/chests_32x32.png", "frame_width": 32, "frame_height": 32},
+        "player_spritesheet": {"type": "spritesheet", "source": "assets/images/world/player.png", "frame_width": 16, "frame_height": 16},
+        
+        "message_box_image": {"type": "image", "source": "assets/images/world/message_box.png"},
+        "snake_image": {"type": "image", "source": "assets/images/world/snake.png"},
+        "dragon_image": {"type": "image", "source": "assets/images/world/dragon.png"},
+        
+        "level_tilemap": {"type": "tilemap", "source": "assets/maps/dragons_lair.json"}
+    },
+    "groups": [
+        "players",
+        "doors",
+        "npcs",
+        "treasures",
+        "enemy_spawners",
+        "hud"
+    ],
+    "map": {
+        "key": "dragons_lair_level_tilemap",
+        "tilesets": ["map_tileset"]
+    },
+    "user_input": {
+        "world_map_user_input": "assets/user_inputs/world_map_user_input.json",
+        "talking_user_input": "assets/user_inputs/talking_user_input.json"
+    },
+    "initial_user_input": "world_map_user_input",
+    "npc_messages": {
+        "found_warrior_armor": "assets/npc_messages/found_warrior_armor.txt",
+        "found_arcane_grimoire": "assets/npc_messages/found_arcane_grimoire.txt"
+    },
+    "assets_path": "assets/asset_data/dragons_lair.json",
+    "enemy_encounters": {
+        "reptile": "assets/enemy_encounters/reptile.json",
+        "dino": "assets/enemy_encounters/dino.json",
+        "dragon": "assets/enemy_encounters/dragon.json",
+        "boss": "assets/enemy_encounters/boss.json"
+    },
+    "state": {
+        "name": "dragons_lair"
+    }
+}

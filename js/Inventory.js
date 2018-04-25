@@ -19,6 +19,27 @@ RPG.Inventory = function () {
     this.items = {};
 };
 
+// method that is responsible for emptying the inventory after the player loses the game
+RPG.Inventory.prototype.empty_inventory = function () {
+    "use strict";
+    var item_type, item_database_key;
+    // iterates through all of the items in the this.items object
+    for (item_type in this.items) {        
+        // for loop that iterates through the database keys and correctly gets the keys in order to remove them from firebase
+        for (var index = 0; index < this.items[item_type].database_keys.length; index++) {
+            // gets the key string from the database_key property in this.items
+            item_database_key = this.items[item_type].database_keys[index];
+            // removes the key from the firebase database
+            firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/items/" + item_database_key).remove();
+        }
+        
+        // sets the amount of the item type to 0
+        this.items[item_type].amount = 0;
+        // removes the item_type in the this.items object
+        delete this.items[item_type];
+    }
+};
+
 // collect_item adds the item object from the rewards properties in the enemy_encounter 
 // data and also updates the firebase inventory
 RPG.Inventory.prototype.collect_item = function (game_state, item_object, database_key) {

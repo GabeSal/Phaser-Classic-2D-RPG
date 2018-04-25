@@ -189,6 +189,7 @@
                      "body_part":"weapon",
                      "bonus":15,
                      "group":"equipments",
+                     "message":"found_legendary_spear",
                      "stat":"attack",
                      "texture":"",
                      "unit_name":"warrior"
@@ -198,6 +199,7 @@
                      "body_part":"string",
                      "bonus":"int",
                      "group":"string",
+                     "message":"string",
                      "stat":"string",
                      "texture":"string",
                      "unit_name":"string"
@@ -207,31 +209,6 @@
                  "visible":true,
                  "width":32,
                  "x":544,
-                 "y":160
-                }, 
-                {
-                 "height":32,
-                 "id":6,
-                 "name":"treasure_message",
-                 "properties":
-                    {
-                     "group":"npcs",
-                     "message":"found_legendary_spear",
-                     "one_shot":true,
-                     "texture":""
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "message":"string",
-                     "one_shot":"bool",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"npc",
-                 "visible":true,
-                 "width":32,
-                 "x":541,
                  "y":160
                 }, 
                 {

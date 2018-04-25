@@ -18,7 +18,7 @@
                 "stats": {
                     "health": 85,
                     "attack": 10,
-                    "special_attack": 3,
+                    "special_attack": 8,
                     "phys_defense": 9,
                     "magic_defense": 1,
                     "speed": 9
@@ -28,7 +28,7 @@
         },
         "captain": {
             "type": "tough_enemy_unit",
-            "position": {"x": 220, "y": 210},
+            "position": {"x": 245, "y": 210},
             "properties": {
                 "texture": "warrior_spritesheet",
                 "group": "enemy_units",
@@ -42,11 +42,11 @@
                     "hit": {"frames": [16, 16, 17, 17, 17, 11, 0], "fps": 10}
                 },
                 "stats": {
-                    "health": 200,
-                    "attack": 22,
-                    "special_attack": 15,
-                    "phys_defense": 20,
-                    "magic_defense": 10,
+                    "health": 250,
+                    "attack": 36,
+                    "special_attack": 22,
+                    "phys_defense": 34,
+                    "magic_defense": 15,
                     "speed": 15
                 },
                 "target_units": "player_units"
@@ -69,10 +69,10 @@
                 },
                 "stats": {
                     "health": 125,
-                    "attack": 16,
-                    "special_attack": 9,
-                    "phys_defense": 12,
-                    "magic_defense": 5,
+                    "attack": 22,
+                    "special_attack": 25,
+                    "phys_defense": 18,
+                    "magic_defense": 8,
                     "speed": 13
                 },
                 "target_units": "player_units"

@@ -2,11 +2,12 @@
     "enemy_data": {
         "dragon": {
             "type": "boss_unit",
-            "position": {"x": 180, "y": 200},
+            "position": {"x": 120, "y": 180},
             "properties": {
                 "texture": "dragon_spritesheet",
                 "group": "enemy_units",
                 "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {"x": 1.05, "y": 1.25},
                 "tint": "0xAAFFFF",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 12},
@@ -15,19 +16,19 @@
                     "hit": {"frames": [20, 20, 21, 21], "fps": 10}
                 },
                 "stats": {
-                    "health": 150,
-                    "attack": 20,
-                    "magic_attack": 15,
-                    "phys_defense": 12,
-                    "magic_defense": 10,
-                    "speed": 8
+                    "health": 400,
+                    "attack": 50,
+                    "magic_attack": 30,
+                    "phys_defense": 20,
+                    "magic_defense": 14,
+                    "speed": 10
                 },
                 "target_units": "player_units"
             }
         },
         "reptile1": {
             "type": "tough_enemy_unit",
-            "position": {"x": 150, "y": 240},
+            "position": {"x": 260, "y": 200},
             "properties": {
                 "texture": "reptile_spritesheet",
                 "group": "enemy_units",
@@ -40,7 +41,7 @@
                     "hit": {"frames": [13, 13, 14, 0], "fps": 10}
                 },
                 "stats": {
-                    "health": 50,
+                    "health": 70,
                     "attack": 10,
                     "phys_defense": 5,
                     "magic_defense": 7,
@@ -51,7 +52,7 @@
         },
         "reptile2": {
             "type": "tough_enemy_unit",
-            "position": {"x": 115, "y": 280},
+            "position": {"x": 245, "y": 250},
             "properties": {
                 "texture": "reptile_spritesheet",
                 "group": "enemy_units",
@@ -65,7 +66,7 @@
                     "hit": {"frames": [13, 13, 14, 0], "fps": 10}
                 },
                 "stats": {
-                    "health": 70,
+                    "health": 100,
                     "attack": 15,
                     "phys_defense": 10,
                     "magic_defense": 3,

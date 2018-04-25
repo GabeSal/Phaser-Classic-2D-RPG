@@ -49,6 +49,9 @@ RPG.BattleState.prototype.preload = function () {
     "use strict";
     // loads the experience table defining the XP needed for leveling up
     this.load.text("experience_table", "assets/asset_data/experience_table.json");
+    
+    // loads the experience table defining the XP needed for leveling up
+    this.load.text("original_party_data", "assets/asset_data/default_party_data.json");
 };
 
 RPG.BattleState.prototype.create = function () {
@@ -60,6 +63,9 @@ RPG.BattleState.prototype.create = function () {
     
     // creates a JSON object from the experience table text loaded from the preload method
     this.experience_table = JSON.parse(this.game.cache.getText("experience_table"));
+    
+    // creates a JSON object from the original default_party_data text loaded from the preload method
+    this.original_data = JSON.parse(this.game.cache.getText("original_party_data"));
     
     // instantiates party stats in battle
     for (var player_unit_name in this.game.party_data) {
@@ -168,18 +174,29 @@ RPG.BattleState.prototype.back_to_world = function () {
 RPG.BattleState.prototype.game_over = function () {
     "use strict";
     
-    // deletes all of the map data from cache
+    // deletes all of the map data from cache after player loses game
     for (var JSONKey in this.game.cache._cache.json) {
         this.game.cache.removeJSON(JSONKey);
-        console.log(JSONKey);
     }
     
     // forEach function that iterates through each player unit and resets the XP and level
     this.groups.player_units.forEach(function (player_unit) {
+        // iterates through all of the parties stats and resets them to their original values
+        for (var stat in this.game.party_data[player_unit.name].stats) {
+            // gets the current parties stats and replaces them with the original party datas
+            this.game.party_data[player_unit.name].stats[stat] = this.original_data.party_data[player_unit.name].stats[stat];
+            this.game.party_data[player_unit.name].stats_bonus[stat] = this.original_data.party_data[player_unit.name].stats_bonus[stat];
+        }
         // resets the experience and level of the unit to the default value
         this.game.party_data[player_unit.name].experience = 0;
         this.game.party_data[player_unit.name].current_level = 0;
     }, this);
+    
+    // calls the empty inventory function in the Inventory class
+    this.game.inventory.empty_inventory();
+    
+    // update the firebase party data
+    firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data);
     
     // boots up Title state
     this.game.state.start("BootState", true, false, "assets/asset_data/title_screen.json", "TitleState");
@@ -207,7 +224,7 @@ RPG.BattleState.prototype.end_battle = function () {
         this.game.inventory.collect_item(this, item_object);
     }, this);
     
-    // update the firebase party data
+    // update the firebase party data then calls the back_to_world method
     firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data).then(this.back_to_world.bind(this));
 };
 

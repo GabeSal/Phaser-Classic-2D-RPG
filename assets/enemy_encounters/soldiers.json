@@ -17,9 +17,9 @@
                 },
                 "stats": {
                     "health": 120,
-                    "attack": 15,
-                    "special_attack": 8,
-                    "phys_defense": 12,
+                    "attack": 20,
+                    "special_attack": 15,
+                    "phys_defense": 14,
                     "magic_defense": 5,
                     "speed": 12
                 },
@@ -42,10 +42,10 @@
                 },
                 "stats": {
                     "health": 135,
-                    "attack": 16,
-                    "special_attack": 2,
-                    "phys_defense": 13,
-                    "magic_defense": 3,
+                    "attack": 26,
+                    "special_attack": 9,
+                    "phys_defense": 17,
+                    "magic_defense": 4,
                     "speed": 15
                 },
                 "target_units": "player_units"
@@ -68,10 +68,10 @@
                 },
                 "stats": {
                     "health": 150,
-                    "attack": 19,
+                    "attack": 21,
                     "special_attack": 12,
-                    "phys_defense": 9,
-                    "magic_defense": 6,
+                    "phys_defense": 13,
+                    "magic_defense": 7,
                     "speed": 14
                 },
                 "target_units": "player_units"

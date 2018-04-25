@@ -206,8 +206,8 @@
                  "type":"enemy_spawner",
                  "visible":true,
                  "width":32,
-                 "x":352,
-                 "y":160
+                 "x":320,
+                 "y":64
                 }, 
                 {
                  "height":32,
@@ -253,7 +253,7 @@
                  "visible":true,
                  "width":32,
                  "x":288,
-                 "y":192
+                 "y":64
                 }, 
                 {
                  "height":32,
@@ -285,7 +285,7 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/asset_data\/dragon_lair.json",
+                     "next_level":"assets\/asset_data\/dragons_lair.json",
                      "player_direction":"up",
                      "texture":""
                     },
@@ -406,7 +406,7 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"assets\/asset_data\/dragon_lair.json",
+                     "next_level":"assets\/asset_data\/dragons_lair.json",
                      "player_direction":"up",
                      "texture":""
                     },

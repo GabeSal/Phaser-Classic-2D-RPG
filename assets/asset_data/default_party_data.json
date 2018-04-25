@@ -2,13 +2,13 @@
     "party_data": {
         "warrior": {
             "stats": {
-                "max_health": 10000,
-                "health": 10000,
+                "max_health": 100,
+                "health": 100,
                 "max_mana": 50,
                 "mana": 50,
-                "attack": 1500,
+                "attack": 15,
                 "magic_attack": 5,
-                "phys_defense": 100,
+                "phys_defense": 10,
                 "magic_defense": 7,
                 "speed": 18
             },
@@ -35,12 +35,12 @@
         },
         "mage": {
             "stats": {
-                "max_health": 900,
-                "health": 900,
+                "max_health": 90,
+                "health": 90,
                 "max_mana": 100,
                 "mana": 100,
-                "attack": 800,
-                "magic_attack": 1500,
+                "attack": 8,
+                "magic_attack": 15,
                 "phys_defense": 5,
                 "magic_defense": 12,
                 "speed": 15

@@ -38,6 +38,7 @@
     "npc_messages": {
         "villager_message": "assets/npc_messages/villager.txt",
         "villager2_message": "assets/npc_messages/villager2.txt",
+        "found_warrior_helmet": "assets/npc_messages/found_warrior_helmet.txt",
         "guard_message": "assets/npc_messages/guard.txt",
         "guard2_message": "assets/npc_messages/guard2.txt",
         "locked_message": "assets/npc_messages/locked1.txt",
