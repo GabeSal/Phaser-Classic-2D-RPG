@@ -9,6 +9,10 @@ RPG.EnemyUnit = function (game_state, name, position, properties) {
     
     // stores an instance of the PhysicalAttack class
     this.attack = new RPG.PhysicalAttack(this.game_state, this.name + "_attack", {x: 0, y: 0}, {group: "attacks", owner: this});
+    
+    // enables inputs when the Enemy Unit prefab is clicked by the player
+    this.inputEnabled = true;
+    this.events.onInputDown.add(this.selected, this);
 };
 
 RPG.EnemyUnit.prototype = Object.create(RPG.Unit.prototype);
@@ -39,6 +43,14 @@ RPG.EnemyUnit.prototype.act = function () {
     
     // target takes damage from the hit method
     this.attack.hit(target);
+};
+
+RPG.EnemyUnit.prototype.selected = function () {
+    "use strict";
+    // calls the attack method and passes the enemy name
+    this.game_state.current_attack.hit(this);
+    // hide the enemy menu items
+    this.game_state.prefabs.enemy_units_menu.enable(false);
 };
 
 // choose_target randomly chooses a target from the player units group

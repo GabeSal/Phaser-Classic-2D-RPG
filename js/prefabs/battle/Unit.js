@@ -5,7 +5,7 @@ var RPG = RPG || {};
 
 RPG.Unit = function (game_state, name, position, properties) {
     "use strict";
-    var attack1_animation, attack2_animation, hit_animation;
+    var idle_animation, attack1_animation, attack2_animation, hit_animation;
     RPG.Prefab.call(this, game_state, name, position, properties);
     
     // stores the idle animation
@@ -36,6 +36,9 @@ RPG.Unit = function (game_state, name, position, properties) {
     this.stats = properties.stats;
     // stores the target_units group for the enemy units
     this.target_units = properties.target_units;
+    
+    // flag to see if a unit is currently attacking
+    this.is_attacking = false;
 };
 
 RPG.Unit.prototype = Object.create(RPG.Prefab.prototype);
@@ -102,7 +105,7 @@ RPG.Unit.prototype.mana_gained = function (amount) {
     var mana_text, mana_timer;
     
     // stores the mana_text
-    mana_text = this.game_state.game.add.text(this.x, this.y - 50, "" + amount, {font: "bold 24px Georgia", fill: "#CC55FF"}, this.game_state.groups.hud);
+    mana_text = this.game_state.game.add.text(this.x, this.y - 50, "" + amount, {font: "bold 24px Georgia", fill: "#5577FF"}, this.game_state.groups.hud);
     
     // creates a timer for the mana_text
     mana_timer = this.game_state.time.create();
@@ -110,6 +113,62 @@ RPG.Unit.prototype.mana_gained = function (amount) {
     mana_timer.add(1 * Phaser.Timer.SECOND, mana_text.kill, mana_text);
     // starts the timed event
     mana_timer.start();
+};
+
+// tween responsible for the unit positioning themselves to their target
+RPG.Unit.prototype.combat_tween = function (targets_position, return_position) {
+    "use strict";
+    var combat_tween, return_tween;
+    // checks to see if the player is in control
+    if (this.game_state.is_players_turn == true) {
+        // moves the player unit to the targets position
+        combat_tween = this.game_state.game.add.tween(this).to({x: targets_position.x + 80, y: targets_position.y}, 350, Phaser.Easing.Linear.In);
+    } else {
+        // moves the enemy unit to the player unit
+        combat_tween = this.game_state.game.add.tween(this).to({x: targets_position.x - 80, y: targets_position.y}, 350, Phaser.Easing.Linear.In);
+    }
+    
+    // moves the unit back to the original position
+    return_tween = this.game_state.game.add.tween(this).to({x: return_position.x, y: return_position.y}, 350, Phaser.Easing.Linear.Out, false, 750);
+    
+    // starts the combat tween
+    combat_tween.start();
+    // calls an anon function that starts the return tween and plays the appropriate attack animation
+    combat_tween.onComplete.add(function () {
+        this.animations.play("attack1");
+        return_tween.start();
+    }, this);
+    
+    // calls the next_turn method from BattleState when the animation is completed
+    return_tween.onComplete.add(this.game_state.next_turn, this.game_state);
+};
+
+// tween responsible for the unit positioning themselves to their target
+RPG.Unit.prototype.magic_combat_tween = function (targets_position, return_position) {
+    "use strict";
+    var magic_combat_tween, return_tween;
+    // checks to see if the player is in control
+    if (this.game_state.is_players_turn == true) {
+        // moves the player unit to the targets position
+        magic_combat_tween = this.game_state.game.add.tween(this).to({x: targets_position.x + 100, y: targets_position.y}, 350, Phaser.Easing.Linear.In);
+    } else {
+        // moves the enemy unit to the player unit
+        magic_combat_tween = this.game_state.game.add.tween(this).to({x: targets_position.x - 60, y: targets_position.y}, 350, Phaser.Easing.Linear.In);
+    }
+    
+    // moves the unit back to the original position
+    return_tween = this.game_state.game.add.tween(this).to({x: return_position.x, y: return_position.y}, 350, Phaser.Easing.Linear.Out, false, 750);
+    
+    // starts the combat tween
+    magic_combat_tween.start();
+    // calls an anon function that starts the return tween and plays the appropriate attack animation
+    magic_combat_tween.onComplete.add(function () {
+        this.animations.play("attack2");
+        return_tween.start();
+    }, this);
+    
+    // calls the next_turn method from BattleState when the animation is completed
+    return_tween.onComplete.add(this.game_state.next_turn, this.game_state);
 };
 
 // calculates the turn value of the unit using their speed stat

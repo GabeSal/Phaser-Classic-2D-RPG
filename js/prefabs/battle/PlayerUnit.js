@@ -38,8 +38,6 @@ RPG.PlayerUnit.prototype.receive_experience = function (experience) {
     "use strict";
     // increases the experience after a battle
     this.experience += experience;
-    // displays the XP gained in the console
-    console.log("Total EXP received: " + experience);
     
     // stores the increases in stats into next_level_data
     var next_level_data = this.game_state.experience_table[this.current_level];
@@ -49,7 +47,6 @@ RPG.PlayerUnit.prototype.receive_experience = function (experience) {
         this.current_level += 1;
         // reset the experience but keep the remainder
         this.experience = this.experience - next_level_data.required_exp;
-        console.log("Remaining XP:", this.experience);
         // for loop that iterates throught the stat increases
         for (var stat in next_level_data.stats_increase) {
             // increases the stats by the amount defined in the next_level_data object

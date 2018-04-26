@@ -15,7 +15,30 @@ RPG.SpecialAttack = function (game_state, name, position, properties) {
 RPG.SpecialAttack.prototype = Object.create(RPG.Prefab.prototype);
 RPG.SpecialAttack.prototype.constructor = RPG.SpecialAttack;
 
+// the hit method calculates the damage and the plays the attack animation for the unit
 RPG.SpecialAttack.prototype.hit = function (target) {
+    "use strict";
+    // save the original position of the current unit in play
+    var original_position = {x: this.owner.position.x, y: this.owner.position.y};
+    // save the targets position
+    var targets_position = {x: target.position.x, y: target.position.y};
+    
+    if (this.owner.is_attacking == false) {
+        this.owner.magic_combat_tween(targets_position, original_position);
+        this.owner.is_attacking = true;
+    }
+    
+    if (this.game_state.is_players_turn == true) {
+        this.game_state.is_players_turn = false;
+    }
+    
+    // creates a timer for the target to play the damaged animation
+    var hit_timer = this.game_state.time.create();
+    hit_timer.add(350, this.display_damage, this, target);
+    hit_timer.start();
+};
+
+RPG.SpecialAttack.prototype.display_damage = function(target) {
     "use strict";
     var damage, special_attack_multiplier, special_defense_multiplier, action_message_position, action_message_text, special_attack_message;
     
@@ -41,8 +64,8 @@ RPG.SpecialAttack.prototype.hit = function (target) {
     // calls the receive_damage method in the units' prefab object
     target.receive_damage(damage);
     
-    // plays the alternate attack animation
-    this.owner.animations.play("attack2");
-    // calls the next_turn method fro BattleState when the animation is completed
-    this.owner.animations.currentAnim.onComplete.add(this.game_state.next_turn, this.game_state);
+    // change the bool value for the units attacking flag
+    if (this.owner.is_attacking) {
+        this.owner.is_attacking = false;
+    }
 };

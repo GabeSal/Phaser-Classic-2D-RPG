@@ -42,7 +42,11 @@ RPG.BattleState.prototype.init = function (level_asset_data, extra_parameters) {
     // this.enemy_name is passed from the enemy_spawner and is used to 
     // kill the spawner object after the player succeeds the encounter
     this.enemy_name = extra_parameters.enemy_name;
+    // contains the state name of the previous level before entering the BattleState
     this.returning_state = extra_parameters.returning_state;
+    
+    // flag that determines if the player is in control
+    this.is_players_turn = false;
 };
 
 RPG.BattleState.prototype.preload = function () {
@@ -146,7 +150,7 @@ RPG.BattleState.prototype.next_turn = function () {
     if (this.current_unit.alive) {
         
         // temp variable to randomize how long a unit waits for their turn
-        var act_length = this.rnd.realInRange(0.35, 0.7);
+        var act_length = this.rnd.realInRange(0.5, 0.7);
         // creates a timer so as to not allow for instantaneous acts
         var act_timer = this.time.create();
         // defines the timer length and calls the current unit to act

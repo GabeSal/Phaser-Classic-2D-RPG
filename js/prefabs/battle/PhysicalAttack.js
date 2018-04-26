@@ -18,6 +18,28 @@ RPG.PhysicalAttack.prototype.constructor = RPG.PhysicalAttack;
 // the hit method calculates the damage and the plays the attack animation for the unit
 RPG.PhysicalAttack.prototype.hit = function (target) {
     "use strict";
+    // save the original position of the current unit in play
+    var original_position = {x: this.owner.position.x, y: this.owner.position.y};
+    // save the targets position
+    var targets_position = {x: target.position.x, y: target.position.y};
+    
+    if (this.owner.is_attacking == false) {
+        this.owner.combat_tween(targets_position, original_position);
+        this.owner.is_attacking = true;
+    }
+    
+    if (this.game_state.is_players_turn == true) {
+        this.game_state.is_players_turn = false;
+    }
+    
+    // creates a timer for the target to play the damaged animation
+    var hit_timer = this.game_state.time.create();
+    hit_timer.add(350, this.display_damage, this, target);
+    hit_timer.start();
+};
+
+RPG.PhysicalAttack.prototype.display_damage = function(target) {
+    "use strict";
     var damage, physical_attack_multiplier, physical_defense_multiplier, action_message_position, action_message_text, physical_attack_message;
     
     // attack multiplier is randomized for dynamic combat
@@ -39,11 +61,11 @@ RPG.PhysicalAttack.prototype.hit = function (target) {
         damage = "miss";
     }
     
-    // calls the receive_damage method in the units' prefab object
+    // calls the receove_damage method from the target unit
     target.receive_damage(damage);
     
-    // play the first attack animation
-    this.owner.animations.play("attack1");
-    // calls the next_turn method fro BattleState when the animation is completed 
-    this.owner.animations.currentAnim.onComplete.add(this.game_state.next_turn, this.game_state);
+    // change the bool value for the units attacking flag
+    if (this.owner.is_attacking) {
+        this.owner.is_attacking = false;
+    }
 };

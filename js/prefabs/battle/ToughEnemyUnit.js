@@ -19,6 +19,14 @@ RPG.ToughEnemyUnit = function (game_state, name, position, properties) {
 RPG.ToughEnemyUnit.prototype = Object.create(RPG.EnemyUnit.prototype);
 RPG.ToughEnemyUnit.prototype.constructor = RPG.ToughEnemyUnit;
 
+RPG.ToughEnemyUnit.prototype.selected = function () {
+    "use strict";
+    // calls the attack method and passes the enemy name
+    this.game_state.current_attack.hit(this);
+    // hide the enemy menu items
+    this.game_state.prefabs.enemy_units_menu.enable(false);
+};
+
 // act handles the cycle of states the tough enemy unit has throughout the battle
 RPG.ToughEnemyUnit.prototype.act = function () {
     "use strict";

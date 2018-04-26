@@ -41,6 +41,7 @@ RPG.ShowPlayerStatus.prototype.change_current_unit = function (new_prefab, new_f
 // show method toggles the visibility of the player units status
 RPG.ShowPlayerStatus.prototype.show = function (show) {
     "use strict";
+    this.game_state.is_players_turn = show;
     this.player_unit_health.show(show);
     this.player_unit_mana.show(show);
     this.face_sprite.visible = show;
