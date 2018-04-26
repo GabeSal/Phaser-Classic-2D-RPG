@@ -7,8 +7,8 @@
                 "texture": "warrior_spritesheet",
                 "group": "enemy_units",
                 "anchor": {"x": 0.5, "y": 0.5},
-                "scale": {"x": -1, "y": 1.1},
-                "tint": "0xFFEA00",
+                "scale": {"x": -0.75, "y": 0.8},
+                "tint": "0xFF00FF",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 8},
                     "attack1": {"frames": [6, 7, 8, 9, 10, 10, 10, 8, 7, 6, 11], "fps": 14},
@@ -28,7 +28,7 @@
         },
         "captain": {
             "type": "tough_enemy_unit",
-            "position": {"x": 245, "y": 210},
+            "position": {"x": 270, "y": 210},
             "properties": {
                 "texture": "warrior_spritesheet",
                 "group": "enemy_units",
@@ -59,7 +59,7 @@
                 "texture": "warrior_spritesheet",
                 "group": "enemy_units",
                 "anchor": {"x": 0.5, "y": 0.5},
-                "scale": {"x": -1, "y": 1.2},
+                "scale": {"x": -0.9, "y": 0.9},
                 "tint": "0x99FFFF",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4, 5], "fps": 8},

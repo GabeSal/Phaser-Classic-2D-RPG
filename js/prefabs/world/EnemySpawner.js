@@ -38,7 +38,12 @@ RPG.EnemySpawner.prototype.update = function () {
 RPG.EnemySpawner.prototype.spawn = function () {
     "use strict";
     // call Worldstate method to grab player object
-    RPG.WorldState.prototype.get_player_object.call(this.game_state, this.enemy_spawn_position);
+    this.game_state.get_player_object.call(this.game_state, this.enemy_spawn_position);
+    
+    // stop town music
+    if (this.game_state.town_music.isPlaying) {
+        this.game_state.town_music.stop();
+    }
     
     // Boots Battlestate and passes a hard-coded object that includes data on the current map being used, the name of the spawner, the encounter data, 
     // and the position of the spawner so as to update the players' position after they have successfully defeated the enemy

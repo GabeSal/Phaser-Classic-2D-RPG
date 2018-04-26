@@ -44,6 +44,16 @@ RPG.WorldState.prototype.preload = function() {
     for (var enemy_encounter_name in this.level_asset_data.enemy_encounters) {
         this.load.text(enemy_encounter_name, this.level_asset_data.enemy_encounters[enemy_encounter_name]);
     }
+    
+    // stores the town_music audio object in the WorldState
+    if (this.town_music == undefined) {
+        this.town_music = this.game.add.audio("town_music");
+    }
+    
+    // TODO Find cave music
+    /*// stores the cave_music audio object in the WorldState
+    if (this.cave_music == undefined) {
+        this.cave_music = this.game.add.audio("cave_music");*/
 };
 
 // create is responsible for setting up the map object, 
@@ -90,6 +100,11 @@ RPG.WorldState.prototype.create = function () {
             this.map.objects[object_layer].forEach(this.create_object, this);
         }
     }
+    
+    // play the town music as long as the player is in the "town areas"
+    if (!this.town_music.isPlaying && this.level_asset_data.state.name.includes("town")) {
+        this.town_music.play('', 0, 0.45, true);
+    }
 };
 
 // create_object is the method that positions the objects from the object_layers in this.map
@@ -127,8 +142,8 @@ RPG.WorldState.prototype.check_inventory = function (equipment_name) {
     warrior_unit_data = this.game.party_data["warrior"];
     mage_unit_data = this.game.party_data["mage"];
     
-    // list of possible armor placements
-    body_part = ["head", "body", "legs", "feet"];
+    // list of possible armor/equipment placements
+    body_part = ["head", "body", "legs", "feet", "weapon"];
     
     // creates a string as a key using the game_states level_asset_data 
     // for the mapData below

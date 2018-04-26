@@ -43,6 +43,12 @@ RPG.TitleState.prototype.preload = function () {
     this.game.load.text("ancientTreeMapFilePath", "assets/maps/ancient_tree.json");
     this.game.load.text("dragonsLairMapFilePath", "assets/maps/dragons_lair.json");
     
+    // checks to see if this audio object doesn't exist yet
+    if (this.background_music == undefined) {
+        // stores the background_music audio object in the TitleState
+        this.background_music = this.game.add.audio("background_music");
+    }
+    
     // json data that includes the default party stats and equipment
     this.game.load.text("default_data", "assets/asset_data/default_party_data.json");
 };
@@ -54,8 +60,14 @@ RPG.TitleState.prototype.create = function () {
     // specified prefabs found in the assets json data
     RPG.JSONLevelState.prototype.create.call(this);
     
-    // resets party data
+    // retrieves the party data
     this.default_data = JSON.parse(this.game.cache.getText("default_data"));
+    
+    // plays the background music according the state name
+    if(!this.background_music.isPlaying && this.level_asset_data.state.name == "title") {
+        // arguments provide the marker, position, volume, and loop boolean value
+        this.background_music.play('', 0, 0.15, true);
+    }
 };
 
 // this method uses firebase to enable a google user to login to the game before start-up
@@ -164,6 +176,9 @@ RPG.TitleState.prototype.start_game = function () {
     this.game.cache.addJSON("ancient_treeMap", null, ancientTreeMapData);
     
     this.game.state.start("BootState", true, false, "assets/asset_data/town.json", "WorldState");
+    
+    // stop the background music
+    this.background_music.stop();
 };
 
 // handle_error displays an error to the console if there is complications with authentication

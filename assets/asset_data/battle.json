@@ -2,6 +2,9 @@
     "assets": {
         "background_image": {"type": "image", "source": "assets/images/battle/background.png"},
         
+        "battle_music": {"type": "audio", "source": "assets/audio/music/Tale_of_Ehrgeiz_Loop.mp3"},
+        "boss_music": {"type": "audio", "source": "assets/audio/music/Boss_Fight_Loop.mp3"},
+        
         "warrior_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/warrior.png", "frame_width": 240, "frame_height": 104},
         "mage_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/mage.png", "frame_width": 151, "frame_height": 100},
         

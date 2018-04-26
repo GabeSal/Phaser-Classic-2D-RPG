@@ -47,6 +47,9 @@ RPG.BattleState.prototype.init = function (level_asset_data, extra_parameters) {
     
     // flag that determines if the player is in control
     this.is_players_turn = false;
+    
+    // audio flag for the battle music
+    this.is_boss_battle = false;
 };
 
 RPG.BattleState.prototype.preload = function () {
@@ -56,6 +59,15 @@ RPG.BattleState.prototype.preload = function () {
     
     // loads the experience table defining the XP needed for leveling up
     this.load.text("original_party_data", "assets/asset_data/default_party_data.json");
+    
+    // stores the battle tracks in the BattleState
+    if (this.battle_music == undefined) {
+        this.battle_music = this.game.add.audio("battle_music");    
+    }
+    
+    if (this.boss_battle_music == undefined) {
+        this.boss_battle_music = this.game.add.audio("boss_music");    
+    }
 };
 
 RPG.BattleState.prototype.create = function () {
@@ -90,6 +102,12 @@ RPG.BattleState.prototype.create = function () {
     // creates a prefab of the enemy found in the encounter object
     for (var prefab_name in this.encounter.enemy_data) {
         this.create_prefab(prefab_name, this.encounter.enemy_data[prefab_name]);
+        // check the encounter to see if there are any boss units in the enemy_data object
+        if (this.encounter.enemy_data[prefab_name].type == "boss_unit") {
+            // set the flag to true for the battle music
+            this.is_boss_battle = true;
+        }
+        console.log("Is there an enemy boss?", this.is_boss_battle);
     }
     
     // PriorityQueue is used from a github example that calculates 
@@ -122,6 +140,16 @@ RPG.BattleState.prototype.create = function () {
     this.prefabs.show_player_status.show(false);
     // calls this.next_turn
     this.next_turn();
+    
+    // play the battle music according to the boss flag
+    if(!this.battle_music.isPlaying && !this.is_boss_battle) {
+        this.battle_music.play('', 0, 0.15, true);
+    }
+    
+    // play the battle music according to the boss flag
+    if(!this.boss_battle_music.isPlaying && this.is_boss_battle) {
+        this.boss_battle_music.play('', 0, 0.5, true);
+    }
 };
 
 // the this.next_turn method counts all living units and decides 
@@ -169,6 +197,17 @@ RPG.BattleState.prototype.next_turn = function () {
 // them back to the world stage they last occupied
 RPG.BattleState.prototype.back_to_world = function () {
     "use strict";
+    // set the flag to false
+    this.is_boss_battle = false;
+    
+    // stop the battle music
+    if(this.battle_music.isPlaying) {
+        this.battle_music.stop();
+    }
+    if(this.boss_battle_music.isPlaying) {
+        this.boss_battle_music.stop();
+    }
+    
     // boots up the world state
     this.game.state.start("BootState", true, false, this.previous_level, "WorldState");
 };
@@ -201,6 +240,14 @@ RPG.BattleState.prototype.game_over = function () {
     
     // update the firebase party data
     firebase.database().ref("/users/" + firebase.auth().currentUser.uid + "/party_data").set(this.game.party_data);
+    
+    // stop the battle music
+    if(this.battle_music.isPlaying) {
+        this.battle_music.stop();
+    }
+    if(this.boss_battle_music.isPlaying) {
+        this.boss_battle_music.stop();
+    }
     
     // boots up Title state
     this.game.state.start("BootState", true, false, "assets/asset_data/title_screen.json", "TitleState");

@@ -1,1 +1,2 @@
 You found the Legendary Spear!
+(+10 to Physical Attack)
