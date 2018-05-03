@@ -52,12 +52,14 @@
                  "name":"player",
                  "properties":
                     {
+                     "direction":"up",
                      "group":"players",
                      "texture":"player_spritesheet",
                      "walking_speed":75
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
                      "group":"string",
                      "texture":"string",
                      "walking_speed":"int"
@@ -102,12 +104,14 @@
                     {
                      "encounter":"reptile",
                      "group":"enemy_spawners",
+                     "player_direction":"up",
                      "texture":"snake_image"
                     },
                  "propertytypes":
                     {
                      "encounter":"string",
                      "group":"string",
+                     "player_direction":"string",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -217,12 +221,14 @@
                     {
                      "encounter":"dino",
                      "group":"enemy_spawners",
+                     "player_direction":"up",
                      "texture":"snake_image"
                     },
                  "propertytypes":
                     {
                      "encounter":"string",
                      "group":"string",
+                     "player_direction":"string",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -352,7 +358,7 @@
                 {
                  "height":32,
                  "id":27,
-                 "name":"south_town_door1",
+                 "name":"cave_door",
                  "properties":
                     {
                      "group":"doors",
@@ -377,7 +383,7 @@
                 {
                  "height":32,
                  "id":30,
-                 "name":"south_town_door2",
+                 "name":"cave_door",
                  "properties":
                     {
                      "group":"doors",

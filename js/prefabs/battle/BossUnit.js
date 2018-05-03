@@ -109,6 +109,9 @@ RPG.BossUnit.prototype.magical_act = function () {
     
     // calls the hit method from the Magical attack class
     this.magical_attack.hit(target);
+    
+    // set the flag for magical hit to true
+    this.game_state.is_magic_attack = true;
 };
 
 // enraged_act calls the hit method and targets all player units in play
@@ -122,4 +125,6 @@ RPG.BossUnit.prototype.enraged_act = function () {
         // calls the hit method from the Magical attack class
         this.magical_attack.hit(target);
     }, this);
+    // set the flag for magical hit to true
+    this.game_state.is_magic_attack = true;
 };

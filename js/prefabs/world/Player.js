@@ -32,6 +32,11 @@ RPG.Player = function (game_state, name, position, properties) {
     // don't continue to play after inputs have stopped
     this.moving = {left: false, right: false, up: false, down: false};
     
+    // get the int value of the direction the player is spawned in
+    this.facing = {left: 1, right: 2, up: 3, down: 0};
+    
+    this.current_direction = properties.direction;
+    
     // focuses the game camera on the player
     this.game_state.game.camera.focusOn(this, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT);
 };
@@ -59,6 +64,7 @@ RPG.Player.prototype.update = function () {
     if (this.moving.left && this.body.velocity.x <= 0) {
         // velocity decreases to move player to the left
         this.body.velocity.x = -this.walking_speed;
+        this.current_direction = "left";
         if (this.body.velocity.y === 0) {
             // play the walking animation
             this.animations.play("walking_left");
@@ -67,6 +73,7 @@ RPG.Player.prototype.update = function () {
     } else if (this.moving.right && this.body.velocity.x >= 0) {
         // velocity increases to move player to the right
         this.body.velocity.x = this.walking_speed;
+        this.current_direction = "right";
         if (this.body.velocity.y === 0) {
             // play the walking animation
             this.animations.play("walking_right");
@@ -83,6 +90,14 @@ RPG.Player.prototype.update = function () {
             // play the walking animation
             this.animations.play("walking_up");
         }
+        if (this.moving.left) {
+            this.current_direction = "left";
+        }
+         else if (this.moving.right) {
+            this.current_direction = "right";
+        } else {
+            this.current_direction = "up";
+        }
     // move down
     } else if (this.moving.down && this.body.velocity.y >= 0) {
         // velocity increases to move player to the down
@@ -91,13 +106,21 @@ RPG.Player.prototype.update = function () {
             // play the walking animation
             this.animations.play("walking_down");
         }
+        if (this.moving.left) {
+            this.current_direction = "left";
+        }
+        else if (this.moving.right) {
+            this.current_direction = "right";
+        } else {
+            this.current_direction = "down";
+        }
     } else {
         // set body y velocity 0 when both the 
         // up and down keys aren't being pressed
         this.body.velocity.y = 0;
     }
     
-    // checks to see if the player velocity is 
+    // checks to see if the player velocity is at 0 for all axes
     if (this.body.velocity.x === 0 && this.body.velocity.y === 0) {
         // stop current animation
         this.animations.stop();

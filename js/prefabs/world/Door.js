@@ -38,28 +38,12 @@ RPG.Door.prototype.update = function () {
 // using the level assets path in this.next_level_assets
 RPG.Door.prototype.enter = function () {
     "use strict";
-    var player_position;
-    // switch statement that checks for each direction the player is heading in
-    switch (this.player_direction) {
-        case "up": 
-            // repositions the player below the door prefab
-            player_position = {x: this.game_state.prefabs.player.position.x, y: this.game_state.prefabs.player.position.y};
-            break;
-        case "down": 
-            // repositions the player above the door prefab
-            player_position = {x: this.game_state.prefabs.player.position.x, y: this.game_state.prefabs.player.position.y - 25};
-            break;
-        case "left": 
-            // repositions the player to the right of the door prefab
-            player_position = {x: this.game_state.prefabs.player.position.x + 25, y: this.game_state.prefabs.player.position.y};
-            break;
-        case "right": 
-            // repositions the player to the left of the door prefab
-            player_position = {x: this.game_state.prefabs.player.position.x - 25, y: this.game_state.prefabs.player.position.y};
-            break;
-    }
+    var player_direction;
+    
+    // store the player_direction they are facing
+    player_direction = this.game_state.prefabs.player.current_direction;
     // calls the WorldState get_player_object method, passing in the player_position object
-    this.game_state.get_player_object(player_position);
+    this.game_state.change_player_position(player_direction, this.name);
     // starts the Bootstate to show the next map
-    this.game_state.game.state.start("BootState", true, false, this.next_level_assets, "WorldState");
+    this.game_state.game.state.start("BootState", true, false, this.next_level_assets, "WorldState", {door_name: this.name, player_facing: player_direction});
 };

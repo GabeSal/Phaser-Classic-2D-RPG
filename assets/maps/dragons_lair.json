@@ -71,12 +71,14 @@
                  "name":"player",
                  "properties":
                     {
+                     "direction":"up",
                      "group":"players",
                      "texture":"player_spritesheet",
                      "walking_speed":75
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
                      "group":"string",
                      "texture":"string",
                      "walking_speed":"int"
@@ -91,7 +93,7 @@
                 {
                  "height":32,
                  "id":2,
-                 "name":"cave_door1",
+                 "name":"dragon_door1",
                  "properties":
                     {
                      "group":"doors",
@@ -116,7 +118,7 @@
                 {
                  "height":32,
                  "id":3,
-                 "name":"cave_door2",
+                 "name":"dragon_door2",
                  "properties":
                     {
                      "group":"doors",
@@ -304,12 +306,14 @@
                     {
                      "encounter":"dragon",
                      "group":"enemy_spawners",
+                     "player_direction":"up",
                      "texture":"dragon_image"
                     },
                  "propertytypes":
                     {
                      "encounter":"string",
                      "group":"string",
+                     "player_direction":"string",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -327,12 +331,14 @@
                     {
                      "encounter":"boss",
                      "group":"enemy_spawners",
+                     "player_direction":"up",
                      "texture":"dragon_image"
                     },
                  "propertytypes":
                     {
                      "encounter":"string",
                      "group":"string",
+                     "player_direction":"string",
                      "texture":"string"
                     },
                  "rotation":0,

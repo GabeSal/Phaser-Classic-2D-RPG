@@ -5,6 +5,19 @@
         "battle_music": {"type": "audio", "source": "assets/audio/music/Tale_of_Ehrgeiz_Loop.mp3"},
         "boss_music": {"type": "audio", "source": "assets/audio/music/Boss_Fight_Loop.mp3"},
         
+        "hit_sfx": {"type": "audio", "source": "assets/audio/sfx/Physical_Hit_Sound.mp3"},
+        "warrior_sfx": {"type": "audio", "source": "assets/audio/sfx/Warrior_Attack.mp3"},
+        "fireball_sfx": {"type": "audio", "source": "assets/audio/sfx/Fireball_Cast.mp3"},
+        "fireball_hit": {"type": "audio", "source": "assets/audio/sfx/Fireball_Hit.mp3"},
+        "lightning_sfx": {"type": "audio", "source": "assets/audio/sfx/Lightning_Cast.mp3"},
+        "lightning_hit": {"type": "audio", "source": "assets/audio/sfx/Lightning_Hit.mp3"},
+        "enemy_sfx": {"type": "audio", "source": "assets/audio/sfx/Enemy_Attack.mp3"},
+        
+        "blood_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/blood_spritesheet.png", "frame_width": 512, "frame_height": 512},
+        "fire_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/burning_spritesheet.png", "frame_width": 183, "frame_height": 267},
+        "lightning_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/lightning_spritesheet.png", "frame_width": 64, "frame_height": 70},
+        "lightning_splash_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/lightning_splash.png", "frame_width": 142, "frame_height": 105},
+        
         "warrior_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/warrior.png", "frame_width": 240, "frame_height": 104},
         "mage_spritesheet": {"type": "spritesheet", "source": "assets/images/battle/mage.png", "frame_width": 151, "frame_height": 100},
         

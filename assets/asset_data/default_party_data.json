@@ -57,7 +57,7 @@
                 "speed": 0
             },
             "equipment": {
-                "weapon": {"name": "default_equipment"},
+                "weapon": {"name": "arcane_grimoire"},
                 "head": {"name": "default_equipment"},
                 "body": {"name": "default_equipment"},
                 "legs": {"name": "default_equipment"},

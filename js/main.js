@@ -36,7 +36,7 @@ game.state.add("PauseState", new RPG.PauseState());
 
 // starts the Bootstate
 
-//  Phaser.Start(Key, clearWorld method, clearCache method, level_asset_data, next_state, extra_parameters)
+//  Phaser.Start(Key, clearWorld method, clearCache method, level_asset_data, next_state/extra_parameters)
 /*
     clearWorld clears the World display (i.e. title screen, backgrounds, etc.) 
     but keeps the assets and data in the cache, clearCache would permanently 

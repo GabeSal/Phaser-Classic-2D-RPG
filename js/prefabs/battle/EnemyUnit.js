@@ -13,6 +13,9 @@ RPG.EnemyUnit = function (game_state, name, position, properties) {
     // enables inputs when the Enemy Unit prefab is clicked by the player
     this.inputEnabled = true;
     this.events.onInputDown.add(this.selected, this);
+    
+    // flag for the input event
+    this.selected_enemy_unit = false;
 };
 
 RPG.EnemyUnit.prototype = Object.create(RPG.Unit.prototype);
@@ -47,10 +50,13 @@ RPG.EnemyUnit.prototype.act = function () {
 
 RPG.EnemyUnit.prototype.selected = function () {
     "use strict";
-    // calls the attack method and passes the enemy name
-    this.game_state.current_attack.hit(this);
-    // hide the enemy menu items
-    this.game_state.prefabs.enemy_units_menu.enable(false);
+    if (this.selected_enemy_unit == false) {
+        this.selected_enemy_unit = true;
+        // calls the attack method and passes the enemy name
+        this.game_state.current_attack.hit(this);
+        // hide the enemy menu items
+        this.game_state.prefabs.enemy_units_menu.enable(false);
+    }
 };
 
 // choose_target randomly chooses a target from the player units group

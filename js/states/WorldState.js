@@ -24,7 +24,7 @@ RPG.WorldState = function () {
 RPG.WorldState.prototype = Object.create(RPG.JSONLevelState.prototype);
 RPG.WorldState.prototype.constructor = RPG.WorldState;
 
-RPG.WorldState.prototype.init = function (level_asset_data) {
+RPG.WorldState.prototype.init = function (level_asset_data, extra_parameters) {
     "use strict";
     RPG.JSONLevelState.prototype.init.call(this, level_asset_data);
     
@@ -32,6 +32,13 @@ RPG.WorldState.prototype.init = function (level_asset_data) {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     // sets the gravity to none as there is no need for the player and other objects to fall
     this.game.physics.arcade.gravity.y = 0;
+    
+    // save the extra_parameters so as to correctly load the player 
+    // during the place_player_to_correct door method
+    this.extra_parameters = extra_parameters;
+    
+    // flag that checks to see if the arcane grimoire is in the mage's inventory
+    this.mage_acquired_grimoire = false;
 };
 
 RPG.WorldState.prototype.preload = function() {
@@ -118,6 +125,14 @@ RPG.WorldState.prototype.create_object = function (object) {
         this.check_inventory(object.name);
     }
     
+    // checks to see if the player has passed through a door
+    if (this.extra_parameters != undefined) {
+        if (object.name == this.extra_parameters.door_name) {
+            // call the JSONLevelState method to change player position
+            this.place_player_to_correct_door(this.extra_parameters.player_facing, this.extra_parameters.door_name);
+        }
+    }
+    
     // tiled coordinates starts in the bottom left corner and is repositioned to the center of the tile
     object_y = (object.gid) ? object.y - (this.map.tileHeight / 2) : object.y + (object.height / 2);
     position = {"x": object.x + (this.map.tileHeight / 2), "y": object_y};
@@ -155,6 +170,13 @@ RPG.WorldState.prototype.check_inventory = function (equipment_name) {
     // get the layers length in the current map
     mapLength = mapData.layers.length;
     
+    // checks mage inventory to see if the mage has the arcane grimoire
+    if (mage_unit_data.equipment.weapon.name == "arcane_grimoire") {
+        // set the flag to true
+        this.mage_acquired_grimoire = true;
+        // see EnemySpawner
+    }
+    console.log(this.mage_acquired_grimoire);
     // iterates through all of the body parts in warrior_unit_data
     for (var i in body_part) {
         
@@ -206,22 +228,6 @@ RPG.WorldState.prototype.check_inventory = function (equipment_name) {
     }
 };
 
-// get_player_object accesses this.map to grab the player spawner in order to pass it 
-// into the JSONLevelState change_player_position method
-RPG.WorldState.prototype.get_player_object = function (position) {
-    "use strict";
-    // temporarily stores the player object from this.map into player_object
-    var player_object = this.map.objects.objects[0];
-    
-    //var objects_length = this.map.objects.objects.length;
-    // position is passed from either the player prefab or an instance of enemy_spawner
-    var new_position = position;
-    
-    // get_player_object then calls the change_player_position to adjust the position of the player 
-    // after returning from a different state
-    RPG.JSONLevelState.prototype.change_player_position.call(this, player_object, new_position);
-};
-
 // the close_message_box method removes the message box sprite from display
 RPG.WorldState.prototype.close_message_box = function () {
     "use strict";
@@ -236,7 +242,7 @@ RPG.WorldState.prototype.close_message_box = function () {
 RPG.WorldState.prototype.pause_game = function () {
     "use strict";
     // this variable grabs the player prefab position data and passes it to the get_player_object method
-    var player_position = {x: this.prefabs.player.position.x, y: this.prefabs.player.position.y};
+    var player_position = {x: this.prefabs.player.position.x, y: this.prefabs.player.position.y, facing: this.game_state.prefabs.player.current_direction};
     this.get_player_object(player_position);
     // starts the pause state which displays all of the information about the player so far
     this.game.state.start("BootState", true, false, "assets/asset_data/pause_screen.json", "PauseState", {previous_level: this.level_asset_data.assets_path});

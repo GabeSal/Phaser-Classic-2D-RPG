@@ -57,18 +57,20 @@
          "draworder":"topdown",
          "name":"objects",
          "objects":[
-             {
+                {
                  "height":32,
                  "id":10,
                  "name":"player",
                  "properties":
                     {
+                     "direction":"right",
                      "group":"players",
                      "texture":"player_spritesheet",
                      "walking_speed":75
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
                      "group":"string",
                      "texture":"string",
                      "walking_speed":"int"
@@ -214,7 +216,7 @@
                 {
                  "height":32,
                  "id":7,
-                 "name":"town_door1",
+                 "name":"town_east_door1",
                  "properties":
                     {
                      "group":"doors",
@@ -239,7 +241,7 @@
                 {
                  "height":32,
                  "id":8,
-                 "name":"town_door2",
+                 "name":"town_east_door2",
                  "properties":
                     {
                      "group":"doors",
@@ -264,7 +266,7 @@
                 {
                  "height":32,
                  "id":9,
-                 "name":"town_door3",
+                 "name":"town_east_door3",
                  "properties":
                     {
                      "group":"doors",

@@ -27,7 +27,7 @@
         },
         "slime2": {
             "type": "enemy_unit",
-            "position": {"x": 145, "y": 240},
+            "position": {"x": 215, "y": 240},
             "properties": {
                 "texture": "slime_spritesheet",
                 "group": "enemy_units",

@@ -13,6 +13,9 @@ RPG.MagicalEnemyUnit = function (game_state, name, position, properties) {
     // enables inputs when the Enemy Unit prefab is clicked by the player
     this.inputEnabled = true;
     this.events.onInputDown.add(this.selected, this);
+    
+    // flag for the input event
+    this.selected_magical_enemy_unit = false;
 };
 
 RPG.MagicalEnemyUnit.prototype = Object.create(RPG.Unit.prototype);
@@ -32,10 +35,13 @@ RPG.MagicalEnemyUnit.prototype.kill = function () {
 
 RPG.MagicalEnemyUnit.prototype.selected = function () {
     "use strict";
-    // calls the attack method and passes the enemy name
-    this.game_state.current_attack.hit(this);
-    // hide the enemy menu items
-    this.game_state.prefabs.enemy_units_menu.enable(false);
+    if (this.selected_magical_enemy_unit == false) {
+        this.selected_magical_enemy_unit = true;
+        // calls the attack method and passes the enemy name
+        this.game_state.current_attack.hit(this);
+        // hide the enemy menu items
+        this.game_state.prefabs.enemy_units_menu.enable(false);
+    }
 };
 
 // act calls the hit method and chooses a target from the player units

@@ -14,8 +14,6 @@ RPG.EnemySpawner = function (game_state, name, position, properties) {
     
     // grabs the encounter data from the properties in the this.level_asset_data JSON object
     this.encounter = JSON.parse(this.game_state.game.cache.getText(properties.encounter));
-    // stores the position of the enemy_spawner to pass into the Battlestate for the player
-    this.enemy_spawn_position = this.position;
     
     // enables physics
     this.game_state.game.physics.arcade.enable(this);
@@ -37,8 +35,11 @@ RPG.EnemySpawner.prototype.update = function () {
 // spawn brings the player to Battlestate and passes many parameters in order to update the cache accordingly
 RPG.EnemySpawner.prototype.spawn = function () {
     "use strict";
-    // call Worldstate method to grab player object
-    this.game_state.get_player_object.call(this.game_state, this.enemy_spawn_position);
+    var player_direction;
+    
+    player_direction = this.game_state.prefabs.player.current_direction;
+    // call Worldstate method to grab player object and pass the player_position object
+    this.game_state.change_player_position(player_direction, this.name);
     
     // stop town music
     if (this.game_state.town_music.isPlaying) {
@@ -47,5 +48,5 @@ RPG.EnemySpawner.prototype.spawn = function () {
     
     // Boots Battlestate and passes a hard-coded object that includes data on the current map being used, the name of the spawner, the encounter data, 
     // and the position of the spawner so as to update the players' position after they have successfully defeated the enemy
-    this.game_state.game.state.start("BootState", true, false, "assets/asset_data/battle.json", "BattleState", {previous_level: this.game_state.level_asset_data.assets_path, returning_state: this.game_state.level_asset_data.state.name, encounter: this.encounter, enemy_name: this.name, new_position: this.enemy_spawn_position});
+    this.game_state.game.state.start("BootState", true, false, "assets/asset_data/battle.json", "BattleState", {previous_level: this.game_state.level_asset_data.assets_path, returning_state: this.game_state.level_asset_data.state.name, encounter: this.encounter, enemy_name: this.name, acquired_grimoire: this.game_state.mage_acquired_grimoire});
 };

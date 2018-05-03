@@ -81,14 +81,8 @@ RPG.JSONLevelState.prototype.create_prefab = function (prefab_name, prefab_data)
 
 // change_player_position uses the player prefab or another object to roughly place the  
 // player prefab in the world stage where the user had last left it
-RPG.JSONLevelState.prototype.change_player_position = function (player_object, new_position) {
+RPG.JSONLevelState.prototype.change_player_position = function (player_direction, world_object) {
     "use strict";
-    // grab player object data (player spawner), not prefab
-    var player_object = player_object;
-    // new_position is the position of an enemy_spawner or the player prefab 
-    // when the user changes to the pause state
-    var new_position = new_position;
-    
     // grabs the name of the current state from this.level_asset_data
     var current_state = this.level_asset_data.state.name;
     
@@ -98,17 +92,111 @@ RPG.JSONLevelState.prototype.change_player_position = function (player_object, n
     // stores the layers length from this.map into a temp variable
     var layers_length = cache_data.layers.length - 1;
     
-    // change player objects' (player spawner) x position
-    if(cache_data.layers[layers_length].objects[0].x == player_object.x) {
-        cache_data.layers[layers_length].objects[0].x = new_position.x;
-    }
-    // change player objects' (player spawner) y position
-    if(cache_data.layers[layers_length].objects[0].y == player_object.y) {
-        cache_data.layers[layers_length].objects[0].y = new_position.y;
+    // set the direction the player will face
+    cache_data.layers[layers_length].objects[0].properties.direction = player_direction;
+    
+    // check if door is provided by the object
+    if (world_object != undefined) {
+        // for loop that checks the name of the door object the player interacted with
+        for (var index in cache_data.layers[layers_length].objects) {
+            if (cache_data.layers[layers_length].objects[index].name == world_object && cache_data.layers[layers_length].objects[index].type == "door") {
+                switch (player_direction) {
+                    case "up":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y + 35;
+                        break;
+                    case "down":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y - 35;
+                        break;
+                    case "left":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x + 35;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y;
+                        break;
+                    case "right":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x - 35;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y;
+                        break;
+                }
+            }
+            else if (cache_data.layers[layers_length].objects[index].name == world_object && cache_data.layers[layers_length].objects[index].type == "enemy_spawner") {
+                switch (player_direction) {
+                    case "up":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y + 35;
+                        break;
+                    case "down":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y - 35;
+                        break;
+                    case "left":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x + 35;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y;
+                        break;
+                    case "right":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x - 35;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y;
+                        break;
+                }
+            }
+        }
+    } else {
+        console.log("Cannot find object");
     }
     
     // swap the current JSON cache with the new cache data
     this.swap_cache_data(current_state, cache_data);
+};
+
+// place_player_to_correct_door uses the player prefab and the name of a door object to roughly place the  
+// player prefab in the world stage where the user can expect to find the player
+RPG.JSONLevelState.prototype.place_player_to_correct_door = function (player_direction, world_object) {
+    "use strict";
+    // grabs the name of the current state from this.level_asset_data
+    var current_state = this.level_asset_data.state.name;
+    
+    // grab cache data in order to change the JSON cache later
+    var cache_data = this.game.cache.getJSON(current_state + "Map");
+    
+    // stores the layers length from this.map into a temp variable
+    var layers_length = cache_data.layers.length - 1;
+    
+    // set the direction the player will face
+    cache_data.layers[layers_length].objects[0].properties.direction = player_direction;
+    
+    // check if door is provided by the object
+    if (world_object != undefined) {
+        // for loop that checks the name of the door object the player interacted with
+        for (var index in cache_data.layers[layers_length].objects) {
+            if (cache_data.layers[layers_length].objects[index].name == world_object && cache_data.layers[layers_length].objects[index].type == "door") {
+                switch (player_direction) {
+                    case "up":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y - 35;
+                        break;
+                    case "down":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y + 35;
+                        break;
+                    case "left":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x - 35;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y;
+                        break;
+                    case "right":
+                        cache_data.layers[layers_length].objects[0].x = cache_data.layers[layers_length].objects[index].x + 35;
+                        cache_data.layers[layers_length].objects[0].y = cache_data.layers[layers_length].objects[index].y;
+                        break;
+                }
+            }
+        }
+    } else {
+        console.log("Cannot find object");
+    }
+    
+    // swap the current JSON cache with the new cache data
+    this.swap_cache_data(current_state, cache_data);
+    
+    this.game.state.start("BootState", true, false, this.level_asset_data.assets_path, "WorldState");
 };
 
 // swap_cache_data is the method responsible for updating the cache in the 

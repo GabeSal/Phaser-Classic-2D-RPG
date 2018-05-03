@@ -34,7 +34,7 @@ RPG.SpecialAttack.prototype.hit = function (target) {
     
     // creates a timer for the target to play the damaged animation
     var hit_timer = this.game_state.time.create();
-    hit_timer.add(350, this.display_damage, this, target);
+    hit_timer.add(400, this.display_damage, this, target);
     hit_timer.start();
 };
 

@@ -45,11 +45,18 @@ RPG.BattleState.prototype.init = function (level_asset_data, extra_parameters) {
     // contains the state name of the previous level before entering the BattleState
     this.returning_state = extra_parameters.returning_state;
     
+    // flag for the hit and swing sounds
+    this.is_attacking = false;
+    this.is_magic_attack = false;
+    
     // flag that determines if the player is in control
     this.is_players_turn = false;
     
     // audio flag for the battle music
     this.is_boss_battle = false;
+    
+    // flag to change the magic_tween attack animation for the mage
+    this.mage_has_grimoire = extra_parameters.acquired_grimoire;
 };
 
 RPG.BattleState.prototype.preload = function () {
@@ -67,6 +74,35 @@ RPG.BattleState.prototype.preload = function () {
     
     if (this.boss_battle_music == undefined) {
         this.boss_battle_music = this.game.add.audio("boss_music");    
+    }
+    
+    // stores the sound effects tracks in the BattleState
+    if (this.hit_sound == undefined) {
+        this.hit_sound = this.game.add.audio("hit_sfx");    
+    }
+    
+    if (this.warrior_sound == undefined) {
+        this.warrior_sound = this.game.add.audio("warrior_sfx");    
+    }
+    
+    if (this.fireball_sound == undefined) {
+        this.fireball_sound = this.game.add.audio("fireball_sfx");    
+    }
+    
+    if (this.fireball_hit == undefined) {
+        this.fireball_hit = this.game.add.audio("fireball_hit");    
+    }
+    
+    if (this.lightning_sound == undefined) {
+        this.lightning_sound = this.game.add.audio("lightning_sfx");    
+    }
+    
+    if (this.lightning_hit == undefined) {
+        this.lightning_hit = this.game.add.audio("lightning_hit");    
+    }
+    
+    if (this.enemy_sound == undefined) {
+        this.enemy_sound = this.game.add.audio("enemy_sfx");    
     }
 };
 
@@ -143,13 +179,16 @@ RPG.BattleState.prototype.create = function () {
     
     // play the battle music according to the boss flag
     if(!this.battle_music.isPlaying && !this.is_boss_battle) {
-        this.battle_music.play('', 0, 0.15, true);
+        this.battle_music.play('', 0, 0.05, true);
     }
     
     // play the battle music according to the boss flag
     if(!this.boss_battle_music.isPlaying && this.is_boss_battle) {
-        this.boss_battle_music.play('', 0, 0.5, true);
+        this.boss_battle_music.play('', 0, 0.1, true);
     }
+    
+    // method is called to create the flash and lightning bitmap data
+    this.create_effects();
 };
 
 // the this.next_turn method counts all living units and decides 
@@ -210,6 +249,7 @@ RPG.BattleState.prototype.back_to_world = function () {
     
     // boots up the world state
     this.game.state.start("BootState", true, false, this.previous_level, "WorldState");
+    
 };
 
 // game_over deletes player progress up to this point 
@@ -303,4 +343,116 @@ RPG.BattleState.prototype.clear_enemy_encounter = function () {
             break;
         }
     }
-}
+};
+
+// method that creates all of the effects and sprites used for each effect
+RPG.BattleState.prototype.create_effects = function () {
+    "use strict";
+    
+    // sets the world bounds a little larger for the camera shake effect
+    this.game.world.setBounds(-10, -10, this.game.width + 20, this.game.height + 20);
+    
+    // Create a bitmap for the lightning bolt texture
+    this.lightningBitmap = this.game.add.bitmapData(480, 360);
+    
+    // Create a sprite to hold the lightning bolt texture
+    this.lightning = this.game.add.image(this.game.width/2, -80, this.lightningBitmap);
+
+    // This adds what is called a "fragment shader" to the lightning sprite.
+    // See the fragment shader code below for more information.
+    // This is an WebGL feature. Because it runs in your web browser, you need
+    // a browser that support WebGL for this to work.
+    this.lightning.filters = [ this.game.add.filter('Glow') ];
+
+    // Set the anchor point of the sprite to center of the top edge
+    // This allows us to position the lightning by simply specifiying the
+    // x and y coordinate of where we want the lightning to appear from.
+    this.lightning.anchor.setTo(0.5, 0);
+
+    // Create a white rectangle that we'll use to represent the flash
+    this.flash = this.game.add.graphics(0, 0);
+    this.flash.beginFill(0xffffff, 1);
+    this.flash.drawRect(0, 0, this.game.width, this.game.height);
+    this.flash.endFill();
+    this.flash.alpha = 0;
+    
+       // creates the blood effect sprite
+    this.blood_effect = this.game.add.sprite(0, 0, 'blood_spritesheet', 0);
+    this.blood_effect.scale.set(0.35);
+    this.blood_effect.anchor.setTo(0.5);
+    this.blood_effect.alpha = 0;
+    
+    // adds the animation to the blood_effect sprite
+    this.blood_effect_anim = this.blood_effect.animations.add('splatter', [0, 0, 1, 1, 2, 2, 3, 4], 24, false);
+    this.blood_effect_anim.onComplete.add(this.reset_blood_effect, this);
+    
+    // creates the burning effect sprite
+    this.burning_effect = this.game.add.sprite(0, 0, 'fire_spritesheet', 0);
+    this.burning_effect.scale.set(0.75);
+    this.burning_effect.anchor.setTo(0.5);
+    this.burning_effect.alpha = 0;
+    
+    // adds the animation to the burning_effect2 sprite
+    this.burning_effect_anim = this.burning_effect.animations.add('burning', [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 24, false);
+    this.burning_effect_anim.onComplete.add(this.reset_burning_effect, this);
+    
+    // creates the burning_effect2 sprite (for the dragon boss)
+    this.burning_effect2 = this.game.add.sprite(0, 0, 'fire_spritesheet', 0);
+    this.burning_effect2.scale.set(0.75);
+    this.burning_effect2.anchor.setTo(0.5);
+    this.burning_effect2.alpha = 0;
+    
+    // adds the animation to the burning_effect sprite
+    this.burning_effect2_anim = this.burning_effect2.animations.add('charred', [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 24, false);
+    this.burning_effect2_anim.onComplete.add(this.reset_burning_effect2, this);
+    
+    // creates the lingering_lightning effect sprite
+    this.lingering_lightning = this.game.add.sprite(0, 0, 'lightning_spritesheet', 0);
+    this.lingering_lightning.scale.set(2.25, 1.5);
+    this.lingering_lightning.anchor.setTo(0.5);
+    this.lingering_lightning.alpha = 0;
+    
+    // adds the animation to the lingering_lightning sprite
+    this.lingering_lightning_anim = this.lingering_lightning.animations.add('crackle', [0, 0, 1, 1, 2, 2, 3, 2, 3, 3, 4, 5, 5, 4, 4, 5, 6], 20, false);
+    this.lingering_lightning_anim.onComplete.add(this.reset_lightning_effect, this);
+    
+    // creates the lingering_lightning effect sprite
+    this.lightning_splash = this.game.add.sprite(0, 0, 'lightning_splash_spritesheet', 0);
+    this.lightning_splash.scale.set(1.75, 1.5);
+    this.lightning_splash.anchor.setTo(0.5);
+    this.lightning_splash.alpha = 0;
+    
+    // adds the animation to the lingering_lightning sprite
+    this.lightning_splash_anim = this.lightning_splash.animations.add('impact', [0, 0, 1, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 24, false);
+    this.lightning_splash_anim.onComplete.add(this.reset_lightning_splash, this);
+};
+
+// callback method responsible for hiding the blood effect sprite
+RPG.BattleState.prototype.reset_blood_effect = function () {
+    "use strict";
+    this.blood_effect.alpha = 0;
+};
+
+// callback method responsible for hiding the burning effect sprite
+RPG.BattleState.prototype.reset_burning_effect = function () {
+    "use strict";
+    this.burning_effect.alpha = 0;
+};
+
+// callback method responsible for hiding the burning effect sprite
+RPG.BattleState.prototype.reset_burning_effect2 = function () {
+    "use strict";
+    this.burning_effect2.alpha = 0;
+};
+
+// callback method responsible for hiding the blood effect sprite
+RPG.BattleState.prototype.reset_lightning_effect = function () {
+    "use strict";
+    this.lingering_lightning.alpha = 0;
+};
+
+// callback method responsible for hiding the lightning splash sprite
+RPG.BattleState.prototype.reset_lightning_splash = function () {
+    "use strict";
+    this.lightning_splash.alpha = 0;
+};

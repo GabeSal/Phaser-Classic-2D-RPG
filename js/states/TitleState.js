@@ -66,7 +66,7 @@ RPG.TitleState.prototype.create = function () {
     // plays the background music according the state name
     if(!this.background_music.isPlaying && this.level_asset_data.state.name == "title") {
         // arguments provide the marker, position, volume, and loop boolean value
-        this.background_music.play('', 0, 0.15, true);
+        this.background_music.play('', 0, 0.05, true);
     }
 };
 

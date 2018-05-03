@@ -34,8 +34,11 @@ RPG.PhysicalAttack.prototype.hit = function (target) {
     
     // creates a timer for the target to play the damaged animation
     var hit_timer = this.game_state.time.create();
-    hit_timer.add(350, this.display_damage, this, target);
+    hit_timer.add(425, this.display_damage, this, target);
     hit_timer.start();
+    
+    // allow target to be clickable again
+    target.selected_enemy_unit = false;
 };
 
 RPG.PhysicalAttack.prototype.display_damage = function(target) {

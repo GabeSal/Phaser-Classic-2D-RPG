@@ -71,12 +71,14 @@
                  "name":"player",
                  "properties":
                     {
+                     "direction":"left",
                      "group":"players",
                      "texture":"player_spritesheet",
                      "walking_speed":75
                     },
                  "propertytypes":
                     {
+                     "direction":"string",
                      "group":"string",
                      "texture":"string",
                      "walking_speed":"int"
@@ -91,7 +93,7 @@
                 {
                  "height":32,
                  "id":2,
-                 "name":"town_door",
+                 "name":"town_west_door",
                  "properties":
                     {
                      "group":"doors",
