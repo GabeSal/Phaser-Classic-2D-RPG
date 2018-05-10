@@ -352,17 +352,15 @@ RPG.BattleState.prototype.create_effects = function () {
     // sets the world bounds a little larger for the camera shake effect
     this.game.world.setBounds(-10, -10, this.game.width + 20, this.game.height + 20);
     
-    // Create a bitmap for the lightning bolt texture
-    this.lightningBitmap = this.game.add.bitmapData(480, 360);
-    
     // Create a sprite to hold the lightning bolt texture
-    this.lightning = this.game.add.image(this.game.width/2, -80, this.lightningBitmap);
-
-    // This adds what is called a "fragment shader" to the lightning sprite.
-    // See the fragment shader code below for more information.
-    // This is an WebGL feature. Because it runs in your web browser, you need
-    // a browser that support WebGL for this to work.
-    this.lightning.filters = [ this.game.add.filter('Glow') ];
+    this.lightning = this.game.add.sprite(0, 0, 'lightning_bolt_spritesheet', 0);
+    this.lightning.scale.set(0.85, 1.25);
+    this.lightning.anchor.setTo(0.5);
+    this.lightning.alpha = 0;
+    
+    // adds the animation to the lingering_lightning sprite
+    this.lightning_anim = this.lightning.animations.add('bolt', [0, 1, 2, 2, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 8, 9], 30, false);
+    this.lightning_anim.onComplete.add(this.reset_lightning, this);
 
     // Set the anchor point of the sprite to center of the top edge
     // This allows us to position the lightning by simply specifiying the
@@ -392,7 +390,7 @@ RPG.BattleState.prototype.create_effects = function () {
     this.burning_effect.anchor.setTo(0.5);
     this.burning_effect.alpha = 0;
     
-    // adds the animation to the burning_effect2 sprite
+    // adds the animation to the burning_effect sprite
     this.burning_effect_anim = this.burning_effect.animations.add('burning', [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 24, false);
     this.burning_effect_anim.onComplete.add(this.reset_burning_effect, this);
     
@@ -402,12 +400,12 @@ RPG.BattleState.prototype.create_effects = function () {
     this.burning_effect2.anchor.setTo(0.5);
     this.burning_effect2.alpha = 0;
     
-    // adds the animation to the burning_effect sprite
+    // adds the animation to the burning_effect2 sprite
     this.burning_effect2_anim = this.burning_effect2.animations.add('charred', [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 24, false);
     this.burning_effect2_anim.onComplete.add(this.reset_burning_effect2, this);
     
     // creates the lingering_lightning effect sprite
-    this.lingering_lightning = this.game.add.sprite(0, 0, 'lightning_spritesheet', 0);
+    this.lingering_lightning = this.game.add.sprite(0, 0, 'lightning_spark_spritesheet', 0);
     this.lingering_lightning.scale.set(2.25, 1.5);
     this.lingering_lightning.anchor.setTo(0.5);
     this.lingering_lightning.alpha = 0;
@@ -445,7 +443,13 @@ RPG.BattleState.prototype.reset_burning_effect2 = function () {
     this.burning_effect2.alpha = 0;
 };
 
-// callback method responsible for hiding the blood effect sprite
+// callback method responsible for hiding the lightning bolt effect sprite
+RPG.BattleState.prototype.reset_lightning = function () {
+    "use strict";
+    this.lightning.alpha = 0;
+};
+
+// callback method responsible for hiding the lingering lightning effect sprite
 RPG.BattleState.prototype.reset_lightning_effect = function () {
     "use strict";
     this.lingering_lightning.alpha = 0;

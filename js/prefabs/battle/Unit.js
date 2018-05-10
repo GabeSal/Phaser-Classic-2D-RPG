@@ -55,7 +55,6 @@ RPG.Unit.prototype.back_to_idle = function () {
 // sets the damage text from the units' hit method, and displays the text
 RPG.Unit.prototype.receive_damage = function (damage) {
     "use strict";
-    console.log(this);
     var damage_text, kill_timer;
     // checks to see if the damage is not a string
     if (damage !== "miss") {
@@ -266,24 +265,21 @@ RPG.Unit.prototype.magic_combat_tween = function (targets_position, return_posit
 
 RPG.Unit.prototype.lightning_attack = function (enemy_position) {
     "use strict";
-    // 120 is the offset for the battle menu while in the BattleState.
-    // The y of the lightning bolt changes with the positioning of the enemy
-    var lightningY = 120 - enemy_position.y;
     
+    // change the position of the lightning sprite to the enemy's position
     this.game_state.lightning.position.x = enemy_position.x;
-    
-    // Create the lightning texture
-    this.createLightningTexture(enemy_position.x, lightningY, 20, 3, false);
+    this.game_state.lightning.position.y = enemy_position.y - 320;
 
     // Make the lightning sprite visible
     this.game_state.lightning.alpha = 1;
+    this.game_state.lightning_anim.play('bolt');
     
     // Fade out the lightning sprite using a tween on the alpha property
     // Check out the "Easing function" examples for more info.
     var lightning_tween = this.game_state.game.add.tween(this.game_state.lightning)
-        .to({ alpha: 0.5 }, 150, Phaser.Easing.Bounce.Out)
+        .to({ alpha: 0.1 }, 100, Phaser.Easing.Bounce.Out)
         .to({ alpha: 1.0 }, 150, Phaser.Easing.Bounce.Out)
-        .to({ alpha: 0.5 }, 150, Phaser.Easing.Bounce.Out)
+        .to({ alpha: 0.1 }, 100, Phaser.Easing.Bounce.Out)
         .to({ alpha: 1.0 }, 150, Phaser.Easing.Bounce.Out)
         .to({ alpha: 0 }, 400, Phaser.Easing.Cubic.In)
         .start();
@@ -301,77 +297,6 @@ RPG.Unit.prototype.lightning_attack = function (enemy_position) {
     this.game_state.game.add.tween(this.game_state.game.camera)
         .to({ y: -10 }, 40, Phaser.Easing.Sinusoidal.InOut, false, 0, 5, true)
         .start();
-};
-
-// This function creates a texture that looks like a lightning bolt
-RPG.Unit.prototype.createLightningTexture = function(x, y, segments, boltWidth, branch) {
-    // Get the canvas drawing context for the lightningBitmap
-    var ctx = this.game_state.lightningBitmap.context;
-    var width = 75;
-    var height = this.game_state.lightningBitmap.height;
-
-    // Our lightning will be made up of several line segments starting at
-    // the center of the top edge of the bitmap and ending at the bottom edge
-    // of the bitmap.
-
-    // Clear the canvas
-    if (!branch) ctx.clearRect(0, 0, width, height);
-
-    // Draw each of the segments
-    for(var i = 0; i < segments; i++) {
-        // Set the lightning color and bolt width
-        ctx.strokeStyle = 'rgb(255, 255, 255)';
-        ctx.lineWidth = boltWidth;
-
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-
-        // Calculate an x offset from the end of the last line segment and
-        // keep it within the bounds of the bitmap
-        if (branch) {
-            // For a branch
-            x += this.game.rnd.integerInRange(-20, 20);
-        } else {
-            // For the main bolt
-            x += this.game.rnd.integerInRange(-30, 30);
-        }
-        if (x <= 10) x = 10;
-        if (x >= width-10) x = width-10;
-
-        // Calculate a y offset from the end of the last line segment.
-        // When we've reached the ground or there are no more segments left,
-        // set the y position to the height of the bitmap. For branches, we
-        // don't care if they reach the ground so don't set the last coordinate
-        // to the ground if it's hanging in the air.
-        if (branch) {
-            // For a branch
-            y += this.game.rnd.integerInRange(10, 20);
-        } else {
-            // For the main bolt
-            y += this.game.rnd.integerInRange(20, height/segments);
-        }
-        if ((!branch && i == segments - 1) || y > height) {
-            y = height;
-        }
-
-        // Draw the line segment
-        ctx.lineTo(x, y);
-        ctx.stroke();
-
-        // Quit when we've reached the ground
-        if (y >= height) break;
-
-        // Draw a branch 35% of the time off the main bolt only
-        if (!branch) {
-            if (this.game.math.random(0, 1 * 100) <= 45) {
-                // Draws another, thinner, bolt starting from this position
-                this.createLightningTexture(x, y, 10, 1, true);
-            }
-        }
-    }
-
-    // This just tells the engine it should update the texture cache
-    this.game_state.lightningBitmap.dirty = true;
 };
 
 // calculates the turn value of the unit using their speed stat
